@@ -19,4 +19,5 @@ Route::get('/', function () {
 });
 
 
-Route::get('profile',[userController::class,'viewUser']);
+Route::view('profile','profile');
+//Route::get('profile',[userController::class,'viewUser']);
