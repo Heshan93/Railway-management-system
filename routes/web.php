@@ -27,4 +27,3 @@ Route::post('register_user',[userController::class,'registerUser'])->name('regis
 Route::view('admin','admin_login');
 Route::view('dashboard','dashboard');
 Route::view('payment','payment');
-//Route::get('profile',[userController::class,'viewUser']);

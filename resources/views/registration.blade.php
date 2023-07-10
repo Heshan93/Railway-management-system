@@ -6,7 +6,7 @@
 <div class="container bg-secondary br-5">
 
     <form action="{{ route('register_user') }}" method="POST">
-
+{{--  new use success  & fail message --}}
       @if (Session::has('success'))
 
             <div class="alert alert-success">{{Session::get('success')}} </div>
@@ -16,7 +16,7 @@
         @if (Session::has('fail'))
         <div class="alert alert-danegr">{{Session::get('fail')}} </div>
         @endif
-
+{{--  new use success  & fail message --}}
         @csrf
     
         <div class="mb-3">
