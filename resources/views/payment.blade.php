@@ -2,9 +2,6 @@
 
 @section('content')
 
-<h1>Profile</h1>
+<h1>Payment</h1>
 
 @endsection
-
-
-

@@ -15,8 +15,15 @@ use App\Http\Controllers\userController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('landing_page');
 });
 
 
-Route::get('profile',[userController::class,'viewUser']);
+Route::view('profile','profile');
+Route::view('reports', 'reports');
+Route::view('login','user_login');
+Route::view('registration','registration');
+Route::view('admin','admin_login');
+Route::view('dashboard','dashboard');
+Route::view('payment','payment');
+//Route::get('profile',[userController::class,'viewUser']);

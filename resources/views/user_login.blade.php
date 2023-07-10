@@ -2,9 +2,6 @@
 
 @section('content')
 
-<h1>Profile</h1>
+<h1>User Login</h1>
 
 @endsection
-
-
-
