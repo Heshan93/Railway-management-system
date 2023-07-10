@@ -67,6 +67,20 @@ class userController extends Controller
 
 
     }
+
+
+    function loginUser(Request $req){
+        
+        $req->validate([
+            
+            'exampleInputEmail1' => 'required|email',
+            'exampleInputPassword2' => 'required|min:6',
+            
+           
+        ]);
+    }
+
+
 }
 /*
 
