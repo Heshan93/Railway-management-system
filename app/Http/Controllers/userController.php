@@ -16,4 +16,24 @@ class userController extends Controller
     function userRegister(){
         return view('registration');
     }
+
+    public function registerUser(Request $req)
+    {
+        // Add validation 
+        $req->validate([
+            'firstName' => 'required',
+            'LastName' => 'required',
+            'exampleInputEmail1' => 'required|email',
+            'exampleInputPassword2' => 'required|min:6',
+            'confirmInputPassword2' => 'required|same:exampleInputPassword2',
+           
+        ]);
+
+        // Handle the registration process
+ 
+
+    }
 }
+/*
+
+*/

@@ -23,6 +23,7 @@ Route::view('profile','profile');
 Route::view('reports', 'reports');
 Route::get('login',[userController::class,'userLogin']);
 Route::get('registration',[userController::class,'userRegister']);
+Route::post('register_user',[userController::class,'registerUser'])->name('register_user');
 Route::view('admin','admin_login');
 Route::view('dashboard','dashboard');
 Route::view('payment','payment');
