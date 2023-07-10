@@ -20,7 +20,7 @@ class CreatePassengersTable extends Migration
             $table->string('last_name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->integer('tp_number');
+           // $table->integer('tp_number');
             $table->integer('dob');
             $table->timestamps();
         });

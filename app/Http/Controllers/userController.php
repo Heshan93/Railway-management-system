@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Auth\Events\Login;
+use App\Models\passenger;
+
 
 class userController extends Controller
 {
@@ -30,7 +32,42 @@ class userController extends Controller
         ]);
 
         // Handle the registration process
- 
+
+
+          // Handle the registration process
+
+
+
+        try {
+            // Insert the new user record
+                  
+        $newUser = new passenger();
+
+        $newUser->first_name = $req->firstName;
+        $newUser->last_name = $req->LastName;
+        $newUser->email = $req->exampleInputEmail1;
+        $newUser->password = $req->exampleInputPassword2;
+        $newUser->tp_number = 13456879;
+        //$newUser->dob = 13456879;
+        $newUser->nic = '132456';
+        $rec  = $newUser->save();
+
+        if($rec){
+            return back()->with('success', 'You have successfully registered');
+        }
+
+
+        } catch (\Illuminate\Database\QueryException $e) {
+            if ($e->getCode() === '23000') {
+                // Duplicate entry error
+                return back()->with('fail', 'The email address is already registered.');
+            } else {
+                // Other query exceptions
+                return back()->with('fail', 'Something went wrong. Please try again.');
+            }
+        }
+
+
 
     }
 }
