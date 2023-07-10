@@ -21,8 +21,8 @@ Route::get('/', function () {
 
 Route::view('profile','profile');
 Route::view('reports', 'reports');
-Route::view('login','user_login');
-Route::view('registration','registration');
+Route::get('login',[userController::class,'userLogin']);
+Route::get('registration',[userController::class,'userRegister']);
 Route::view('admin','admin_login');
 Route::view('dashboard','dashboard');
 Route::view('payment','payment');
