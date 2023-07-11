@@ -20,8 +20,9 @@ class CreateTrainsTable extends Migration
             $table->integer('seat_cat_2');
             $table->integer('seat_cat_3');
             $table->dateTime('start_at');
-            $table->string('arrv_at');
+            $table->string('arrv_in');
             $table->dateTime('end_at');
+            $table->dateTime('end_dly_at');
             $table->boolean('status')->default(0);
             $table->string('routs');
             $table->time('delays');
