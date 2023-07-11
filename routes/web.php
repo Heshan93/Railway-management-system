@@ -13,19 +13,50 @@ use App\Http\Controllers\userController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//Load landing page
 
 Route::get('/', function () {
     return view('landing_page');
 });
 
+//Load login page if session is false
+ Route::get('login', function () {
+    if(session()->has('pName')){
 
-Route::view('profile','profile');
+        return view('profile');
+
+        }
+       
+        return view('user_login');
+});
+
+//Load login page if session is false
+
+Route::get('profile', function () {
+    if(session()->has('pName')){
+
+        return view('profile');
+
+        }    
+        return view('user_login');
+});
+
+//Load login page if session is false
+
+Route::get('registration', function () {
+    if(session()->has('pName')){
+
+        return view('profile');
+        }    
+        return view('user_login');
+});
+
+
 Route::view('reports', 'reports');
-Route::get('login',[userController::class,'userLogin']);
 Route::post('login_user',[userController::class,'loginUser'])->name('login_user');
-Route::get('registration',[userController::class,'userRegister']);
 Route::post('register_user',[userController::class,'registerUser'])->name('register_user'); 
 Route::view('admin','admin_login');
 Route::view('dashboard','dashboard');
 Route::view('payment','payment');
+Route::get('logout',[userController::class,'logoutUser']);
     

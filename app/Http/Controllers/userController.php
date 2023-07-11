@@ -11,14 +11,9 @@ use PhpParser\Node\Stmt\Return_;
 
 class userController extends Controller
 {
-    function userLogin()
-    {
-        return view('user_login');
-    }
 
-    function userRegister(){
-        return view('registration');
-    }
+
+ 
 
     public function registerUser(Request $req)
     {
@@ -101,9 +96,20 @@ class userController extends Controller
             return back()->with('fail','This email is not registered');
         }
        
+
        
     }
 
+    function logoutUser(){
+
+       if(session()->has('pName')){
+
+        session()->pull('pName');
+
+        }
+       
+        return redirect('login');
+    }
 
 }
 /*
