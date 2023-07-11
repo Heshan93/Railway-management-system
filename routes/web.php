@@ -49,11 +49,53 @@ Route::get('registration', function () {
     return view('registration');
 });
 
+//Load reports page if session is false
 
-Route::view('reports', 'reports');
+Route::get('reports', function () {
+    if (session()->has('pName')) {
+
+        return view('reports');
+    }
+    return view('user_login');
+});
+
+//Load admin_login page if session is false
+//need to change the pName to userName
+
+Route::get('admin', function () {
+    if (session()->has('pName')) {
+
+        return view('dashboard');
+    }
+    return view('admin_login');
+});
+
+//Load dashboard page if session is false
+//need to change the pName to userName
+
+Route::get('dashboard', function () {
+    if (session()->has('pName')) {
+
+        return view('dashboard');
+    }
+    return view('admin_login');
+});
+
+//Load payment page if session is false
+
+Route::get('payment', function () {
+    if (session()->has('pName')) {
+
+        return view('payment');
+    }
+    return view('user_login');
+});
+
+//passenger login function
 Route::post('login_user', [userController::class, 'loginUser'])->name('login_user');
+
+//passenger registration function
 Route::post('register_user', [userController::class, 'registerUser'])->name('register_user');
-Route::view('admin', 'admin_login');
-Route::view('dashboard', 'dashboard');
-Route::view('payment', 'payment');
+
+//passenger logout function
 Route::get('logout', [userController::class, 'logoutUser']);
