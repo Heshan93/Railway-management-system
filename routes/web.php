@@ -102,6 +102,13 @@ Route::get('train_info', function () {
     return view('user_login');
 });
 
+Route::get('active_ticket', function () {
+    if (session()->has('pName')) {
+
+        return view('active_ticket');
+    }
+    return view('user_login');
+});
 
 //passenger login function
 Route::post('login_user', [userController::class, 'loginUser'])->name('login_user');
