@@ -3,9 +3,27 @@
 @section('content')
 
 <h1>User Login</h1>
+
+
+
 <div class="container bg-secondary br-5">
 
+
+
     <form action="{{ route('login_user') }}" method="POST">
+
+
+        {{--  new use success  & fail message --}}
+        @if (Session::has('success'))
+
+         <div class="alert alert-success">{{Session::get('success')}} </div>
+             
+         @endif
+      
+         @if (Session::has('fail'))
+         <div class="alert alert-danger">{{Session::get('fail')}} </div>
+         @endif
+      {{--  new use success  & fail message --}}
       @csrf 
       <div class="mb-3 ">
         <label for="exampleInputEmail" class="form-label">Email address</label>

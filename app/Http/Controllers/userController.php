@@ -7,7 +7,7 @@ use App\Models\User;
 use Illuminate\Auth\Events\Login;
 use App\Models\passenger;
 use Illuminate\Support\Facades\Hash;
-
+use PhpParser\Node\Stmt\Return_;
 
 class userController extends Controller
 {
@@ -71,13 +71,35 @@ class userController extends Controller
 
     function loginUser(Request $req){
         
+        // validate the passenger
+
         $req->validate([
             
             'exampleInputEmail1' => 'required|email',
-            'exampleInputPassword2' => 'required|min:6',
+            'exampleInputPassword2'  => 'required|min:6',
             
            
         ]);
+
+        // Login the passenger
+
+       $passenger = passenger::where('email', '=', $req->exampleInputEmail1)->first(); //check & get the Passenger email
+
+        if($passenger){
+            if(Hash::check($req->exampleInputPassword2, $passenger->password)){ //check the password
+
+               return redirect('profile');
+                
+            }
+            else{
+                return back()->with('fail','This password is not correct');
+            }
+
+        }else{
+            return back()->with('fail','This email is not registered');
+        }
+       
+       
     }
 
 
