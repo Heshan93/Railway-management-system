@@ -88,7 +88,9 @@ class userController extends Controller
         if($passenger){
             if(Hash::check($req->exampleInputPassword2, $passenger->password)){ //check the password
 
-               return redirect('profile');
+             $req->session()->put('pName', $passenger->first_name);
+                
+                return redirect('profile');
                 
             }
             else{
