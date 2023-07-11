@@ -56,7 +56,7 @@ Route::get('reports', function () {
 
         return view('reports');
     }
-    return view('user_login');
+    return view('admin_login');
 });
 
 //Load admin_login page if session is false
@@ -90,6 +90,18 @@ Route::get('payment', function () {
     }
     return view('user_login');
 });
+
+
+//Load Train Info page if session is false
+
+Route::get('train_info', function () {
+    if (session()->has('pName')) {
+
+        return view('train_info');
+    }
+    return view('user_login');
+});
+
 
 //passenger login function
 Route::post('login_user', [userController::class, 'loginUser'])->name('login_user');
