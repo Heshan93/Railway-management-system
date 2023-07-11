@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\userController;
- 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,43 +20,40 @@ Route::get('/', function () {
 });
 
 //Load login page if session is false
- Route::get('login', function () {
-    if(session()->has('pName')){
+Route::get('login', function () {
+    if (session()->has('pName')) {
 
         return view('profile');
+    }
 
-        }
-       
-        return view('user_login');
+    return view('user_login');
 });
 
 //Load login page if session is false
 
 Route::get('profile', function () {
-    if(session()->has('pName')){
+    if (session()->has('pName')) {
 
         return view('profile');
-
-        }    
-        return view('user_login');
+    }
+    return view('user_login');
 });
 
 //Load login page if session is false
 
 Route::get('registration', function () {
-    if(session()->has('pName')){
+    if (session()->has('pName')) {
 
         return view('profile');
-        }    
-        return view('user_login');
+    }
+    return view('registration');
 });
 
 
 Route::view('reports', 'reports');
-Route::post('login_user',[userController::class,'loginUser'])->name('login_user');
-Route::post('register_user',[userController::class,'registerUser'])->name('register_user'); 
-Route::view('admin','admin_login');
-Route::view('dashboard','dashboard');
-Route::view('payment','payment');
-Route::get('logout',[userController::class,'logoutUser']);
-    
+Route::post('login_user', [userController::class, 'loginUser'])->name('login_user');
+Route::post('register_user', [userController::class, 'registerUser'])->name('register_user');
+Route::view('admin', 'admin_login');
+Route::view('dashboard', 'dashboard');
+Route::view('payment', 'payment');
+Route::get('logout', [userController::class, 'logoutUser']);
