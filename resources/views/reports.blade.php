@@ -1,6 +1,6 @@
-@extends('layout')
+@extends('admin_layout')
 
-@section('content')
+@section('admincontent')
 
 <h1>Reports</h1>
 
