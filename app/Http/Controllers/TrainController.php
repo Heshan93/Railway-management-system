@@ -7,6 +7,8 @@ use App\Models\ticket;
 use Illuminate\Support\Facades\DB;
 use DateTime;
 use DateInterval;
+use Carbon\Carbon;
+
 
 class TrainController extends Controller
 {
@@ -25,25 +27,21 @@ class TrainController extends Controller
     }
 
 /*
-    //add delay to arrival time
-
-    public function calDelay($arr_time, $delay, $amount)
+    public function addDelayToArrival($st_arr_time, $delay)
     {
-        $arrival = new DateTime($arr_time);
-        $delayTime = new DateTime('+' . $delay);
+        // Create a Carbon instance from the st_arr_time
+        $arrival = Carbon::createFromFormat('Y-m-d H:i:s', $st_arr_time);
+        dd($arrival);
+        // Add the delay to the arrival time
+        $arrival->addMinutes($delay);
     
-        $arrival->add($delayTime->diff($arrival));
-    
+        // Format the updated arrival time
         $updatedArrival = $arrival->format('Y-m-d H:i:s');
-    
-        $amount = floatval($amount);
     
         return $updatedArrival;
     }
     
-*/
-    
-    
+  */  
 
     // get the train info to track
     function trackTrain($id) {
@@ -55,7 +53,10 @@ class TrainController extends Controller
                 ->get();
     
 
-    
+          //  $d1 = $this->addDelayToArrival($data[0]->st_arr_time, $data[0]->delays);
+
+            //dd($d1,$data[0]);
+
             return view('train_info', ['item' => $data]);
         }
         return view('user_login');
