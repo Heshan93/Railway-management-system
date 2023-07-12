@@ -1,6 +1,6 @@
-@extends('layout')
+@extends('passenger_layout')
 
-@section('content')
+@section('passengercontent')
 
 <h1>Profile</h1>
 

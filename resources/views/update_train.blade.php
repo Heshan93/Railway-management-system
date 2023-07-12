@@ -1,6 +1,6 @@
-@extends('layout')
+@extends('admin_layout')
 
-@section('content')
+@section('admincontent')
 
 <h1>Update Train Schedule</h1>
 
