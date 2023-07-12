@@ -14,6 +14,15 @@
         <th>Delays Arrival Time</th>  
     </th>
 
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+
     
     
 </table>

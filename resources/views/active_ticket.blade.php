@@ -4,8 +4,17 @@
 
 <h1>Active Tickets Info</h1>
 
-<a href="train_info/{$id}"> train</a>
-    
+@foreach ($item as $item)
+<table class="tabale">
+
+    <tr>
+        <a href="{{ "track_train/".$item->train_id }}">Ticket Number {{$item->tc_number}}</a>
+    </tr>
 </table>
 
+@endforeach
+   
+
+
 @endsection
+    

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\userController;
+use App\Http\Controllers\TrainController;
 
 /*
 |--------------------------------------------------------------------------
@@ -102,13 +103,7 @@ Route::get('train_info', function () {
     return view('user_login');
 });
 
-Route::get('active_ticket', function () {
-    if (session()->has('pName')) {
 
-        return view('active_ticket');
-    }
-    return view('user_login');
-});
 
 //passenger login function
 Route::post('login_user', [userController::class, 'loginUser'])->name('login_user');
@@ -118,3 +113,9 @@ Route::post('register_user', [userController::class, 'registerUser'])->name('reg
 
 //passenger logout function
 Route::get('logout', [userController::class, 'logoutUser']);
+
+//get the active tickets info
+Route::get('active_ticket',[TrainController::class,'getTicket']);
+
+//get the train tracing info
+Route::get('track_train/{id}',[TrainController::class,'trackTrain']);
