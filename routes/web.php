@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\TrainController;
+use App\Http\Controllers\scheduleUpdateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -119,3 +120,6 @@ Route::get('active_ticket',[TrainController::class,'getTicket']);
 
 //get the train tracing info
 Route::get('track_train/{id}',[TrainController::class,'trackTrain']);
+
+//get the update_train
+Route::get('update_train',[scheduleUpdateController::class,'getTrain']);
