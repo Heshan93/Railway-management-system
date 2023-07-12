@@ -5,15 +5,15 @@
 <h1>Train Info {{$item[0]->tc_number}}</h1>
 
 <table class="table">
-    <th>
-        <th>Train Status</th>
-        <th>Arrival time</th>
-        <th>Departure time</th>
-        <th>Train Station</th>
-        <th>Current Locations</th>
-        <th>Delays Time</th>
-        <th>Delays Arrival Time</th>  
-    </th>
+<tr>
+    <td> Train Status</td>
+    <td>Arrival time</td>
+    <td>Departure time</td>
+    <td> Train Station</td>
+    <td> Current Locations</td>
+    <td> Delays Time</td>
+    <td> Delays Arrival Time</td>
+</tr>
 @foreach ($item as $item)
 
 <tr>
