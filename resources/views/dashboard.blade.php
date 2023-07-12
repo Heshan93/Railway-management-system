@@ -12,11 +12,11 @@
     <title>SB Admin 2 - Dashboard</title>
 
     <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
     
-
+    
     <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="{{asset('css/sb-admin-2.min.css')}}" rel="stylesheet">
 
 </head>
 
@@ -154,7 +154,7 @@
 
                                 <!-- Sidebar Message -->
                                 <div class="sidebar-card d-none d-lg-flex">
-                                    <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="...">
+                                    <img class="sidebar-card-illustration mb-2" src="{{asset('img/undraw_rocket.svg')}}" alt="...">
                                     <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
                                     <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
                                 </div>
@@ -314,7 +314,7 @@
                                                     </h6>
                                                     <a class="dropdown-item d-flex align-items-center" href="#">
                                                         <div class="dropdown-list-image mr-3">
-                                                            <img class="rounded-circle" src="img/undraw_profile_1.svg"
+                                                            <img class="rounded-circle" src="{{asset('img/undraw_profile_1.svg')}}"
                                                                 alt="...">
                                                             <div class="status-indicator bg-success"></div>
                                                         </div>
@@ -326,7 +326,7 @@
                                                     </a>
                                                     <a class="dropdown-item d-flex align-items-center" href="#">
                                                         <div class="dropdown-list-image mr-3">
-                                                            <img class="rounded-circle" src="img/undraw_profile_2.svg"
+                                                            <img class="rounded-circle" src="{{asset('img/undraw_profile_2.svg')}}"
                                                                 alt="...">
                                                             <div class="status-indicator"></div>
                                                         </div>
@@ -338,7 +338,7 @@
                                                     </a>
                                                     <a class="dropdown-item d-flex align-items-center" href="#">
                                                         <div class="dropdown-list-image mr-3">
-                                                            <img class="rounded-circle" src="img/undraw_profile_3.svg"
+                                                            <img class="rounded-circle" src="{{asset('img/undraw_profile_3.svg')}}"
                                                                 alt="...">
                                                             <div class="status-indicator bg-warning"></div>
                                                         </div>
@@ -372,7 +372,7 @@
                                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
                                                     <img class="img-profile rounded-circle"
-                                                        src="img/undraw_profile.svg">
+                                                        src="{{asset('img/undraw_profile.svg')}}">
                                                 </a>
                                                 <!-- Dropdown - User Information -->
                                                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -702,7 +702,7 @@
                                                     <div class="card-body">
                                                         <div class="text-center">
                                                             <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-                                                                src="img/undraw_posting_photo.svg" alt="...">
+                                                                src="{{asset('img/undraw_posting_photo.svg')}}" alt="...">
                                                         </div>
                                                         <p>Add some quality, svg illustrations to your project courtesy of <a
                                                                 target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a
@@ -741,33 +741,24 @@
                         </div>
                         <!-- End of Page Wrapper -->
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="{{asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+    <script src="{{asset('js/sb-admin-2.min.js')}}"></script>
 
     <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="{{asset('vendor/chart.js/Chart.min.js')}}"></script>
 
     <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
+    <script src="{{asset('js/demo/chart-area-demo.js')}}"></script>
+    <script src="{{asset('js/demo/chart-pie-demo.js')}}"></script>
 
     
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
-                    </div>
-                </div>
-            </footer>
-            <!-- End of Footer -->
-
+            
         </div>
         <!-- End of Content Wrapper -->
        
