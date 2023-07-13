@@ -44,26 +44,27 @@
   
 
 
-  <form action="{{ route('login_user') }}" method="POST">
+  <form action="{{ route('login_user') }}" method="POST" >
 
 
-            {{--  new use success  & fail message --}}
-            @if (Session::has('success'))
-
-            <div class="alert alert-success">{{Session::get('success')}} </div>
-                
-            @endif
-          
-            @if (Session::has('fail'))
-            <div class="alert alert-danger">{{Session::get('fail')}} </div>
-            @endif
-          {{--  new use success  & fail message --}}
+           
           @csrf 
 <!---->
 
 
 <div class="gradient">
   <div class="container wr-signIn py-5">
+     {{--  new use success  & fail message --}}
+     @if (Session::has('success'))
+
+     <div class="alert alert-success">{{Session::get('success')}} </div>
+         
+     @endif
+   
+     @if (Session::has('fail'))
+     <div class="alert alert-danger">{{Session::get('fail')}} </div>
+     @endif
+   {{--  new use success  & fail message --}}
     <div class="row">
       <div class="col text-center">
         <div id="loginPage-logo"><img src="assets/img/RailTrackLogo.png" /></div>

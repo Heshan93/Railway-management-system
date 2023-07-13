@@ -106,6 +106,7 @@ Route::get('train_info', function () {
 
 
 
+
 //passenger login function
 Route::post('login_user', [userController::class, 'loginUser'])->name('login_user');
 
@@ -122,4 +123,10 @@ Route::get('active_ticket',[TrainController::class,'getTicket']);
 Route::get('track_train/{id}',[TrainController::class,'trackTrain']);
 
 //get the update_train
-Route::get('update_train',[scheduleUpdateController::class,'getTrain']);
+//Route::get('update_train',[scheduleUpdateController::class,'getTrain']);
+
+//get the add_train
+Route::get('add_train',[TrainController::class,'addTrain']);
+
+//get the add_train
+Route::post('addtraindb',[TrainController::class,'trainToDb'])->name('addtraindb');;

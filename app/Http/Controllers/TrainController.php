@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ticket;
+use App\Models\train;
 use Illuminate\Support\Facades\DB;
 use DateTime;
 use DateInterval;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\View; 
 
 
 class TrainController extends Controller
@@ -60,6 +62,42 @@ class TrainController extends Controller
             return view('train_info', ['item' => $data]);
         }
         return view('user_login');
+    }
+
+
+
+    function addTrain(){
+
+        
+            if (session()->has('pName')) {
+
+                  // Add validation 
+
+                
+                $latestTrainId = train::max('train_id');
+                $nextTrainId = 'Rail_'. $latestTrainId + 1;
+
+                return View::make('add_train')->with('data', $nextTrainId);
+            }
+            return view('admin_login');
+        
+    
+    }
+
+    function trainToDb(Request $req){
+
+        $req->validate([
+            'firstName' => 'required',
+            'LastName' => 'required',
+            'exampleInputEmail1' => 'required|email',
+            'exampleInputPassword2' => 'required|min:6',
+            'confirmInputPassword2' => 'required|same:exampleInputPassword2',
+
+        ]);
+
+       return $req;
+  
+
     }
     
     

@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class train extends Model
 {
+
+    protected $primaryKey = 'train_id';
+    public $incrementing = false;
+
     use HasFactory;
 }
