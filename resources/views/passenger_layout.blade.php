@@ -16,6 +16,7 @@
     
     <!-- Custom styles for this template-->
     <link href="{{asset('css/sb-admin-2.min.css')}}" rel="stylesheet">
+    <link href="{{asset('css/passenegr.css')}}" rel="stylesheet">
 
 </head>
 
@@ -28,7 +29,7 @@
 
                 
                             <!-- Sidebar -->
-                            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+                            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion " id="accordionSidebar">
 
                                 <!-- Sidebar - Brand -->
                                 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
@@ -63,22 +64,7 @@
 
                                 <!-- Nav Item - Pages Collapse Menu -->
                                 <li class="nav-item">
-                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                                        aria-expanded="true" aria-controls="collapseTwo">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
-                    <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
-                    </svg>
-                                        <span>Users</span>
-                                    </a>
-                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                                        <div class="bg-white py-2 collapse-inner rounded">
-                                            <h6 class="collapse-header">Manage Users:</h6>
-                                            <a class="collapse-item" href="buttons.html">Add User</a>
-                                            <a class="collapse-item" href="cards.html">View Users</a>
-                                            <a class="collapse-item" href="cards.html">Delete Users</a>
-                                        </div>
-                                    </div>
-                                </li>
+
 
                                 <!-- Nav Item - Utilities Collapse Menu -->
                                 <li class="nav-item">
@@ -108,33 +94,10 @@
                                 </div>
 
                                 <!-- Nav Item - Pages Collapse Menu -->
-                                <li class="nav-item">
-                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                                        aria-expanded="true" aria-controls="collapsePages">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-browser-safari" viewBox="0 0 16 16">
-                    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16Zm.25-14.75v1.5a.25.25 0 0 1-.5 0v-1.5a.25.25 0 0 1 .5 0Zm0 12v1.5a.25.25 0 1 1-.5 0v-1.5a.25.25 0 1 1 .5 0ZM4.5 1.938a.25.25 0 0 1 .342.091l.75 1.3a.25.25 0 0 1-.434.25l-.75-1.3a.25.25 0 0 1 .092-.341Zm6 10.392a.25.25 0 0 1 .341.092l.75 1.299a.25.25 0 1 1-.432.25l-.75-1.3a.25.25 0 0 1 .091-.34ZM2.28 4.408l1.298.75a.25.25 0 0 1-.25.434l-1.299-.75a.25.25 0 0 1 .25-.434Zm10.392 6 1.299.75a.25.25 0 1 1-.25.434l-1.3-.75a.25.25 0 0 1 .25-.434ZM1 8a.25.25 0 0 1 .25-.25h1.5a.25.25 0 0 1 0 .5h-1.5A.25.25 0 0 1 1 8Zm12 0a.25.25 0 0 1 .25-.25h1.5a.25.25 0 1 1 0 .5h-1.5A.25.25 0 0 1 13 8ZM2.03 11.159l1.298-.75a.25.25 0 0 1 .25.432l-1.299.75a.25.25 0 0 1-.25-.432Zm10.392-6 1.299-.75a.25.25 0 1 1 .25.433l-1.3.75a.25.25 0 0 1-.25-.434ZM4.5 14.061a.25.25 0 0 1-.092-.341l.75-1.3a.25.25 0 0 1 .434.25l-.75 1.3a.25.25 0 0 1-.342.091Zm6-10.392a.25.25 0 0 1-.091-.342l.75-1.299a.25.25 0 1 1 .432.25l-.75 1.3a.25.25 0 0 1-.341.09ZM6.494 1.415l.13.483a.25.25 0 1 1-.483.13l-.13-.483a.25.25 0 0 1 .483-.13ZM9.86 13.972l.13.483a.25.25 0 1 1-.483.13l-.13-.483a.25.25 0 0 1 .483-.13ZM3.05 3.05a.25.25 0 0 1 .354 0l.353.354a.25.25 0 0 1-.353.353l-.354-.353a.25.25 0 0 1 0-.354Zm9.193 9.193a.25.25 0 0 1 .353 0l.354.353a.25.25 0 1 1-.354.354l-.353-.354a.25.25 0 0 1 0-.353ZM1.545 6.01l.483.13a.25.25 0 1 1-.13.483l-.483-.13a.25.25 0 1 1 .13-.482Zm12.557 3.365.483.13a.25.25 0 1 1-.13.483l-.483-.13a.25.25 0 1 1 .13-.483Zm-12.863.436a.25.25 0 0 1 .176-.306l.483-.13a.25.25 0 1 1 .13.483l-.483.13a.25.25 0 0 1-.306-.177Zm12.557-3.365a.25.25 0 0 1 .176-.306l.483-.13a.25.25 0 1 1 .13.483l-.483.13a.25.25 0 0 1-.306-.177ZM3.045 12.944a.299.299 0 0 1-.029-.376l3.898-5.592a.25.25 0 0 1 .062-.062l5.602-3.884a.278.278 0 0 1 .392.392L9.086 9.024a.25.25 0 0 1-.062.062l-5.592 3.898a.299.299 0 0 1-.382-.034l-.005-.006Zm3.143 1.817a.25.25 0 0 1-.176-.306l.129-.483a.25.25 0 0 1 .483.13l-.13.483a.25.25 0 0 1-.306.176ZM9.553 2.204a.25.25 0 0 1-.177-.306l.13-.483a.25.25 0 1 1 .483.13l-.13.483a.25.25 0 0 1-.306.176Z"/>
-                    </svg>
-                                        <span>Pages</span>
-                                    </a>
-                                    <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                                        <div class="bg-white py-2 collapse-inner rounded">
-                                        <h6 class="collapse-header">Manage Web Pages:</h6>
-                                            <a class="collapse-item" href="login.html">About Us</a>
-                                            <a class="collapse-item" href="register.html">Contact Us</a>
-                                            <a class="collapse-item" href="forgot-password.html">Home Page</a>
-                                            <div class="collapse-divider"></div>
-                                            <a class="collapse-item" href="404.html">********</a>
-                                            <a class="collapse-item" href="blank.html">********</a>
-                                        </div>
-                                    </div>
-                                </li>
+
 
                                 <!-- Nav Item - Charts -->
-                                <li class="nav-item">
-                                    <a class="nav-link" href="charts.html">
-                                        <i class="fas fa-fw fa-chart-area"></i>
-                                        <span>Charts</span></a>
-                                </li>
+               
 
                                 <!-- Nav Item - Tables -->
                                 <li class="nav-item">
@@ -152,11 +115,7 @@
                                 </div>
 
                                 <!-- Sidebar Message -->
-                                <div class="sidebar-card d-none d-lg-flex">
-                                    <img class="sidebar-card-illustration mb-2" src="{{asset('img/undraw_rocket.svg')}}" alt="...">
-                                    <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
-                                    <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
-                                </div>
+                             
 
                             </ul>
                             <!-- End of Sidebar -->
@@ -247,121 +206,12 @@
                                             </li>
 
                                             <!-- Nav Item - Alerts -->
-                                            <li class="nav-item dropdown no-arrow mx-1">
-                                                <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    <i class="fas fa-bell fa-fw"></i>
-                                                    <!-- Counter - Alerts -->
-                                                    <span class="badge badge-danger badge-counter">3+</span>
-                                                </a>
-                                                <!-- Dropdown - Alerts -->
-                                                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                                    aria-labelledby="alertsDropdown">
-                                                    <h6 class="dropdown-header">
-                                                        Alerts Center
-                                                    </h6>
-                                                    <a class="dropdown-item d-flex align-items-center" href="#">
-                                                        <div class="mr-3">
-                                                            <div class="icon-circle bg-primary">
-                                                                <i class="fas fa-file-alt text-white"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div>
-                                                            <div class="small text-gray-500">December 12, 2019</div>
-                                                            <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                                                        </div>
-                                                    </a>
-                                                    <a class="dropdown-item d-flex align-items-center" href="#">
-                                                        <div class="mr-3">
-                                                            <div class="icon-circle bg-success">
-                                                                <i class="fas fa-donate text-white"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div>
-                                                            <div class="small text-gray-500">December 7, 2019</div>
-                                                            $290.29 has been deposited into your account!
-                                                        </div>
-                                                    </a>
-                                                    <a class="dropdown-item d-flex align-items-center" href="#">
-                                                        <div class="mr-3">
-                                                            <div class="icon-circle bg-warning">
-                                                                <i class="fas fa-exclamation-triangle text-white"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div>
-                                                            <div class="small text-gray-500">December 2, 2019</div>
-                                                            Spending Alert: We've noticed unusually high spending for your account.
-                                                        </div>
-                                                    </a>
-                                                    <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-                                                </div>
+                                            <li class="text-center">
+                                                <a href="./" class="text-gray-600">Home</a>
                                             </li>
 
                                             <!-- Nav Item - Messages -->
-                                            <li class="nav-item dropdown no-arrow mx-1">
-                                                <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    <i class="fas fa-envelope fa-fw"></i>
-                                                    <!-- Counter - Messages -->
-                                                    <span class="badge badge-danger badge-counter">7</span>
-                                                </a>
-                                                <!-- Dropdown - Messages -->
-                                                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                                    aria-labelledby="messagesDropdown">
-                                                    <h6 class="dropdown-header">
-                                                        Message Center
-                                                    </h6>
-                                                    <a class="dropdown-item d-flex align-items-center" href="#">
-                                                        <div class="dropdown-list-image mr-3">
-                                                            <img class="rounded-circle" src="{{asset('img/undraw_profile_1.svg')}}"
-                                                                alt="...">
-                                                            <div class="status-indicator bg-success"></div>
-                                                        </div>
-                                                        <div class="font-weight-bold">
-                                                            <div class="text-truncate">Hi there! I am wondering if you can help me with a
-                                                                problem I've been having.</div>
-                                                            <div class="small text-gray-500">Emily Fowler · 58m</div>
-                                                        </div>
-                                                    </a>
-                                                    <a class="dropdown-item d-flex align-items-center" href="#">
-                                                        <div class="dropdown-list-image mr-3">
-                                                            <img class="rounded-circle" src="{{asset('img/undraw_profile_2.svg')}}"
-                                                                alt="...">
-                                                            <div class="status-indicator"></div>
-                                                        </div>
-                                                        <div>
-                                                            <div class="text-truncate">I have the photos that you ordered last month, how
-                                                                would you like them sent to you?</div>
-                                                            <div class="small text-gray-500">Jae Chun · 1d</div>
-                                                        </div>
-                                                    </a>
-                                                    <a class="dropdown-item d-flex align-items-center" href="#">
-                                                        <div class="dropdown-list-image mr-3">
-                                                            <img class="rounded-circle" src="{{asset('img/undraw_profile_3.svg')}}"
-                                                                alt="...">
-                                                            <div class="status-indicator bg-warning"></div>
-                                                        </div>
-                                                        <div>
-                                                            <div class="text-truncate">Last month's report looks great, I am very happy with
-                                                                the progress so far, keep up the good work!</div>
-                                                            <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                                                        </div>
-                                                    </a>
-                                                    <a class="dropdown-item d-flex align-items-center" href="#">
-                                                        <div class="dropdown-list-image mr-3">
-                                                            <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                                                                alt="...">
-                                                            <div class="status-indicator bg-success"></div>
-                                                        </div>
-                                                        <div>
-                                                            <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                                                                told me that people say this to all dogs, even if they aren't good...</div>
-                                                            <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                                                        </div>
-                                                    </a>
-                                                    <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-                                                </div>
-                                            </li>
+
 
                                             <div class="topbar-divider d-none d-sm-block"></div>
 
