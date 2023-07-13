@@ -207,7 +207,7 @@
 
                                             <!-- Nav Item - Alerts -->
                                             <li class="text-center">
-                                                <a href="./" class="text-gray-600">Home</a>
+                                                <a href="../" class="text-gray-600">Home</a>
                                             </li>
 
                                             <!-- Nav Item - Messages -->
