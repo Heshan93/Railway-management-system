@@ -32,12 +32,12 @@
           </div>
     
           <div class="mb-3">
-            <label for="seatCat1" class="form-label"> No Of first class class Seat</label>
+            <label for="seatCat1" class="form-label"> No Of first class Seat</label>
             <input type="number" class="form-control" id="seatCat1" name="seat_cat_1" min="0" value="0">
           </div>
     
           <div class="mb-3">
-            <label for="seatCat2" class="form-label">No Of second  Seat</label>
+            <label for="seatCat2" class="form-label">No Of econd class Seat</label>
             <input type="number" class="form-control" id="seatCat2" name="seat_cat_2"  min="0" value="0">
           </div>
     

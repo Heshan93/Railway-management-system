@@ -122,11 +122,14 @@ Route::get('active_ticket',[TrainController::class,'getTicket']);
 //get the train tracing info
 Route::get('track_train/{id}',[TrainController::class,'trackTrain']);
 
-//get the update_train
-//Route::get('update_train',[scheduleUpdateController::class,'getTrain']);
+//get the view_train
+Route::get('view_train',[scheduleUpdateController::class,'trainList']);
 
 //get the add_train
 Route::get('add_train',[TrainController::class,'addTrain']);
 
 //get the add_train
 Route::post('addtraindb',[TrainController::class,'trainToDb'])->name('addtraindb');;
+
+//get the view_train
+Route::get('view_train',[TrainController::class,'trainList']);

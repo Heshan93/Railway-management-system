@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\DB;
 use DateTime;
 use DateInterval;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\View; 
+use Illuminate\Support\Facades\View;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 
 class TrainController extends Controller
@@ -71,9 +73,7 @@ class TrainController extends Controller
         
             if (session()->has('pName')) {
 
-                  // Add validation 
 
-                
                 $latestTrainId = train::max('train_id');
                 $nextTrainId =  $latestTrainId + 1;
 
@@ -85,7 +85,7 @@ class TrainController extends Controller
     }
 
     function trainToDb(Request $req){
-
+ // Add validation 
         $req->validate([
             'train_id' => 'required',
             'train_name' => 'required', 
@@ -119,6 +119,22 @@ class TrainController extends Controller
         } 
   
 
+    }
+
+  
+// view all trains 
+
+    function trainList(){
+
+       
+        if (session()->has('pName')) {
+
+            $data =  train::all();
+            return view('view_train',['train' =>$data]);
+            }
+        return view('admin_login');
+   
+        
     }
     
     
