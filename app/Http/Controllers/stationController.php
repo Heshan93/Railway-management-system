@@ -27,8 +27,8 @@ class stationController extends Controller
 
     function addStationsToDb(Request $req){
         $req->validate([
-            'train_id' => 'required',
-            'train_name' => 'required', 
+            'st_no' => 'required',
+            'st_name' => 'required', 
 
         ]);
 
@@ -38,8 +38,8 @@ class stationController extends Controller
 
             $train_station = new train_station();
 
-            $train_station->st_no = $req->train_id;
-            $train_station->st_name = $req->train_name;
+            $train_station->st_no = $req->st_no;
+            $train_station->st_name = $req->st_name;
             $rec  = $train_station->save();
 
             if ($rec) {
@@ -54,5 +54,19 @@ class stationController extends Controller
                 return back()->with('fail', 'Something went wrong. Please try again.');
             }
         } 
+
+    }
+
+    // View Train Station record
+
+    function viewStations(){
+
+        if (session()->has('pName')) {
+
+            $data =  train_station::all();
+            return view('view_station',['stations' =>$data]);
+            }
+        return view('admin_login');
+       
     }
 }

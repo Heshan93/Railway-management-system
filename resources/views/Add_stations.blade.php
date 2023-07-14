@@ -22,12 +22,12 @@
 
     <div class="mb-3">
             <label for="trainId" class="form-label">Train Station ID</label>
-            <input type="number" class="form-control" id="trainId" name="train_id" value="{{$data}}" min="0">
+            <input type="number" class="form-control" id="trainId" name="st_no" value="{{$data}}" min="0">
     </div>
 
       <div class="mb-3">
         <label for="trainName" class="form-label">Train Station Name</label>
-        <input type="text" class="form-control" id="trainName" name="train_name">
+        <input type="text" class="form-control" id="trainName" name="st_name">
         <span class="text-danger">@error('train_name') {{$message }}@enderror</span>
       </div>
 
