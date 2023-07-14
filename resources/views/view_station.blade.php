@@ -10,14 +10,15 @@
 <table class="table table-hover ">
     <thead>
       <tr>
-        <th>Train ID</th>
-        <th>Train Name</th>
+        <th>Train Station ID</th>
+        <th>Train Station Name</th>
         <th>Edit</th>
         <th>Delete</th>
       </tr>
     </thead>
     <tbody>
       @foreach ($stations as $stations)
+
       <tr>
 
         <td>{{$stations['st_no']}}</td>

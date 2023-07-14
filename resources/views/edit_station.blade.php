@@ -5,9 +5,9 @@
 <div class="container-fluid">
 
     <div >
-        <h1>Update Train</h1>
+        <h1>Update Train Station</h1>
 
-        <form action="{{route('update_train') }}" method="POST">
+        <form action="{{route('update_station') }}" method="POST">
             @csrf
              {{--  new use success  & fail message --}}
             @if (Session::has('success'))
@@ -21,30 +21,17 @@
             @endif
           {{--  new use success  & fail message --}}
         <div class="mb-3">
-                <label for="trainId" class="form-label">Train ID</label>
-                <input type="text" class="form-control" id="trainId" name="train_id" value="{{$data->train_id}}">
+                <label for="trainId" class="form-label">Train Station ID</label>
+                <input type="text" class="form-control" id="trainId" name="st_no" value="{{$data->st_no}}">
         </div>
 
           <div class="mb-3">
-            <label for="trainName" class="form-label">Train Name</label>
-            <input type="text" class="form-control" id="trainName" name="train_name"  value="{{$data->train_name}}">
-            <span class="text-danger">@error('train_name') {{$message }}@enderror</span>
+            <label for="trainName" class="form-label">Train Station Name</label>
+            <input type="text" class="form-control" id="trainName" name="st_name"  value="{{$data->st_name}}">
+            <span class="text-danger">@error('st_name') {{$message }}@enderror</span>
           </div>
     
-          <div class="mb-3">
-            <label for="seatCat1" class="form-label"> No Of first class Seat</label>
-            <input type="number" class="form-control" id="seatCat1" name="seat_cat_1" min="0"  value="{{$data->seat_cat_1}}">
-          </div>
-    
-          <div class="mb-3">
-            <label for="seatCat2" class="form-label">No Of econd class Seat</label>
-            <input type="number" class="form-control" id="seatCat2" name="seat_cat_2"  min="0"  value="{{$data->seat_cat_2}}">
-          </div>
-    
-          <div class="mb-3">
-            <label for="seatCat3" class="form-label">No Of third class Seat</label>
-            <input type="number" class="form-control" id="seatCat3" name="seat_cat_3"  min="0"  value="{{$data->seat_cat_3}}">
-          </div>
+
     
           
           </div>

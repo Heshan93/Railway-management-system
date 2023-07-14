@@ -92,7 +92,7 @@
                                         <div class="bg-white py-2 collapse-inner rounded">
                                             <h6 class="collapse-header">Manage Trains:</h6>
                                             <a class="collapse-item" href="add_train">Add Train</a>
-                                            <a class="collapse-item" href="view_train">View Trains</a>
+                                            <a class="collapse-item" href="./view_train">View Trains</a>
                                             
                                         </div>
                                     </div>
@@ -112,7 +112,7 @@
                                         <div class="bg-white py-2 collapse-inner rounded">
                                             <h6 class="collapse-header">Manage Trains Station:</h6>
                                             <a class="collapse-item" href="add_train_stations">Add Trains Station</a>
-                                            <a class="collapse-item" href="view_train">View Trains Station</a>
+                                            <a class="collapse-item" href="view_train_stations">View Trains Station</a>
                                             
                                         </div>
                                     </div>
