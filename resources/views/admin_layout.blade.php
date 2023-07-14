@@ -111,7 +111,7 @@
                                         data-parent="#accordionSidebar">
                                         <div class="bg-white py-2 collapse-inner rounded">
                                             <h6 class="collapse-header">Manage Trains Station:</h6>
-                                            <a class="collapse-item" href="add_train">Add Trains Station</a>
+                                            <a class="collapse-item" href="add_train_stations">Add Trains Station</a>
                                             <a class="collapse-item" href="view_train">View Trains Station</a>
                                             
                                         </div>
