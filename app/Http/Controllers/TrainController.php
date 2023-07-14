@@ -48,6 +48,7 @@ class TrainController extends Controller
   */  
 
     // get the train info to track
+    
     function trackTrain($id) {
         if (session()->has('pName')) {
             $data = DB::table('tickets')

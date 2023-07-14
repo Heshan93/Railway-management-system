@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\TrainController;
 use App\Http\Controllers\scheduleUpdateController;
+use App\Http\Controllers\stationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -142,3 +143,9 @@ Route::get('delete_train/{id}',[TrainController::class,'trainDelete']);
 
 //get the update Train form
 Route::post('update_train',[TrainController::class,'updateForm'])->name('update_train');
+
+//get the add_train_stations
+Route::get('add_train_stations',[stationController::class,'viewAddStations']);
+
+//get the add_train_Station to DB
+Route::post('add_stationsTo_db',[stationController::class,'addStationsToDb'])->name('add_stationsTo_db');
