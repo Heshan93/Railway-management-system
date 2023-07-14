@@ -18,7 +18,7 @@ class TrainController extends Controller
 
     function getTicket(){
 
-        if (session()->has('pName')) {
+        if (session()->has('pName')){
 
             $data = ticket::all();
 
@@ -28,7 +28,7 @@ class TrainController extends Controller
         return view('user_login');
     }
 
-/*
+ /*
     public function addDelayToArrival($st_arr_time, $delay)
     {
         // Create a Carbon instance from the st_arr_time
@@ -75,7 +75,7 @@ class TrainController extends Controller
 
                 
                 $latestTrainId = train::max('train_id');
-                $nextTrainId = 'Rail_'. $latestTrainId + 1;
+                $nextTrainId =  $latestTrainId + 1;
 
                 return View::make('add_train')->with('data', $nextTrainId);
             }
@@ -87,15 +87,36 @@ class TrainController extends Controller
     function trainToDb(Request $req){
 
         $req->validate([
-            'firstName' => 'required',
-            'LastName' => 'required',
-            'exampleInputEmail1' => 'required|email',
-            'exampleInputPassword2' => 'required|min:6',
-            'confirmInputPassword2' => 'required|same:exampleInputPassword2',
+            'train_id' => 'required',
+            'train_name' => 'required', 
 
         ]);
 
-       return $req;
+
+         try {
+            // Insert the new train record to db
+
+            $NewTrain = new train();
+
+            $NewTrain->train_id = $req->train_id;
+            $NewTrain->train_name = $req->train_name;
+            $NewTrain->seat_cat_1 = $req->seat_cat_1;
+            $NewTrain->seat_cat_2 = $req->seat_cat_2;
+            $NewTrain->seat_cat_3 = $req->seat_cat_3;
+            $rec  = $NewTrain->save();
+
+            if ($rec) {
+                return back()->with('success', 'You have successfully Add a train');
+            }
+        } catch (\Illuminate\Database\QueryException $e) {
+            if ($e->getCode() === '23000') {
+                // Duplicate entry error
+                return back()->with('fail', 'The train already added.');
+            } else {
+                // Other query exceptions
+                return back()->with('fail', 'Something went wrong. Please try again.');
+            }
+        } 
   
 
     }
