@@ -5,7 +5,7 @@
 <div class="container-fluid">
 
     <div >
-        <h1>Add Train</h1>
+        <h1>Update Train</h1>
 
         <form action="{{route('update_train') }}" method="POST">
             @csrf
