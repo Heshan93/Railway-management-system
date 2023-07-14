@@ -69,4 +69,7 @@ class stationController extends Controller
         return view('admin_login');
        
     }
+
+
+    
 }

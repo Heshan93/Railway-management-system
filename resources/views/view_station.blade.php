@@ -2,7 +2,7 @@
 
 @section('admincontent')
 
-<h1>View Train</h1>
+<h1>View Train Stations</h1>
 
 
 
@@ -19,11 +19,11 @@
     <tbody>
       @foreach ($stations as $stations)
       <tr>
-        
+
         <td>{{$stations['st_no']}}</td>
         <td>{{$stations['st_name']}}</td>
-        <td><a href="{{ "edit_train/".$stations['st_no'] }}" class="btn btn-primary">Edit</a></td>
-        <td><a href="{{ "delete_train/".$stations['st_no'] }}" class="btn btn-danger">Delete</a></td>
+        <td><a href="{{ "edit_stations/".$stations['st_no'] }}" class="btn btn-primary">Edit</a></td>
+        <td><a href="{{ "delete_stations/".$stations['st_no'] }}" class="btn btn-danger">Delete</a></td>
         
       </tr>
       @endforeach
