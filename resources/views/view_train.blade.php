@@ -22,13 +22,15 @@
     <tbody>
       @foreach ($train as $train)
       <tr>
+       
         <td>{{$train['train_id']}}</td>
         <td>{{$train['train_name']}}</td>
         <td>{{$train['seat_cat_1']}}</td>
         <td>{{$train['seat_cat_2']}}</td>
         <td>{{$train['seat_cat_3']}}</td>
-        <td><a href="{{ "delete/".$train['train_id'] }}" class="btn btn-primary">Edit</a></td>
-        <td><a href="{{ "delete/".$train['train_id'] }}" class="btn btn-danger">Delete</a></td>
+        <td><a href="{{ "edit_train/".$train['train_id'] }}" class="btn btn-primary">Edit</a></td>
+        <td><a href="{{ "delete_train/".$train['train_id'] }}" class="btn btn-danger">Delete</a></td>
+        
       </tr>
       @endforeach
     </tbody>

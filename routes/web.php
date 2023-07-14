@@ -129,7 +129,16 @@ Route::get('view_train',[scheduleUpdateController::class,'trainList']);
 Route::get('add_train',[TrainController::class,'addTrain']);
 
 //get the add_train
-Route::post('addtraindb',[TrainController::class,'trainToDb'])->name('addtraindb');;
+Route::post('addtraindb',[TrainController::class,'trainToDb'])->name('addtraindb');
 
 //get the view_train
 Route::get('view_train',[TrainController::class,'trainList']);
+
+//get the Edit Train
+Route::get('edit_train/{id}',[TrainController::class,'trainEdt']);
+
+//get the Delete Train
+Route::get('delete_train/{id}',[TrainController::class,'trainDelete']);
+
+//get the update Train form
+Route::post('update_train',[TrainController::class,'updateForm'])->name('update_train');

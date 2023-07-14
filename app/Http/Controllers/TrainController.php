@@ -136,6 +136,30 @@ class TrainController extends Controller
    
         
     }
+
+    function trainEdt($id){
+
+        $data = train::find($id);
+       
+        return view('edit_train',['data'=>$data]);
+    
+    }
+
+    function updateForm(Request $req){
+
+        return $req;
+
+    }
     
     
+
+    function trainDelete($id){
+
+        $data = train::find($id);
+        $data->delete();
+
+        return redirect('view_train');
+    
+    }
+
 }
