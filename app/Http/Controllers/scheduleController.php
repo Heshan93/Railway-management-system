@@ -10,7 +10,7 @@ class scheduleController extends Controller
         
             if (session()->has('pName')) {
 
-
+                
 
         
                 return view('create_schedule');
