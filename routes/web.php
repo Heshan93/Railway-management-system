@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\TrainController;
-use App\Http\Controllers\scheduleUpdateController;
+use App\Http\Controllers\scheduleController;
 use App\Http\Controllers\stationController;
 
 /*
@@ -159,3 +159,6 @@ Route::get('delete_stations/{id}',[stationController::class,'stationDelete']);
 
 //get the Update Station
 Route::post('update_station',[stationController::class,'updateStation'])->name('update_station'); 
+
+//get the view_train
+Route::get('create_schedule',[scheduleController::class,'addSchedule'])->name('create_schedule');

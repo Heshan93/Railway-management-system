@@ -130,7 +130,7 @@
                                         data-parent="#accordionSidebar">
                                         <div class="bg-white py-2 collapse-inner rounded">
                                             <h6 class="collapse-header">Manage Trains Schedule:</h6>
-                                            <a class="collapse-item" href="#">Create Train Schedule</a>
+                                            <a class="collapse-item" href="{{ route('create_schedule') }}">Create Train Schedule</a>
                                             <a class="collapse-item" href="#">View Trains Schedule</a>
                                             
                                         </div>
