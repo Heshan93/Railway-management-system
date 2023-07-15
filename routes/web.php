@@ -107,6 +107,9 @@ Route::get('train_info', function () {
 
 
 
+///zsdzfxdfxf
+
+
 
 //passenger login function
 Route::post('login_user', [userController::class, 'loginUser'])->name('login_user');
