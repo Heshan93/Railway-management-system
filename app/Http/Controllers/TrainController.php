@@ -24,7 +24,7 @@ class TrainController extends Controller
 
             $data = ticket::all();
 
-            return view('active_ticket',['item'=>$data] );
+            return view('active_ticket',['item'=>$data]);
 
         }
         return view('user_login');

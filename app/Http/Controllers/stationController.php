@@ -90,7 +90,7 @@ class stationController extends Controller
         ]);
 
         try {
-            // Insert the new Train Station record to db
+            // update the new Train Station record to db
 
             $train_station = train_station::find($req->st_no);
 
@@ -99,7 +99,7 @@ class stationController extends Controller
             $rec  = $train_station->save();
 
             if ($rec) {
-                return back()->with('success', 'You have successfully Add a Train Station');
+                return back()->with('success', 'You have successfully updated  Train Station');
             }
         } catch (\Illuminate\Database\QueryException $e) {
             if ($e->getCode() === '23000') {
