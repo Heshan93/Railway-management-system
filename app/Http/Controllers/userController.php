@@ -108,6 +108,16 @@ class userController extends Controller
 
         return redirect('login');
     }
+
+/////////////////////// Admin User ////////////////////
+
+function viewAddAdmin (){
+    return view('add_admin');   
+}
+
+///////////////////////////////////////////////////////
+
+
 }
 /*
 
