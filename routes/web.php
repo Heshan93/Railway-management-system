@@ -123,17 +123,15 @@ Route::get('active_ticket',[TrainController::class,'getTicket']);
 //get the train tracing info
 Route::get('track_train/{id}',[TrainController::class,'trackTrain']);
 
-//get the view_train
-Route::get('view_train',[scheduleUpdateController::class,'trainList']);
 
 //get the add_train
-Route::get('add_train',[TrainController::class,'addTrain']);
+Route::get('add_train',[TrainController::class,'addTrain'])->name('add_train');
 
 //get the add_train
 Route::post('addtraindb',[TrainController::class,'trainToDb'])->name('addtraindb');
 
 //get the view_train
-Route::get('view_train',[TrainController::class,'trainList']);
+Route::get('view_train',[TrainController::class,'trainList'])->name('view_train');
 
 //get the Edit Train
 Route::get('edit_train/{id}',[TrainController::class,'trainEdt']);

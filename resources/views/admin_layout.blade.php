@@ -90,8 +90,8 @@
                                         data-parent="#accordionSidebar">
                                         <div class="bg-white py-2 collapse-inner rounded">
                                             <h6 class="collapse-header">Manage Trains:</h6>
-                                            <a class="collapse-item" href="add_train">Add Train</a>
-                                            <a class="collapse-item" href="./view_train">View Trains</a>
+                                            <a class="collapse-item" href="{{ route('add_train') }}">Add Train</a>
+                                            <a class="collapse-item" href="{{ route('view_train') }}">View Trains</a>
                                             
                                         </div>
                                     </div>
