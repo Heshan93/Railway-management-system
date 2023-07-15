@@ -13,7 +13,7 @@ class scheduleController extends Controller
 
 
         
-                return'sdfd'; //view('update_train');;
+                return view('create_schedule');
             }
             return view('user_login');
     

@@ -133,6 +133,7 @@
                                             <a class="collapse-item" href="{{ route('create_schedule') }}">Create Train Schedule</a>
                                             <a class="collapse-item" href="#">View Trains Schedule</a>
                                             
+                                            
                                         </div>
                                     </div>
                                 </li>

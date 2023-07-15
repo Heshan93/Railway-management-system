@@ -5,7 +5,7 @@
 <div class="container-fluid">
 
     <div >
-        <h1>Add Train</h1>
+        <h1>Create Train Schedule</h1>
     
         <form action="{{route('addtraindb') }}" method="POST">
             @csrf
@@ -22,7 +22,7 @@
           {{--  new use success  & fail message --}}
         <div class="mb-3">
                 <label for="trainId" class="form-label">Train ID</label>
-                <input type="text" class="form-control" id="trainId" name="train_id" value="{{$data}}">
+                <input type="text" class="form-control" id="trainId" name="train_id" {{-- value="{{$data}} --}}">
         </div>
 
           <div class="mb-3">
