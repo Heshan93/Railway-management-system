@@ -1,5 +1,10 @@
 {{--  --}}
 
+@php
+use Illuminate\Support\Facades\Auth;
+@endphp
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -51,23 +56,27 @@
             <li><a class="nav-link scrollto" href="search.html">Search</a></li>
             <li><a class="nav-link scrollto" href="#about">About</a></li>
             <li><a class="nav-link scrollto" href="#services">Services</a></li>
-            <li><a class="nav-link scrollto " href="profile.html">Profile</a></li>
             <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-            <li><a class="signin scrollto" href="sign-in.html">Sign In</a></li>
-            <li><a class="btn btn-outline-primary signup" href="sign-up.html">Sign Up</a></li>
+            @if (!session()->has('pName'))
+            <li><a class="signin scrollto" href="{{ route('login') }}">Sign In</a></li>
+            <li><a class="btn btn-outline-primary signup" href="{{ route('registration') }}">Sign Up</a></li>
+            @endif
+            @if (session()->has('pName'))
             <li class="dropdown">
               <a href="#">
                 <div class="text-end">
-                  <span style="font-size:12px; display:block; line-height: 1;">Welcome!</span>
-                  <span>John Doe</span>
-                </div><i class="bi bi-chevron-down"></i>
+                  <span style="font-size: 12px; display: block; line-height: 1;">Welcome!</span>
+                  <span>{{ session('pName') }}</span>
+                </div>
+                <i class="bi bi-chevron-down"></i>
               </a>
               <ul>
-                <li><a href="#">Sign Out</a></li>
+                <li><a href="{{ route('profile') }}">Profile</a></li>
+                <li><a href="{{ route('logout') }}">Sign Out</a></li>
               </ul>
             </li>
-          </ul>
-         
+          @endif
+
           <i class="bi bi-list mobile-nav-toggle"></i>
         </nav>
         

@@ -20,41 +20,60 @@
             <div class="alert alert-danger">{{Session::get('fail')}} </div>
             @endif
           {{--  new use success  & fail message --}}
-        <div class="mb-3">
-                <label for="trainId" class="form-label">Train ID</label>
-                <input type="text" class="form-control" id="trainId" name="train_id" {{-- value="{{$data}} --}}">
-        </div>
+         <div class="mb-3">
+                <label for="selectTrain" class="form-label">Select Train Station</label>
+                <select class="form-select" aria-label="Default select example" name="selectTrain">
+                  <option selected>Select Station</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>                
+         </div>
 
           <div class="mb-3">
-            <label for="trainName" class="form-label">Train Name</label>
-            <input type="text" class="form-control" id="trainName" name="train_name">
-            <span class="text-danger">@error('train_name') {{$message }}@enderror</span>
+            <label for="trainName" class="form-label">Station Name</label>
+            <input type="text" class="form-control" id="train\Name" name="train_name">
+            <span class="text-danger">@error('station_name') {{$message }}@enderror</span>
           </div>
     
           <div class="mb-3">
-            <label for="seatCat1" class="form-label"> No Of first class Seat</label>
-            <input type="number" class="form-control" id="seatCat1" name="seat_cat_1" min="0" value="0">
+            <label for="start_station" class="form-label">Start Station</label>
+            <input type="text" class="form-control" id="start_station" name="start_station" min="0" value="0">
           </div>
     
           <div class="mb-3">
-            <label for="seatCat2" class="form-label">No Of econd class Seat</label>
-            <input type="number" class="form-control" id="seatCat2" name="seat_cat_2"  min="0" value="0">
+            <label for="seatCat1" class="form-label"> Start Time</label>
+            <input type="text" class="form-control" id="start_time" name="start_time" min="0" value="0">
           </div>
-    
-          <div class="mb-3">
-            <label for="seatCat3" class="form-label">No Of third class Seat</label>
-            <input type="number" class="form-control" id="seatCat3" name="seat_cat_3"  min="0" value="0">
-          </div>
-    
           
+          <div class="mb-3">
+            <label for="start_station" class="form-label"> End Station</label>
+            <input type="text" class="form-control" id="start_station" name="start_station" min="0" value="0">
           </div>
+    
+          <div class="mb-3">
+            <label for="seatCat1" class="form-label"> End Time</label>
+            <input type="text" class="form-control" id="start_time" name="start_time" min="0" value="0">
+          </div>
+          
+          <div class="mb-3">
+            <label for="selectTrain" class="form-label">Select Train Station</label>
+            <select class="form-select" aria-label="Default select example" name="selectTrain">
+              <option selected>Select Station</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>                
+     </div>
+
+         </div>
     
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
     
 
-{{-- sfdasfdsdfsdfsdfsdf --}}
+
 
 </div>
 

@@ -84,7 +84,7 @@ class userController extends Controller
                 $req->session()->put('pName', $passenger->first_name);
 
 
-                return redirect('profile');
+                return redirect('/');
             } else {
                 return back()->with('fail', 'This password is not correct');
             }
@@ -102,6 +102,8 @@ class userController extends Controller
         if (session()->has('pName')) {
 
             session()->pull('pName');
+
+            return redirect('../');
         }
 
         return redirect('login');

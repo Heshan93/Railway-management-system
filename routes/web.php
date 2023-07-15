@@ -30,7 +30,7 @@ Route::get('login', function () {
     }
 
     return view('user_login');
-});
+})->name('login');
 
 //Load login page if session is false
 
@@ -40,7 +40,7 @@ Route::get('profile', function () {
         return view('profile');
     }
     return view('user_login');
-});
+})->name('profile');
 
 //Load login page if session is false
 
@@ -50,7 +50,7 @@ Route::get('registration', function () {
         return view('profile');
     }
     return view('registration');
-});
+})->name('registration');
 
 //Load reports page if session is false
 
@@ -115,7 +115,7 @@ Route::post('login_user', [userController::class, 'loginUser'])->name('login_use
 Route::post('register_user', [userController::class, 'registerUser'])->name('register_user');
 
 //passenger logout function
-Route::get('logout', [userController::class, 'logoutUser']);
+Route::get('logout', [userController::class, 'logoutUser'])->name('logout');
 
 //get the active tickets info
 Route::get('active_ticket',[TrainController::class,'getTicket']);
