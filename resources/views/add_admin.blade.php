@@ -19,6 +19,12 @@
         <div class="alert alert-danger">{{Session::get('fail')}} </div>
         @endif
       {{--  new use success  & fail message --}}
+      <div class="row mb-3">
+        <div class="col">
+          <label for="signUpAddress" class="form-label">User ID</label>
+          <input type="email" class="form-control w-100" id="signUpAddress" placeholder="Enter your first name">
+        </div>
+        </div>
 
       <div class="row mt-4 mb-3">
         <div class="col-12 col-sm mb-3 mb-sm-0">
@@ -46,13 +52,27 @@
             </div>
         </div> 
       </div>
-            <div class="row mb-3">
+
+      <div class="row mb-3">
+        <div class="col">
+          <label for="signUpAddress" class="form-label">NIC</label>
+          <input type="email" class="form-control w-100" id="signUpAddress" placeholder="Enter your first name">
+        </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+              <label for="department" class="form-label">Department</label>
+              <input type="email" class="form-control w-100" id="department" name="department" placeholder="Enter Department">
+            </div>
+        </div>
+
+        <div class="row mb-3">
           <div class="col">
             <label for="signUpAddress" class="form-label">Address</label>
             <input type="email" class="form-control w-100" id="signUpAddress" placeholder="Enter your first name">
           </div>
       </div>
-      
       <div class="row">
           <div class="col-12 col-sm mb-3 mb-sm-0">
             <label for="signUpPass" class="form-label">Create Password </label>
