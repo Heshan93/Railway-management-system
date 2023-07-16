@@ -143,13 +143,13 @@ Route::get('delete_train/{id}',[TrainController::class,'trainDelete']);
 Route::post('update_train',[TrainController::class,'updateForm'])->name('update_train');
 
 //get the add_train_stations
-Route::get('add_train_stations',[stationController::class,'viewAddStations']);
+Route::get('add_train_stations',[stationController::class,'viewAddStations'])->name('add_train_stations');
 
 //get the add_train_Station to DB
 Route::post('add_stationsTo_db',[stationController::class,'addStationsToDb'])->name('add_stationsTo_db');
 
 //get the view_train_stations
-Route::get('view_train_stations',[stationController::class,'viewStations']);
+Route::get('view_train_stations',[stationController::class,'viewStations'])->name('view_train_stations');
 
 //get the Edit Train
 Route::get('edit_stations/{id}',[stationController::class,'stationEdtview']);

@@ -109,8 +109,8 @@
                                         data-parent="#accordionSidebar">
                                         <div class="bg-white py-2 collapse-inner rounded">
                                             <h6 class="collapse-header">Manage Trains Station:</h6>
-                                            <a class="collapse-item" href="add_train_stations">Add Trains Station</a>
-                                            <a class="collapse-item" href="view_train_stations">View Trains Station</a>
+                                            <a class="collapse-item" href="{{ route('add_train_stations') }}">Add Trains Station</a>
+                                            <a class="collapse-item" href="{{ route('view_train_stations') }}">View Trains Station</a>
                                             
                                         </div>
                                     </div>
@@ -130,7 +130,7 @@
                                         <div class="bg-white py-2 collapse-inner rounded">
                                             <h6 class="collapse-header">Manage Trains Schedule:</h6>
                                             <a class="collapse-item" href="{{ route('create_schedule') }}">Create Train Schedule</a>
-                                            <a class="collapse-item" href="#">View Trains Schedule</a>
+                                           {{--  <a class="collapse-item" href="{{ route('') }}">View Trains Schedule</a> --}}
                                             
                                             
                                         </div>
