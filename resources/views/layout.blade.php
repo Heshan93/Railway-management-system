@@ -53,7 +53,6 @@ use Illuminate\Support\Facades\Auth;
         <nav id="navbar" class="navbar ms-5">
           <ul>
             <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-            <li><a class="nav-link scrollto" href="search.html">Search</a></li>
             <li><a class="nav-link scrollto" href="#about">About</a></li>
             <li><a class="nav-link scrollto" href="#services">Services</a></li>
             <li><a class="nav-link scrollto" href="#contact">Contact</a></li>

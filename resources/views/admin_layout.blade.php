@@ -67,14 +67,13 @@
                                         aria-expanded="true" aria-controls="collapseTwo">
                                         <i class="fa fa-users"></i>
                                         
-                                        <span>Users</span>
+                                        <span>Employee</span>
                                     </a>
                                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                                         <div class="bg-white py-2 collapse-inner rounded">
-                                            <h6 class="collapse-header">Manage Users:</h6>
-                                            <a class="collapse-item" href="buttons.html">Add User</a>
-                                            <a class="collapse-item" href="cards.html">View Users</a>
-                                            <a class="collapse-item" href="cards.html">Delete Users</a>
+                                            <h6 class="collapse-header">Manage Employee:</h6>
+                                            <a class="collapse-item" href="buttons.html">Add Employee</a>
+                                            <a class="collapse-item" href="cards.html">View Employee</a> 
                                         </div>
                                     </div>
                                 </li>

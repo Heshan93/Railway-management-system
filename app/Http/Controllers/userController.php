@@ -112,7 +112,22 @@ class userController extends Controller
 /////////////////////// Admin User ////////////////////
 
 function viewAddAdmin (){
-    return view('add_admin');   
+
+    $admin =  passenger::where('email', '=', $req->exampleInputEmail1)->first();
+   
+    if (session()->has('pName')) {
+
+
+        $latestStationId = train_station::max('st_no');
+        $nextStationId =  $latestStationId + 1;
+
+        return View::make('add_stations')->with('data', $nextStationId);
+    }
+    return view('admin_login');
+
+    
+    
+    //return view('add_admin');   
 }
 
 ///////////////////////////////////////////////////////

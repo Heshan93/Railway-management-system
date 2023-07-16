@@ -15,15 +15,17 @@ class CreatePassengersTable extends Migration
     {
         Schema::create('passengers', function (Blueprint $table) {
             $table->id('passenger_id');
-            $table->string('nic');
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->integer('tp_number');
-            $table->integer('dob');
+            $table->string('nic')->nullable();
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
+            $table->string('email')->unique()->nullable();
+            $table->string('password')->nullable();
+            $table->integer('tp_number')->nullable();
+            $table->integer('dob')->nullable();
             $table->timestamps();
         });
+        
+        
     }
 
     /**

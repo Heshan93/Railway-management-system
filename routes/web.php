@@ -162,3 +162,6 @@ Route::post('update_station',[stationController::class,'updateStation'])->name('
 
 //get the view_train
 Route::get('create_schedule',[scheduleController::class,'addSchedule'])->name('create_schedule');
+
+//get the add_admin_user
+Route::get('add_admin_user',[userController::class,'viewAddAdmin'])->name('add_admin_user');

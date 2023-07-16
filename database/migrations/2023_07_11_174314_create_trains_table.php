@@ -19,17 +19,18 @@ class CreateTrainsTable extends Migration
             $table->integer('seat_cat_1');
             $table->integer('seat_cat_2');
             $table->integer('seat_cat_3');
-            $table->dateTime('start_time');
-            $table->string('start_station');
-            $table->dateTime('end_station');
-            $table->string('arrv_in');
-            $table->dateTime('end_time');
-            $table->dateTime('end_dly_at');
-            $table->boolean('status')->default(0);
-            $table->string('routs');
-            $table->time('delays');
+            $table->dateTime('start_time')->nullable();
+            $table->string('start_station')->nullable();
+            $table->dateTime('end_station')->nullable();
+            $table->string('arrv_in')->nullable();
+            $table->dateTime('end_time')->nullable();
+            $table->dateTime('end_dly_at')->nullable();
+            $table->boolean('status')->default(false);
+            $table->string('routs')->nullable();
+            $table->time('delays')->nullable();
             $table->timestamps();
         });
+        
     }
 
     /**
