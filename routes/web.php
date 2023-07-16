@@ -82,7 +82,7 @@ Route::get('dashboard', function () {
         return view('dashboard');
     }
     return view('admin_login');
-});
+})->name('dashboard');
 
 //Load payment page if session is false
 
