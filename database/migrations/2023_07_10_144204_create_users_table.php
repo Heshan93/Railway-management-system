@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('email');
             $table->string('password');
             $table->integer('tp_number');
-            $table->integer('department');
+            $table->string('department');
             $table->text('address');
             $table->string('sup_admin')->default('no');
             $table->timestamps();

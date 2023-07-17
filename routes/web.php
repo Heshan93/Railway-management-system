@@ -165,3 +165,6 @@ Route::get('create_schedule',[scheduleController::class,'addSchedule'])->name('c
 
 //get the add_admin_user
 Route::get('add_admin_user',[userController::class,'viewAddAdmin'])->name('add_admin_user');
+
+//get add add_admin_user
+Route::post('submit_admin_user',[userController::class,'addAdminUser'])->name('submit_admin_user');

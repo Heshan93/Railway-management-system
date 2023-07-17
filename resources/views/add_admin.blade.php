@@ -6,7 +6,7 @@
 <div >
     <h1>Add Employee</h1>
 
-    <form action="{{route('add_stationsTo_db') }}" method="POST">
+    <form action="{{route('submit_admin_user') }}" method="POST">
         @csrf
          {{--  new use success  & fail message --}}
         @if (Session::has('success'))
@@ -18,11 +18,13 @@
         @if (Session::has('fail'))
         <div class="alert alert-danger">{{Session::get('fail')}} </div>
         @endif
+
+      
       {{--  new use success  & fail message --}}
       <div class="row mb-3">
         <div class="col">
-          <label for="signUpAddress" class="form-label">User ID</label>
-          <input type="email" class="form-control w-100" id="signUpAddress"  {{-- value="{{$data->user_id}}" --}}>
+          <label for="user_id" class="form-label">User ID</label>
+          <input type="number" class="form-control w-100" id="user_id" name="user_id" value="{{$data}}" min="0">
         </div>
         </div>
 
@@ -41,14 +43,15 @@
       <div class="row mb-3">
         <div class="col-12 col-sm mb-3 mb-sm-0">
           <label for="email" class="form-label">Email </label>
-          <input type="email" class="form-control" id="email" name="email" name="exampleInputEmail1"  value="{{old('email')}}">
+          <input type="email" class="form-control" id="email" name="email"  value="{{old('email')}}">
           <span class="text-danger">@error('email') {{$message }}@enderror</span>
         </div>
               <div class="col-12 col-sm">
           <label for="tp_number" class="form-label">Telephone</label>
           <div class="input-group">
               <span class="input-group-text" id="basic-addon1">+94</span>
-              <input type="text" id="tp_number" class="form-control"  aria-label="Telephone" aria-describedby="basic-addon1" name="exampleInputEmail1"  value="{{old('tp_number')}}">
+              <input type="text" id="tp_number" class="form-control"  aria-label="Telephone" aria-describedby="basic-addon1" name="tp_number"  value="{{old('tp_number')}}">
+              <span class="text-danger">@error('tp_number') {{$message }}@enderror</span>
             </div>
         </div> 
       </div>
@@ -56,28 +59,31 @@
       <div class="row mb-3">
         <div class="col">
           <label for="nic" class="form-label">NIC</label>
-          <input type="email" class="form-control w-100" id="nic" name="nic"  value="{{old('nic')}}">
+          <input type="text" class="  form-control w-100" id="nic" name="nic"  value="{{old('nic')}}">
+          <span class="text-danger">@error('nic') {{$message }}@enderror</span>
         </div>
         </div>
 
         <div class="row mb-3">
             <div class="col">
               <label for="department" class="form-label">Department</label>
-              <input type="email" class="form-control w-100" id="department" name="department"  value="{{old('department')}}">
+              <input type="text" class="form-control w-100" id="department" name="department"  value="{{old('department')}}">
+              <span class="text-danger">@error('department') {{$message }}@enderror</span>
             </div>
         </div>
 
         <div class="row mb-3">
           <div class="col">
             <label for="address" class="form-label">Address</label>
-            <input type="email" class="form-control w-100" id="address"  name="address"  value="{{old('address')}}">
+            <input type="Text" class="form-control w-100" id="address"  name="address"  value="{{old('address')}}">
+            <span class="text-danger">@error('address') {{$message }}@enderror</span>
           </div>
       </div>
       <div class="row">
           <div class="col-12 col-sm mb-3 mb-sm-0">
-            <label for="exampleInputPassword1" class="form-label">Create Password </label>
-            <input type="password" class="form-control" id="signUpPass" placeholder="Create a Password" name="exampleInputPassword1">
-            <span class="text-danger">@error('exampleInputPassword1') {{$message }}@enderror</span>
+            <label for="InputPassword1" class="form-label">Create Password </label>
+            <input type="password" class="form-control" id="signUpPass" placeholder="Create a Password" name="InputPassword1">
+            <span class="text-danger">@error('InputPassword1') {{$message }}@enderror</span>
           </div>
           <div class="col-12 col-sm">
             <label for="confirmInputPassword2" class="form-label" >Confirm Password </label>

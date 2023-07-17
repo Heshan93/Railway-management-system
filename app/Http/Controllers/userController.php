@@ -8,6 +8,7 @@ use Illuminate\Auth\Events\Login;
 use App\Models\passenger;
 use Illuminate\Support\Facades\Hash;
 use PhpParser\Node\Stmt\Return_;
+use Illuminate\Support\Facades\View;
 
 class userController extends Controller
 {
@@ -111,24 +112,72 @@ class userController extends Controller
 
 /////////////////////// Admin User ////////////////////
 
-function viewAddAdmin (){
+                ///// Load admin page & User ID ///////
 
-  //  $admin =  passenger::where('email', '=', $req->exampleInputEmail1)->first();
-   
-    if (session()->has('pName')) {
+    function viewAddAdmin() {
+        if (session()->has('pName')) {
+            $latestUserId = User::max('user_id');
+            $nextUserId = $latestUserId + 1;
 
-
-        /* $latestStationId = train_station::max('st_no');
-        $nextStationId =  $latestStationId + 1;
-
-        return View::make('add_stations')->with('data', $nextStationId); */
+    
+            return View::make('add_admin')->with('data', $nextUserId); 
+        }
+        
+        return view('add_admin');
     }
-   // return view('admin_login');
 
-    
-    
-    return view('add_admin');   
-}
+                ///// Add Admin User to DB ///////
+
+    function addAdminUser(Request $req){
+
+
+        $req->validate([
+            'first_name' => 'required', 
+            'last_name' => 'required', 
+            'email' => 'required|email', 
+            'tp_number' => 'required', 
+            'nic' => 'required', 
+            'department' => 'required', 
+            'address' => 'required', 
+            'InputPassword1' => 'required|min:6', 
+            'confirmInputPassword2' => 'required|min:6',
+        ]);
+
+        
+          try {
+            // Insert the new Train Station record to db
+            $adminUser = new User();
+
+        $adminUser->user_id = $req->user_id;
+        $adminUser->first_name = $req->first_name;
+        $adminUser->last_name = $req->last_name;
+        $adminUser->email = $req->email;
+        $adminUser->tp_number = $req->tp_number;
+        $adminUser->nic = $req->nic;
+        $adminUser->department = $req->department;
+        $adminUser->password = $req->InputPassword1;
+        $adminUser->address = $req->address;
+
+      
+        $rec  = $adminUser->save();
+
+        if ($rec) {
+            return back()->with('success', 'You have successfully Add a Employee');
+        }
+            
+        } catch (\Illuminate\Database\QueryException $e) {
+            if ($e->getCode() === '23000') {
+                // Duplicate entry error
+                return back()->with('fail', 'The Train Station already added.');
+            } else {
+                // Other query exceptions
+                return back()->with('fail', 'Something went wrong. Please try again.');
+            }
+        }    
+
+     
+
+    }
 
 ///////////////////////////////////////////////////////
 
