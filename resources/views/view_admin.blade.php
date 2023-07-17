@@ -2,7 +2,7 @@
 
 @section('admincontent')
 
-<h1>View Train admin</h1>
+<h1>View Admin Users</h1>
 
 
 
@@ -28,14 +28,14 @@
       <tr>
 
         <td>{{$admin['user_id']}}</td>
-        <td>{{$admin['first_name']}} {{$admin['last_name']}}.</td>
+        <td>{{$admin['first_name']}} {{$admin['last_name']}}</td>
         <td>{{$admin['email']}}</td>
         <td>{{$admin['tp_number']}}</td>
         <td>{{$admin['nic']}}</td>
         <td>{{$admin['department']}}</td>
         <td>{{$admin['address']}}</td>
-        <td><a href="{{ "edit_admin/".$admin['st_no'] }}" class="btn btn-primary">Edit</a></td>
-        <td><a href="{{ "delete_admin/".$admin['st_no'] }}" class="btn btn-danger">Delete</a></td>
+        <td><a href="{{ "edit_admin_user/".$admin['user_id'] }}" class="btn btn-primary">Edit</a></td>
+        <td><a href="{{ "delete_admin/".$admin['user_id'] }}" class="btn btn-danger">Delete</a></td>
         
       </tr>
       @endforeach

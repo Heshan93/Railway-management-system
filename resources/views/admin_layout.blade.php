@@ -73,7 +73,7 @@
                                             <div class="bg-white py-2 collapse-inner rounded">
                                                 <h6 class="collapse-header">Manage Employee:</h6>
                                                 <a class="collapse-item" href="{{ route('add_admin_user') }}">Add Employee</a>
-                                                <a class="collapse-item" href="cards.html">View Employee</a> 
+                                                <a class="collapse-item" href="{{ route('view_admin_user') }}">View Employee</a> 
                                             </div>
                                         </div>
                                     </li>

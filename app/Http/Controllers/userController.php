@@ -145,7 +145,7 @@ class userController extends Controller
 
         
           try {
-            // Insert the new Train Station record to db
+            // Insert the new Train user record to db
             $adminUser = new User();
 
         $adminUser->user_id = $req->user_id;
@@ -168,7 +168,7 @@ class userController extends Controller
         } catch (\Illuminate\Database\QueryException $e) {
             if ($e->getCode() === '23000') {
                 // Duplicate entry error
-                return back()->with('fail', 'The Train Station already added.');
+                return back()->with('fail', 'The Train user already added.');
             } else {
                 // Other query exceptions
                 return back()->with('fail', 'Something went wrong. Please try again.');
@@ -190,6 +190,17 @@ class userController extends Controller
         return view('admin_login');
        
     }
+
+
+    function userEdtview($id){
+
+         $data = user::where('user_id', $id)->first();
+
+        return view('edit_admin',['data'=>$data]);
+ 
+
+    }
+
 
 ///////////////////////////////////////////////////////
 

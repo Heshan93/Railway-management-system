@@ -171,3 +171,7 @@ Route::post('submit_admin_user',[userController::class,'addAdminUser'])->name('s
 
 //get the view_admin_user
 Route::get('view_admin_user',[userController::class,'viewAdminUser'])->name('view_admin_user');
+
+
+//get the Edit User
+Route::get('edit_admin_user/{id}',[userController::class,'userEdtview']);
