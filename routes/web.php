@@ -168,3 +168,6 @@ Route::get('add_admin_user',[userController::class,'viewAddAdmin'])->name('add_a
 
 //get add add_admin_user
 Route::post('submit_admin_user',[userController::class,'addAdminUser'])->name('submit_admin_user');
+
+//get the view_admin_user
+Route::get('view_admin_user',[userController::class,'viewAdminUser'])->name('view_admin_user');

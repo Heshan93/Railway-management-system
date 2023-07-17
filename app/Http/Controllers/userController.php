@@ -176,7 +176,19 @@ class userController extends Controller
         }    
 
      
+    }
 
+
+
+    function viewAdminUser(){
+
+        if (session()->has('pName')) {
+
+            $data =  User::all();
+            return view('view_admin',['admin'=>$data]);
+            }
+        return view('admin_login');
+       
     }
 
 ///////////////////////////////////////////////////////
