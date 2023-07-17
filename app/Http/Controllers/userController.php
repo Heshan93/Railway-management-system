@@ -155,7 +155,7 @@ class userController extends Controller
         $adminUser->tp_number = $req->tp_number;
         $adminUser->nic = $req->nic;
         $adminUser->department = $req->department;
-        $adminUser->password = $req->InputPassword1;
+        $adminUser->password = Hash::make($req->InputPassword1);
         $adminUser->address = $req->address;
 
       
