@@ -4,9 +4,9 @@
 
 
 <div >
-    <h1>Add Employee</h1>
+    <h1>Update Employee</h1>
 
-    <form action="{{route('submit_admin_user') }}" method="POST">
+    <form action="{{route('update_admin') }}" method="POST">
         @csrf
          {{--  new use success  & fail message --}}
         @if (Session::has('success'))
@@ -24,7 +24,8 @@
       <div class="row mb-3">
         <div class="col">
           <label for="user_id" class="form-label">User ID</label>
-          <input type="number" class="form-control w-100" id="user_id" name="user_id" value="{{$data->user_id}}" min="0"  disabled>
+          <input type="number" class="form-control w-100" id="user_id" name="user_idD" value="{{$data->user_id}}" min="0"  disabled>
+          <input type="number" class="form-control w-100" id="user_id" name="user_id" value="{{$data->user_id}}" min="0"  hidden>
         </div>
         </div>
 
@@ -79,18 +80,7 @@
             <span class="text-danger">@error('address') {{$message }}@enderror</span>
           </div>
       </div>
-      <div class="row">
-          <div class="col-12 col-sm mb-3 mb-sm-0">
-            <label for="InputPassword1" class="form-label">Create Password </label>
-            <input type="password" class="form-control" id="signUpPass" placeholder="Create a Password" name="InputPassword1">
-            <span class="text-danger">@error('InputPassword1') {{$message }}@enderror</span>
-          </div>
-          <div class="col-12 col-sm">
-            <label for="confirmInputPassword2" class="form-label" >Confirm Password </label>
-            <input type="password" class="form-control" id="signUpPass2" placeholder="Confirm the Password" name="confirmInputPassword2">
-            <span class="text-danger">@error('confirmInputPassword2') {{$message }}@enderror</span>
-          </div>
-      </div>
+     
       <div class="row mt-4">
         <div class="col"><button type="submit" class="btn btn-primary w-100">Get started</button></div>
       </div>

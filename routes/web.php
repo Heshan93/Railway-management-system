@@ -175,3 +175,9 @@ Route::get('view_admin_user',[userController::class,'viewAdminUser'])->name('vie
 
 //get the Edit User
 Route::get('edit_admin_user/{id}',[userController::class,'userEdtview']);
+
+// Update Admin User
+Route::post('update_admin',[userController::class,'updateAdminUser'])->name('update_admin'); 
+
+// Delete Admin User
+Route::get('delete_admin/{id}',[userController::class,'adminDelete'])->name('delete_admin'); 

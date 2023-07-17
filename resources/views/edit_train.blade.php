@@ -22,7 +22,8 @@
           {{--  new use success  & fail message --}}
         <div class="mb-3">
                 <label for="trainId" class="form-label">Train ID</label>
-                <input type="text" class="form-control" id="trainId" name="train_id" value="{{$data->train_id}}">
+                <input type="text" class="form-control" id="trainId" name="train_idD" value="{{$data->train_id}}" disabled>
+                <input type="text" class="form-control" id="trainId" name="train_id" value="{{$data->train_id}}" hidden>
         </div>
 
           <div class="mb-3">

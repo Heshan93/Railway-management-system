@@ -179,6 +179,8 @@ class userController extends Controller
     }
 
 
+             ///// View Admin User ///////
+
 
     function viewAdminUser(){
 
@@ -192,6 +194,8 @@ class userController extends Controller
     }
 
 
+     ///// Add Admin User page ///////
+
     function userEdtview($id){
 
          $data = user::where('user_id', $id)->first();
@@ -201,6 +205,73 @@ class userController extends Controller
 
     }
 
+
+        ///// Update Admin User to DB ///////
+
+    function updateAdminUser(Request $req){
+
+
+        $req->validate([
+            'first_name' => 'required', 
+            'last_name' => 'required', 
+            'email' => 'required|email', 
+            'tp_number' => 'required', 
+            'nic' => 'required', 
+            'department' => 'required', 
+            'address' => 'required', 
+            //'InputPassword1' => 'required|min:6', 
+            //'confirmInputPassword2' => 'required|min:6',
+        ]);
+
+        
+          try {
+            // Insert the new Train user record to db
+            
+             $adminUser = User::find($req->user_id);
+
+
+            $adminUser->user_id = $req->user_id;
+            $adminUser->first_name = $req->first_name;
+            $adminUser->last_name = $req->last_name;
+            $adminUser->email = $req->email;
+            $adminUser->tp_number = $req->tp_number;
+            $adminUser->nic = $req->nic;
+            $adminUser->department = $req->department;
+           // $adminUser->password = Hash::make($req->InputPassword1);
+           // $adminUser->address = $req->address;
+
+      
+        $rec  = $adminUser->save();
+
+        if ($rec) {
+            return back()->with('success', 'You have successfully Updated the Employee');
+        }
+            
+        } catch (\Illuminate\Database\QueryException $e) {
+            if ($e->getCode() === '23000') {
+                // Duplicate entry error
+                return back()->with('fail', 'The Train user already added.');
+            } else {
+                // Other query exceptions
+                return back()->with('fail', 'Something went wrong. Please try again.');
+            }
+        }    
+
+     
+    }
+
+
+             ///// Delete Admin User  ///////
+
+
+    function adminDelete($id){
+
+        $data = User::where('user_id', $id)->first();
+        $data->delete();
+
+        return redirect('view_admin_user');
+    
+    }
 
 ///////////////////////////////////////////////////////
 
