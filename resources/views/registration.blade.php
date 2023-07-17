@@ -31,6 +31,7 @@
   <link href="assets/css/style.css" rel="stylesheet">
 
 
+
 </head>
 <body class="body-gray">
 
@@ -111,7 +112,7 @@
               <div class="col"><button type="submit" class="btn btn-primary w-100">Get started</button></div>
             </div>
             <div class="row mt-3 mt-sm-4">
-                <div class="col text-center">Already have an account? <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="sign-in.html">Login</a></div>
+                <div class="col text-center">Already have an account? <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="{{ route('login') }}">Login</a></div>
               </div>
         </div>
       </form>

@@ -110,7 +110,7 @@
       <div class="row mt-3 mt-sm-4">
         <div class="col text-center">Don’t have an account? <a
             class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
-            href="sign-up.html">Sign up</a></div>
+            href="{{route('registration') }}">Sign up</a></div>
       </div>
 
     </div>
