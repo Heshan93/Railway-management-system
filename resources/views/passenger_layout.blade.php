@@ -206,7 +206,7 @@
                                             </li>
 
                                             <!-- Nav Item - Alerts -->
-                                            <li class="text-center">
+                                            <li class="text-center d-flex align-items-center">
                                                 <a href="../" class="text-gray-600">Home</a>
                                             </li>
 
