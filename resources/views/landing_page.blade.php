@@ -44,9 +44,9 @@
                 </label>
                 <select class="form-select" aria-label="Default select example" id="inputDeparture">
                   <option selected>Select a station</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                  @foreach($data['stations'] as $st)
+                  <option value="{{$st->st_no}}">{{$st->st_name}}</option>
+                @endforeach
                 </select>
               </div>
             </div>
@@ -57,9 +57,9 @@
                 </label>
                 <select class="form-select" aria-label="Default select example" id="inputDestination">
                   <option selected>Select a station</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                  @foreach($data['stations'] as $st)
+                  <option value="{{$st->st_no}}">{{$st->st_name}}</option>
+                @endforeach
                 </select>
               </div>
             </div>

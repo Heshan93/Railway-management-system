@@ -5,6 +5,7 @@ use App\Http\Controllers\userController;
 use App\Http\Controllers\TrainController;
 use App\Http\Controllers\scheduleController;
 use App\Http\Controllers\stationController;
+use App\Http\Controllers\CommonController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,8 @@ use App\Http\Controllers\stationController;
 Route::get('/', function () {
     return view('landing_page');
 });
+
+Route::get('/', [CommonController::class, 'index'])->name('index');
 
 //Load login page if session is false
 Route::get('login', function () {

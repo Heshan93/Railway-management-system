@@ -5,8 +5,8 @@
 <div class="container-fluid">
 
     <div >
-        <h1>Create Train Schedule</h1>
-    
+      <h1>New Train Schedule</h1>
+      <hr>
         <form action="{{route('addtraindb') }}" method="POST">
             @csrf
              {{--  new use success  & fail message --}}
