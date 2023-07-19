@@ -27,7 +27,7 @@
 
   <!-- Template Main CSS File -->
   <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
-  
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
      <title>RMS</title>
@@ -177,55 +177,60 @@
                             <div id="content-wrapper" class="d-flex flex-column">
 
                                 <!-- Main Content -->
-                                <div id="content">
+                                
 
-                                   
-                                        <!-- ======= Header ======= -->
-                                        <header id="header" class="fixed-top d-flex align-items-center">
-                                            <div class="container d-flex align-items-center justify-content-between">
+                                                                 <!-- ======= Header ======= -->
+                                                            <header id="header" class="fixed-top d-flex align-items-center">
+                                                         <div class="container d-flex align-items-center justify-content-between">
 
-                                            <div class="d-flex align-items-center justify-content-between w-100">
-                                                <div class="logo">
-                                                <a href="index.html"><img src="{{asset('assets/img/RailTrackLogo.png')}}" alt="" class="img-fluid"></a>
+                                                            <div class="d-flex align-items-center justify-content-between w-100">
+                                                                <div class="logo">
+                                                                 <a href="index.html"><img src="{{asset('assets/img/RailTrackLogo.png')}}" alt="" class="img-fluid"></a>
+                                                                 </div>
+                                            
+                                                             <nav id="navbar" class="navbar ms-5">
+                                                                <ul>
+                                                                    <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+                                                                    <li><a class="nav-link scrollto" href="#about">About</a></li>
+                                                                    <li><a class="nav-link scrollto" href="#services">Services</a></li>
+                                                                    <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+                                                                    @if (!session()->has('pName'))
+                                                                    <li><a class="signin scrollto" href="{{ route('login') }}">Sign In</a></li>
+                                                                    <li><a class="btn btn-outline-primary signup" href="{{ route('registration') }}">Sign Up</a></li>
+                                                                    @endif
+                                                                    @if (session()->has('pName'))
+                                                                    <li class="dropdown">
+                                                                        <a href="#">
+                                                                    <div class="text-end">
+                                                                    <span style="font-size: 12px; display: block; line-height: 1;">Welcome!</span>
+                                                                    <span>{{ session('pName') }}</span>
+                                                                     </div>
+                                                                    <i class="bi bi-chevron-down"></i>
+                                                                        </a>
+                                                                        <ul>
+                                                                            <li><a href="{{ route('profile') }}">Profile</a></li>
+                                                                            <li><a href="{{ route('logout') }}">Sign Out</a></li>
+                                                                        </ul>
+                                                                        </li>
+                                                                    @endif
+
+                                                                    <i class="bi bi-list mobile-nav-toggle"></i>
+                                                        </nav>
+                                                    
                                                 </div>
-                                        
-                                                <nav id="navbar" class="navbar ms-5">
-                                                <ul>
-                                                    <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-                                                    <li><a class="nav-link scrollto" href="#about">About</a></li>
-                                                    <li><a class="nav-link scrollto" href="#services">Services</a></li>
-                                                    <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-                                                    @if (!session()->has('pName'))
-                                                    <li><a class="signin scrollto" href="{{ route('login') }}">Sign In</a></li>
-                                                    <li><a class="btn btn-outline-primary signup" href="{{ route('registration') }}">Sign Up</a></li>
-                                                    @endif
-                                                    @if (session()->has('pName'))
-                                                    <li class="dropdown">
-                                                    <a href="#">
-                                                        <div class="text-end">
-                                                        <span style="font-size: 12px; display: block; line-height: 1;">Welcome!</span>
-                                                        <span>{{ session('pName') }}</span>
-                                                        </div>
-                                                        <i class="bi bi-chevron-down"></i>
-                                                    </a>
-                                                    <ul>
-                                                        <li><a href="{{ route('profile') }}">Profile</a></li>
-                                                        <li><a href="{{ route('logout') }}">Sign Out</a></li>
-                                                    </ul>
-                                                    </li>
-                                                @endif
-
-                                                <i class="bi bi-list mobile-nav-toggle"></i>
-                                                </nav>
                                                 
-                                            </div>
-                                    <!-- End of Topbar -->
+
+                                                
+
+                                                </div>
+                                            </header><!-- End Header -->
 
 
+                                
                                     @yield('passengercontent')
-
+                                
                                     
-                        </div>
+                       
                         <!-- End of Page Wrapper -->
     <!-- Bootstrap core JavaScript-->
     <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
