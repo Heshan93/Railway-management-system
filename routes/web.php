@@ -159,7 +159,7 @@ Route::get('add_train_stations',[stationController::class,'viewAddStations'])->n
 Route::post('add_stationsTo_db',[stationController::class,'addStationsToDb'])->name('add_stationsTo_db');
 
 //get the view_train_stations
-Route::get('view_t  rain_stations',[stationController::class,'viewStations'])->name('view_train_stations');
+Route::get('view_train_stations',[stationController::class,'viewStations'])->name('view_train_stations');
 
 //get the Edit Train
 Route::get('edit_stations/{id}',[stationController::class,'stationEdtview']);
