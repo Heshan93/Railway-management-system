@@ -92,6 +92,9 @@ class stationController extends Controller
         $req->validate([
             'st_no' => 'required',
             'st_name' => 'required', 
+            'ft_class_seat' => 'required', 
+            'snd_class_seat' => 'required', 
+            'trd_class_seat' => 'required', 
 
         ]);
 
@@ -102,6 +105,9 @@ class stationController extends Controller
 
             $train_station->st_no = $req->st_no;
             $train_station->st_name = $req->st_name;
+            $train_station->ft_class_seat = $req->ft_class_seat;
+            $train_station->snd_class_seat = $req->snd_class_seat;
+            $train_station->trd_class_seat = $req->trd_class_seat;
             $rec  = $train_station->save();
 
             if ($rec) {

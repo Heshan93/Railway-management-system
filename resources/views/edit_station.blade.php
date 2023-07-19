@@ -32,10 +32,26 @@
             <span class="text-danger">@error('st_name') {{$message }}@enderror</span>
           </div>
     
-
+          <div class="mb-3">
+            <label for="ft_class_seat" class="form-label">First class Seat Price(Colombo to Station)</label>
+            <input type="number" class="form-control" id="ft_class_seat" name="ft_class_seat" min="0" value="{{$data->ft_class_seat}}">
+            <span class="text-danger">@error('ft_class_seat') {{$message }}@enderror</span>
+          </div>
+    
+          <div class="mb-3">
+            <label for="snd_class_seat" class="form-label">Second class Seat Seat Price(Colombo to Station)</label>
+            <input type="number" class="form-control" id="snd_class_seat" name="snd_class_seat"  min="0" value="{{$data->snd_class_seat}}">
+            <span class="text-danger">@error('snd_class_seat') {{$message }}@enderror</span>
+          </div>
+    
+          <div class="mb-3">
+            <label for="trd_class_seat" class="form-label">Third class Seat Seat Price(Colombo to Station)</label>
+            <input type="number" class="form-control" id="trd_class_seat" name="trd_class_seat"  min="0" value="{{$data->trd_class_seat}}">
+            <span class="text-danger">@error('trd_class_seat') {{$message }}@enderror</span>
+          </div>
     
           
-          </div>
+       </div>
     
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
