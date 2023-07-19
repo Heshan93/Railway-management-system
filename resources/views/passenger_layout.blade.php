@@ -40,9 +40,11 @@
     <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
 
 
+
 </head>
 
 <body>
+
 
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top d-flex align-items-center">
@@ -92,7 +94,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
-                <h1 id="innerHeader" data-aos="fade-up" class="text-white">Profile</h1>
+                <h1 id="innerHeader" data-aos="fade-up" class="text-white">{{$page_name}}</h1>
                 </div>
                 <!-- <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left" data-aos-delay="200">
                 <img src="{{asset('assets/img/hero-img.png')}}" class="img-fluid animated" alt="">

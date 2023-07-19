@@ -1,5 +1,7 @@
 @extends('passenger_layout')
-
+@php
+$page_name = "Profile"
+@endphp
 @section('passengercontent')
 
 

@@ -1,4 +1,7 @@
 @extends('passenger_layout')
+@php
+$page_name = "Payment"
+@endphp
 
 @section('passengercontent')
 

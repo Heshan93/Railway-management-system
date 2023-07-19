@@ -105,6 +105,16 @@ Route::get('payment', function () {
 });
 
 
+//Load passenger cart  page if session is false
+
+Route::get('checkout', function () {
+    if (session()->has('pName')) {
+
+        return view('checkout');
+    }
+    return view('user_login');
+});
+
 //Load Train Info page if session is false
 
 Route::get('train_info', function () {
