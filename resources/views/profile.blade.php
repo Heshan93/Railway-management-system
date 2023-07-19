@@ -65,8 +65,7 @@ $page_name = "Profile"
                                     <!-- Train Class -->
                                     <div class="trainClass pe-2">2nd Class</div>
                                     <div class="pe-2 d-none d-md-block">•</div>
-                                    <!-- Available Seats -->
-                                    <div class="trainClass">2 Tecktes </div>
+                                   
 
                                   </div>
                                   

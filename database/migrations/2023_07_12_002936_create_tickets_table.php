@@ -19,8 +19,10 @@ class CreateTicketsTable extends Migration
             $table->string('start_station');
             $table->string('end_station');
             $table->dateTime('start_time');
+            $table->dateTime('end_time');
             $table->integer('st_no');
             $table->integer('train_id');
+            $table->integer('passenger_id');
             $table->integer('seat_cat');
             $table->timestamps();
         });
