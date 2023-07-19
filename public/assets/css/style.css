@@ -80,7 +80,7 @@ h6 {
 #header {
   z-index: 997;
   transition: all 0.5s;
-  padding: 22px 0;
+  padding: 10px 0;
   background: #fff;
 }
 
@@ -382,10 +382,21 @@ h3#welcome {
   width: 100%;
   /* height: 70vh; */
   height: 328px;
-  margin-top: 70px;
+  margin-top: 74px;
   background-repeat: no-repeat;
   background-position: center;
   background-image: url(../../assets/img/header-bg-compressed.png);
+}
+
+#heroInner {
+  width: 100%;
+  /* height: 70vh; */
+  height: 153px;
+  margin-top: 74px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size:cover;
+  background-image: url(../../assets/img/inner-page-header.png);
 }
 
 #hero h1 {
@@ -1761,3 +1772,70 @@ section {
     display: nonex;
   }
 } */
+
+/* ====================== | Vertical Tabber |====================== */
+/* Style the tab */
+.tab {
+  height: 300px;
+  margin-top:60px;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  display: block;
+  background-color: inherit;
+  color: #6B7280;
+  padding: 22px 16px;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 17px;
+  
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  
+  color: #1F2937;
+}
+.tab button:hover svg{
+  fill: #374151;
+}
+
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+  color: #3B82F6;
+}
+.tab button.active svg{
+  fill: #4184ee ;
+}
+.tab button svg{
+  
+  fill:#6B7280;
+}
+
+/* Style the tab content */
+.wr_content{
+  border-radius: 1rem;
+  background-color: #fff;
+  box-shadow: 0 0 4px 0 rgba(207,208,218,.5), 0 5px 19px -8px rgba(55,58,98,.35);
+  padding: 15px 25px;
+  min-height: 300px;
+}
+
+.tab button img{
+  width: 24px; 
+  color: red;
+}
+.tab button h5{
+  font-weight: 600;
+  font-size:1.125rem;
+}
+.titleTabContent{
+  font-weight: 700;
+  margin-bottom:25px;
+}
