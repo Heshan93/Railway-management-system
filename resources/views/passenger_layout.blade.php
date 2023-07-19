@@ -6,6 +6,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+    
+      <!-- Favicons -->
+  <link href="{{asset('assets/img/favicon.png')}}" rel="icon">
+  <link href=" {{asset('assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{{asset('assets/vendor/aos/aos.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
+  
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
      <title>RMS</title>
@@ -17,6 +39,7 @@
     <!-- Custom styles for this template-->
     <link href="{{asset('css/sb-admin-2.min.css')}}" rel="stylesheet">
     <link href="{{asset('css/my.css')}}" rel="stylesheet">
+
 
 </head>
 
@@ -156,88 +179,46 @@
                                 <!-- Main Content -->
                                 <div id="content">
 
-                                    <!-- Topbar -->
-                                    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                                   
+                                        <!-- ======= Header ======= -->
+                                        <header id="header" class="fixed-top d-flex align-items-center">
+                                            <div class="container d-flex align-items-center justify-content-between">
 
-                                        <!-- Sidebar Toggle (Topbar) -->
-                                        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                                            <i class="fa fa-bars"></i>
-                                        </button>
-
-                                        <!-- Topbar Search -->
-                                        <form
-                                            class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                                            <div class="input-group">
-                                                <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                                    aria-label="Search" aria-describedby="basic-addon2">
-                                                <div class="input-group-append">
-                                                    <button class="btn btn-primary" type="button">
-                                                        <i class="fas fa-search fa-sm"></i>
-                                                    </button>
+                                            <div class="d-flex align-items-center justify-content-between w-100">
+                                                <div class="logo">
+                                                <a href="index.html"><img src="{{asset('assets/img/RailTrackLogo.png')}}" alt="" class="img-fluid"></a>
                                                 </div>
-                                            </div>
-                                        </form>
-
-                                        <!-- Topbar Navbar -->
-                                        <ul class="navbar-nav ml-auto">
-
-                                            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                                            <li class="nav-item dropdown no-arrow d-sm-none">
-                                                <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    <i class="fas fa-search fa-fw"></i>
-                                                </a>
-                                                <!-- Dropdown - Messages -->
-                                                <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                                    aria-labelledby="searchDropdown">
-                                                    <form class="form-inline mr-auto w-100 navbar-search">
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control bg-light border-0 small"
-                                                                placeholder="Search for..." aria-label="Search"
-                                                                aria-describedby="basic-addon2">
-                                                            <div class="input-group-append">
-                                                                <button class="btn btn-primary" type="button">
-                                                                    <i class="fas fa-search fa-sm"></i>
-                                                                </button>
-                                                            </div>
+                                        
+                                                <nav id="navbar" class="navbar ms-5">
+                                                <ul>
+                                                    <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+                                                    <li><a class="nav-link scrollto" href="#about">About</a></li>
+                                                    <li><a class="nav-link scrollto" href="#services">Services</a></li>
+                                                    <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+                                                    @if (!session()->has('pName'))
+                                                    <li><a class="signin scrollto" href="{{ route('login') }}">Sign In</a></li>
+                                                    <li><a class="btn btn-outline-primary signup" href="{{ route('registration') }}">Sign Up</a></li>
+                                                    @endif
+                                                    @if (session()->has('pName'))
+                                                    <li class="dropdown">
+                                                    <a href="#">
+                                                        <div class="text-end">
+                                                        <span style="font-size: 12px; display: block; line-height: 1;">Welcome!</span>
+                                                        <span>{{ session('pName') }}</span>
                                                         </div>
-                                                    </form>
-                                                </div>
-                                            </li>
-
-                                            <!-- Nav Item - Alerts -->
-                                            <li class="text-center d-flex align-items-center">
-                                                <a href="../" class="text-gray-600">Home</a>
-                                            </li>
-
-                                            <!-- Nav Item - Messages -->
-
-
-                                            <div class="topbar-divider d-none d-sm-block"></div>
-
-                                            <!-- Nav Item - User Information -->
-                                            <li class="nav-item dropdown no-arrow">
-                                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Session('pName')}}</span>
-                                                    <img class="img-profile rounded-circle"
-                                                        src="{{asset('img/undraw_profile.svg')}}">
-                                                </a>
-                                                <!-- Dropdown - User Information -->
-                                                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                                    aria-labelledby="userDropdown">
-                                                    
-                                               
-                                                    <a class="dropdown-item" href="{{ route('logout') }}" >
-                                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                                        Logout
+                                                        <i class="bi bi-chevron-down"></i>
                                                     </a>
-                                                </div>
-                                            </li>
+                                                    <ul>
+                                                        <li><a href="{{ route('profile') }}">Profile</a></li>
+                                                        <li><a href="{{ route('logout') }}">Sign Out</a></li>
+                                                    </ul>
+                                                    </li>
+                                                @endif
 
-                                        </ul>
-
-                                    </nav>
+                                                <i class="bi bi-list mobile-nav-toggle"></i>
+                                                </nav>
+                                                
+                                            </div>
                                     <!-- End of Topbar -->
 
 
