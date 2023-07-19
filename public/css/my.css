@@ -17,3 +17,19 @@
 .abc1{
     margin-top: 50px;
 }
+
+
+.h2, h2 {
+    font-size: 1.6rem;
+}
+
+.gradient {
+    background: rgb(78 134 175);
+    background: linear-gradient(3deg, #c4d6e3 0%, rgb(113 114 211) 100%);
+  
+}
+section {
+    padding: 60px 0;
+    overflow: hidden;
+    background-color:  #b8cddd;
+}

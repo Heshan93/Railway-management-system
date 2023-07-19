@@ -25,6 +25,21 @@ Route::get('/', function () {
 
 Route::get('/', [CommonController::class, 'index'])->name('index');
 
+
+//admin load login page if session is false
+Route::get('admin', function () {
+    if (session()->has('AName')) {
+
+        return view('dashboard');
+    }
+
+    return view('admin_login');
+})->name('admin');
+
+
+//admin login function
+Route::post('login_admin', [userController::class, 'loginAdmin'])->name('login_admin');
+
 //Load login page if session is false
 Route::get('login', function () {
     if (session()->has('pName')) {
@@ -65,16 +80,6 @@ Route::get('reports', function () {
     return view('admin_login');
 });
 
-//Load admin_login page if session is false
-//need to change the pName to userName
-
-Route::get('admin', function () {
-    if (session()->has('pName')) {
-
-        return view('dashboard');
-    }
-    return view('admin_login');
-});
 
 //Load dashboard page if session is false
 //need to change the pName to userName

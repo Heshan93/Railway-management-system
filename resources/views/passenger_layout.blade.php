@@ -16,7 +16,7 @@
     
     <!-- Custom styles for this template-->
     <link href="{{asset('css/sb-admin-2.min.css')}}" rel="stylesheet">
-    <link href="{{asset('css/passenegr.css')}}" rel="stylesheet">
+    <link href="{{asset('css/my.css')}}" rel="stylesheet">
 
 </head>
 

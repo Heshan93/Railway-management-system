@@ -273,6 +273,47 @@ class userController extends Controller
     
     }
 
+
+
+       // Handle the Admin login process
+
+       function loginAdmin(Request $req)
+       {
+        
+        
+        
+           // validate the admin USer
+   
+           $req->validate([
+   
+               'email' => 'required|email',
+               'password'  => 'required|min:6',
+   
+   
+           ]);
+   
+          // Login the Admin User
+   
+           $adminUser = User::where('email', '=', $req->email)->first(); //check & get the adminUser email
+   
+           if ($adminUser) {
+               if (Hash::check($req->password, $adminUser->password)) { //check the password
+   
+                   //add user info to session
+                   $req->session()->put('AName', $adminUser->first_name);
+   
+   
+                   return redirect('dashboard');
+               } else {
+                   return back()->with('fail', 'This password is not correct');
+               }
+           } else {
+               return back()->with('fail', 'This email is not registered');
+           }  
+       }
+
+
+
 ///////////////////////////////////////////////////////
 
 
