@@ -6,7 +6,7 @@
 
 
 
-
+<div class="container-fluid">
 <table class="table table-hover ">
     <thead>
       <tr>
@@ -32,6 +32,6 @@
   </table>
 
 
-
+</div>
 
 @endsection

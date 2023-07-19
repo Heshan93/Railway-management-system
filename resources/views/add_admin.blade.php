@@ -3,7 +3,7 @@
 @section('admincontent')
 
 
-<div >
+<div class="container-fluid">
     <h1>Add Employee</h1>
 
     <form action="{{route('submit_admin_user') }}" method="POST">
@@ -20,15 +20,15 @@
         @endif
 
       
-      {{--  new use success  & fail message --}}
-      <div class="row mb-3">
+        {{--  new use success  & fail message --}}
+        <div class="row mb-3">
         <div class="col">
           <label for="user_id" class="form-label">User ID</label>
           <input type="number" class="form-control w-100" id="user_id" name="user_id" value="{{$data}}" min="0">
         </div>
         </div>
 
-      <div class="row mt-4 mb-3">
+        <div class="row mt-4 mb-3">
         <div class="col-12 col-sm mb-3 mb-sm-0">
           <label for="first_name" class="form-label" >First name </label>
           <input type="text" class="form-control" id="signUpFirst"  name="first_name" value="{{old('first_name')}}">
@@ -39,8 +39,8 @@
           <input type="text" class="form-control" id="signUpLast"  name="last_name" value="{{old('last_name')}}">
           <span class="text-danger">@error('last_name') {{$message }}@enderror</span>
         </div>
-      </div>
-      <div class="row mb-3">
+        </div>
+       <div class="row mb-3">
         <div class="col-12 col-sm mb-3 mb-sm-0">
           <label for="email" class="form-label">Email </label>
           <input type="email" class="form-control" id="email" name="email"  value="{{old('email')}}">
@@ -54,9 +54,9 @@
               <span class="text-danger">@error('tp_number') {{$message }}@enderror</span>
             </div>
         </div> 
-      </div>
+        </div>
 
-      <div class="row mb-3">
+       <div class="row mb-3">
         <div class="col">
           <label for="nic" class="form-label">NIC</label>
           <input type="text" class="  form-control w-100" id="nic" name="nic"  value="{{old('nic')}}">
@@ -78,8 +78,8 @@
             <input type="Text" class="form-control w-100" id="address"  name="address"  value="{{old('address')}}">
             <span class="text-danger">@error('address') {{$message }}@enderror</span>
           </div>
-      </div>
-      <div class="row">
+        </div>
+        <div class="row">
           <div class="col-12 col-sm mb-3 mb-sm-0">
             <label for="InputPassword1" class="form-label">Create Password </label>
             <input type="password" class="form-control" id="signUpPass" placeholder="Create a Password" name="InputPassword1">
@@ -90,10 +90,10 @@
             <input type="password" class="form-control" id="signUpPass2" placeholder="Confirm the Password" name="confirmInputPassword2">
             <span class="text-danger">@error('confirmInputPassword2') {{$message }}@enderror</span>
           </div>
-      </div>
-      <div class="row mt-4">
+        </div>
+        <div class="row mt-4">
         <div class="col"><button type="submit" class="btn btn-primary w-100">Get started</button></div>
-      </div>
+        </div>
       
-
+      </div>
 @endsection

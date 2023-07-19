@@ -4,7 +4,7 @@
 
 <div class="container-fluid">
 
-    <div >
+    <div class="container-fluid" >
         <h1>Add Train</h1>
     
         <form action="{{route('addtraindb') }}" method="POST">

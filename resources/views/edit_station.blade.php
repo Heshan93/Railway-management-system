@@ -4,7 +4,7 @@
 
 <div class="container-fluid">
 
-    <div >
+    <div class="container-fluid">
         <h1>Update Train Station</h1>
 
         <form action="{{route('update_station') }}" method="POST">

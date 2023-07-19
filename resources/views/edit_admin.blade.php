@@ -3,7 +3,7 @@
 @section('admincontent')
 
 
-<div >
+<div class="container-fluid">
     <h1>Update Employee</h1>
 
     <form action="{{route('update_admin') }}" method="POST">

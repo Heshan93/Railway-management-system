@@ -3,7 +3,7 @@
 @section('admincontent')
 
 
-<div >
+<div class="container-fluid" >
     <h1>Add Train Stations</h1>
 
     <form action="{{route('add_stationsTo_db') }}" method="POST">
