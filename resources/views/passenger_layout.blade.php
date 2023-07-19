@@ -37,225 +37,143 @@
     
     
     <!-- Custom styles for this template-->
-    <link href="{{asset('css/sb-admin-2.min.css')}}" rel="stylesheet">
-    <link href="{{asset('css/my.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
 
 
 </head>
 
-<body id="page-top">
+<body>
 
-    <!-- Page Wrapper -->
-    <div id="wrapper">
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top d-flex align-items-center">
+        <div class="container d-flex align-items-center justify-content-between">
 
+            <div class="d-flex align-items-center justify-content-between w-100">
+                <div class="logo">
+                    <a href="index.html"><img src="{{asset('assets/img/RailTrackLogo.png')}}" alt="" class="img-fluid"></a>
+                    </div>
 
-
-                
-                            <!-- Sidebar -->
-                            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion " id="accordionSidebar">
-
-                                <!-- Sidebar - Brand -->
-                                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
-                                    <div class="sidebar-brand-icon rotate-n-15">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-train-front" viewBox="0 0 16 16">
-                    <path d="M5.621 1.485c1.815-.454 2.943-.454 4.758 0 .784.196 1.743.673 2.527 1.119.688.39 1.094 1.148 1.094 1.979V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V4.583c0-.831.406-1.588 1.094-1.98.784-.445 1.744-.922 2.527-1.118Zm5-.97C8.647.02 7.353.02 5.38.515c-.924.23-1.982.766-2.78 1.22C1.566 2.322 1 3.432 1 4.582V13.5A2.5 2.5 0 0 0 3.5 16h9a2.5 2.5 0 0 0 2.5-2.5V4.583c0-1.15-.565-2.26-1.6-2.849-.797-.453-1.855-.988-2.779-1.22ZM5 13a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm0 0a1 1 0 1 1 2 0 1 1 0 0 1-2 0Zm7 1a1 1 0 1 0-1-1 1 1 0 1 0-2 0 1 1 0 0 0 2 0 1 1 0 0 0 1 1ZM4.5 5a.5.5 0 0 0-.5.5v2a.5.5 0 0 0 .5.5h3V5h-3Zm4 0v3h3a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 0-.5-.5h-3ZM3 5.5A1.5 1.5 0 0 1 4.5 4h7A1.5 1.5 0 0 1 13 5.5v2A1.5 1.5 0 0 1 11.5 9h-7A1.5 1.5 0 0 1 3 7.5v-2ZM6.5 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3Z"/>
-                    </svg>
-                                    </div>
-                                    <div class="sidebar-brand-text mx-3">Railway</div>
-                                </a>
-
-                                <!-- Divider -->
-                                <hr class="sidebar-divider my-0">
-
-                                <!-- Nav Item - Dashboard -->
-                                <li class="nav-item active">
-                                    <a class="nav-link" href="index.php">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-speedometer" viewBox="0 0 16 16">
-                    <path d="M8 2a.5.5 0 0 1 .5.5V4a.5.5 0 0 1-1 0V2.5A.5.5 0 0 1 8 2zM3.732 3.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 8a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 8zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 7.31A.91.91 0 1 0 8.85 8.569l3.434-4.297a.389.389 0 0 0-.029-.518z"/>
-                    <path fill-rule="evenodd" d="M6.664 15.889A8 8 0 1 1 9.336.11a8 8 0 0 1-2.672 15.78zm-4.665-4.283A11.945 11.945 0 0 1 8 10c2.186 0 4.236.585 6.001 1.606a7 7 0 1 0-12.002 0z"/>
-                    </svg>
-                                        <span>Dashboard</span></a>
-                                </li>
-
-                                <!-- Divider -->
-                                <hr class="sidebar-divider">
-
-                                <!-- Heading -->
-                                <div class="sidebar-heading">
-                                    
-                                </div>
-
-                                <!-- Nav Item - Pages Collapse Menu -->
-                                <li class="nav-item">
-
-
-                                <!-- Nav Item - Utilities Collapse Menu -->
-                                <li class="nav-item">
-                                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                                        aria-expanded="true" aria-controls="collapseUtilities">
-                                        <i class="fas fa-fw fa-wrench"></i>
-                                        <span>Trains</span>
-                                    </a>
-                                    <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                                        data-parent="#accordionSidebar">
-                                        <div class="bg-white py-2 collapse-inner rounded">
-                                            <h6 class="collapse-header">Manage Trains:</h6>
-                                            <a class="collapse-item" href="utilities-color.html">Add Train</a>
-                                            <a class="collapse-item" href="utilities-border.html">View Trains</a>
-                                            <a class="collapse-item" href="utilities-animation.html">Delete Trains</a>
-                                            <a class="collapse-item" href="utilities-other.html">Track Trains</a>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <!-- Divider -->
-                                <hr class="sidebar-divider">
-
-                                <!-- Heading -->
-                                <div class="sidebar-heading">
-                                    
-                                </div>
-
-                                <!-- Nav Item - Pages Collapse Menu -->
-
-
-                                <!-- Nav Item - Charts -->
-               
-
-                                <!-- Nav Item - Tables -->
-                                <li class="nav-item">
-                                    <a class="nav-link" href="tables.html">
-                                        <i class="fas fa-fw fa-table"></i>
-                                        <span>Tables</span></a>
-                                </li>
-
-                                <!-- Divider -->
-                                <hr class="sidebar-divider d-none d-md-block">
-
-                                <!-- Sidebar Toggler (Sidebar) -->
-                                <div class="text-center d-none d-md-inline">
-                                    <button class="rounded-circle border-0" id="sidebarToggle"></button>
-                                </div>
-
-                                <!-- Sidebar Message -->
-                             
-
-                            </ul>
-                            <!-- End of Sidebar -->
-
-
-                                <!-- Scroll to Top Button-->
-                        <a class="scroll-to-top rounded" href="#page-top">
-                            <i class="fas fa-angle-up"></i>
-                        </a>
-
-
-                            <!-- Logout Modal-->
-                        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">×</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                                    <div class="modal-footer">
-                                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                        <a class="btn btn-primary" href="login.html">Logout</a>
-                                    </div>
-                                </div>
-                            </div>
+                <nav id="navbar" class="navbar ms-5">
+                    <ul>
+                    <li><a class="nav-link scrollto active" href="#">Home</a></li>
+                    <!--<li><a class="nav-link scrollto" href="#about">About</a></li>
+                    <li><a class="nav-link scrollto" href="#services">Services</a></li>
+                    <li><a class="nav-link scrollto" href="#contact">Contact</a></li> -->
+                    @if (!session()->has('pName'))
+                    <li><a class="signin scrollto" href="{{ route('login') }}">Sign In</a></li>
+                    <li><a class="btn btn-outline-primary signup" href="{{ route('registration') }}">Sign Up</a></li>
+                    @endif
+                    @if (session()->has('pName'))
+                    <li class="dropdown">
+                        <a href="#">
+                    <div class="text-end">
+                    <span style="font-size: 12px; display: block; line-height: 1;">Welcome!</span>
+                    <span>{{ session('pName') }}</span>
                         </div>
+                    <i class="bi bi-chevron-down"></i>
+                        </a>
+                        <ul>
+                            <!-- <li><a href="{{ route('profile') }}">Profile</a></li> -->
+                            <li><a href="{{ route('logout') }}">Sign Out</a></li>
+                        </ul>
+                        </li>
+                    @endif
 
+                    <i class="bi bi-list mobile-nav-toggle"></i>
+                </nav>
 
-
-
-                            <!-- Content Wrapper -->
-                            <div id="content-wrapper" class="d-flex flex-column">
-
-                                <!-- Main Content -->
-                                
-
-                                                                 <!-- ======= Header ======= -->
-                                                            <header id="header" class="fixed-top d-flex align-items-center">
-                                                         <div class="container d-flex align-items-center justify-content-between">
-
-                                                            <div class="d-flex align-items-center justify-content-between w-100">
-                                                                <div class="logo">
-                                                                 <a href="index.html"><img src="{{asset('assets/img/RailTrackLogo.png')}}" alt="" class="img-fluid"></a>
-                                                                 </div>
-                                            
-                                                             <nav id="navbar" class="navbar ms-5">
-                                                                <ul>
-                                                                    <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-                                                                    <li><a class="nav-link scrollto" href="#about">About</a></li>
-                                                                    <li><a class="nav-link scrollto" href="#services">Services</a></li>
-                                                                    <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-                                                                    @if (!session()->has('pName'))
-                                                                    <li><a class="signin scrollto" href="{{ route('login') }}">Sign In</a></li>
-                                                                    <li><a class="btn btn-outline-primary signup" href="{{ route('registration') }}">Sign Up</a></li>
-                                                                    @endif
-                                                                    @if (session()->has('pName'))
-                                                                    <li class="dropdown">
-                                                                        <a href="#">
-                                                                    <div class="text-end">
-                                                                    <span style="font-size: 12px; display: block; line-height: 1;">Welcome!</span>
-                                                                    <span>{{ session('pName') }}</span>
-                                                                     </div>
-                                                                    <i class="bi bi-chevron-down"></i>
-                                                                        </a>
-                                                                        <ul>
-                                                                            <li><a href="{{ route('profile') }}">Profile</a></li>
-                                                                            <li><a href="{{ route('logout') }}">Sign Out</a></li>
-                                                                        </ul>
-                                                                        </li>
-                                                                    @endif
-
-                                                                    <i class="bi bi-list mobile-nav-toggle"></i>
-                                                        </nav>
-                                                    
-                                                </div>
-                                                
-
-                                                
-
-                                                </div>
-                                            </header><!-- End Header -->
-
-
-                                
-                                    @yield('passengercontent')
-                                
-                                    
-                       
-                        <!-- End of Page Wrapper -->
-    <!-- Bootstrap core JavaScript-->
-    <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
-    <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="{{asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="{{asset('js/sb-admin-2.min.js')}}"></script>
-
-    <!-- Page level plugins -->
-    <script src="{{asset('vendor/chart.js/Chart.min.js')}}"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="{{asset('js/demo/chart-area-demo.js')}}"></script>
-    <script src="{{asset('js/demo/chart-pie-demo.js')}}"></script>
-
-    
-            
+            </div>
         </div>
-        <!-- End of Content Wrapper -->
+    </header><!-- End Header -->
+
+    <!-- ======= Hero Section ======= -->
+    <section id="heroInner" class="d-flex align-items-center">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
+                <h1 id="innerHeader" data-aos="fade-up" class="text-white">Profile</h1>
+                </div>
+                <!-- <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left" data-aos-delay="200">
+                <img src="{{asset('assets/img/hero-img.png')}}" class="img-fluid animated" alt="">
+                </div> -->
+            </div>
+        </div>
+    </section><!-- End Hero -->
+
+    <main id="main">
        
 
+        <section class="inner-page">
+            <div class="container">
 
+            @yield('passengercontent')
+            
+
+            </div>
+        </section>
+
+    </main><!-- End #main -->
+
+                                
+                                    
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+    <div class="container">
+      <div class="row d-flex align-items-center">
+        <div class="col-lg-6 text-lg-left text-center">
+          <div class="copyright">
+            &copy; Copyright <strong>RailTrack</strong>. All Rights Reserved
+          </div>
+          
+        </div>
+        <div class="col-lg-6">
+          <nav class="footer-links text-lg-right text-center pt-2 pt-lg-0">
+            <a href="#intro" class="scrollto">Home</a>
+            <a href="#about" class="scrollto">About</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <script>
+    function openContent(evt, tabName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+    } 
+
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+
+</script>
+
+  <!-- Vendor JS Files -->
+  <script src="{{asset('assets/vendor/purecounter/purecounter_vanilla.js')}}"></script>
+  <script src="{{asset('assets/vendor/aos/aos.js')}}"></script>
+  <script src="{{asset('assets/vendor/jquery/jquery_3.4.1.min.js')}}"></script>
+  <script src="{{asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{asset('assets/vendor/glightbox/js/glightbox.min.js')}}"></script>
+  <script src="{{asset('assets/vendor/isotope-layout/isotope.pkgd.min.js')}}"></script>
+  <script src="{{asset('assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
+  <script src="{{asset('assets/vendor/php-email-form/validate.js')}}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{{asset('assets/js/main.js')}}"></script>
 </body>
 
 </html>
