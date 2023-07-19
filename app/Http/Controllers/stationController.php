@@ -13,7 +13,7 @@ class stationController extends Controller
     function viewAddStations(){
 
         
-        if (session()->has('pName')) {
+        if (session()->has('AName')) {
 
 
             $latestStationId = train_station::max('st_no');
@@ -67,7 +67,7 @@ class stationController extends Controller
 
     function viewStations(){
 
-        if (session()->has('pName')) {
+        if (session()->has('AName')) {
 
             $data =  train_station::all();
             return view('view_station',['stations'=>$data]);

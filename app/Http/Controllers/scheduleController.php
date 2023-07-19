@@ -8,7 +8,7 @@ class scheduleController extends Controller
 {
     function addSchedule(){
         
-            if (session()->has('pName')) {
+            if (session()->has('AName')) {
 
                 
 

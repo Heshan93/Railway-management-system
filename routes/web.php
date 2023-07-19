@@ -40,7 +40,10 @@ Route::get('admin', function () {
 //admin login function
 Route::post('login_admin', [userController::class, 'loginAdmin'])->name('login_admin');
 
-//Load login page if session is false
+//admin logout function
+Route::get('logout_admin', [userController::class, 'logoutAdmin'])->name('logout_admin');
+
+//Load passenger login page if session is false
 Route::get('login', function () {
     if (session()->has('pName')) {
 
@@ -50,7 +53,7 @@ Route::get('login', function () {
     return view('user_login');
 })->name('login');
 
-//Load login page if session is false
+//Load  profile page if session is false
 
 Route::get('profile', function () {
     if (session()->has('pName')) {
@@ -81,16 +84,15 @@ Route::get('reports', function () {
 });
 
 
-//Load dashboard page if session is false
-//need to change the pName to userName
+    //Load dashboard page if session is false
 
-Route::get('dashboard', function () {
-    if (session()->has('pName')) {
+    Route::get('dashboard', function () {
+        if (session()->has('AName')) {
 
-        return view('dashboard');
-    }
-    return view('admin_login');
-})->name('dashboard');
+            return view('dashboard');
+        }
+        return view('admin_login');
+    })->name('dashboard');
 
 //Load payment page if session is false
 
@@ -135,7 +137,7 @@ Route::get('track_train/{id}',[TrainController::class,'trackTrain']);
 //get the add_train
 Route::get('add_train',[TrainController::class,'addTrain'])->name('add_train');
 
-//get the add_train
+//get the add_train to DB
 Route::post('addtraindb',[TrainController::class,'trainToDb'])->name('addtraindb');
 
 //get the view_train
@@ -157,7 +159,7 @@ Route::get('add_train_stations',[stationController::class,'viewAddStations'])->n
 Route::post('add_stationsTo_db',[stationController::class,'addStationsToDb'])->name('add_stationsTo_db');
 
 //get the view_train_stations
-Route::get('view_train_stations',[stationController::class,'viewStations'])->name('view_train_stations');
+Route::get('view_t  rain_stations',[stationController::class,'viewStations'])->name('view_train_stations');
 
 //get the Edit Train
 Route::get('edit_stations/{id}',[stationController::class,'stationEdtview']);

@@ -115,7 +115,7 @@ class userController extends Controller
                 ///// Load admin page & User ID ///////
 
     function viewAddAdmin() {
-        if (session()->has('pName')) {
+        if (session()->has('AName')) {
             $latestUserId = User::max('user_id');
             $nextUserId = $latestUserId + 1;
 
@@ -123,7 +123,7 @@ class userController extends Controller
             return View::make('add_admin')->with('data', $nextUserId); 
         }
         
-        return view('add_admin');
+        return view('admin');
     }
 
                 ///// Add Admin User to DB ///////
@@ -184,7 +184,7 @@ class userController extends Controller
 
     function viewAdminUser(){
 
-        if (session()->has('pName')) {
+        if (session()->has('AName')) {
 
             $data =  User::all();
             return view('view_admin',['admin'=>$data]);
@@ -312,6 +312,20 @@ class userController extends Controller
            }  
        }
 
+
+
+       function logoutAdmin()
+    {
+
+        if (session()->has('AName')) {
+
+            session()->pull('AName');
+
+            return redirect('admin');
+        }
+
+        return redirect('admin');
+    }
 
 
 ///////////////////////////////////////////////////////

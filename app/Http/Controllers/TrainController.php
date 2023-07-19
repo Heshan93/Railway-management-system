@@ -72,7 +72,7 @@ class TrainController extends Controller
     function addTrain(){
 
         
-            if (session()->has('pName')) {
+            if (session()->has('AName')) {
 
 
                 $latestTrainId = train::max('train_id');
@@ -86,7 +86,8 @@ class TrainController extends Controller
     }
 
     function trainToDb(Request $req){
- // Add validation 
+        
+        // Add validation 
         $req->validate([
             'train_id' => 'required',
             'train_name' => 'required', 
@@ -128,7 +129,7 @@ class TrainController extends Controller
     function trainList(){
 
        
-        if (session()->has('pName')) {
+        if (session()->has('AName')) {
 
             $data =  train::all();
             return view('view_train',['train' =>$data]);
