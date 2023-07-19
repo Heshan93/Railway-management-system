@@ -45,17 +45,204 @@ $page_name = "Profile"
                 <div class="col-9 wr_tabcontent">
                     <div id="activeTicket" class="tabcontent">
                         <h2 class="titleTabContent">Active Tickets</h2>
-                        <div class="wr_content"><p>Active ticket content goes here</P></div>
+                        <div class="wr_content">
+                            
+                            
+                            
+                            <!-- Item -->
+                        
+
+                        <div class="card-searchResult">
+      
+                            <div class="d-md-flex justify-content-between px-md-3">
+                  
+                              <div class="d-md-flex align-items-md-center mb-2">
+                                <div class="train-icon me-3 mt-1 my-md-0 mb-1"><img src="{{asset('assets/img/train-icon.png')}}" /></div>
+                                <div class="">
+                                  <!-- Train No. and Name -->
+                                  <div class="trainName text-primary-emphasis">#1143 <b>Udarata Menike</b></div>
+                                  <div class="d-md-flex align-items-center wr-trainClass text-secondary">
+                                    <!-- Train Class -->
+                                    <div class="trainClass pe-2">2nd Class</div>
+                                    <div class="pe-2 d-none d-md-block">•</div>
+                                    <!-- Available Seats -->
+                                    <div class="trainClass">2 Tecktes </div>
+
+                                  </div>
+                                  
+                                </div>
+                              </div>
+          
+                              <!-- Ticket Price -->
+                              <div class="ticketPrice fw-bold mb-2 mb-md-0 d-inline-block">LKR 1500.00</div>
+                            </div>
+                            
+                  
+                            <div class="destinationDeparture d-md-flex justify-content-between px-md-3">
+                              <div class="wr-departure fw-semibold">
+                                <!-- Departure Station -->
+                                <div class="departureStation text-dark">Colombo Fort</div>
+                                <!-- Departure Time -->
+                                <div class="departureTime">8:30 PM</div>
+                              </div>
+                              <div class="wr-destination fw-semibold text-md-end mt-1 mt-md-0">
+                                <!-- Destination Station -->
+                                <div class="destinationStation text-dark">Bandarawela</div>
+                                <!-- Destination Time -->
+                                <div class="destinationTime">5:30 AM</div>
+                              </div>
+                            </div>
+                  
+                            <div class="w-100 breakerLine my-2"></div>
+                            
+                            <!-- Train Tags -->
+                            <div class="wr-trainTags d-flex">
+                              
+                              <div class="tarainTag">Express</div>
+          
+                              <div class="tarainTag d-flex align-items-center">
+                                <span class="trainTagIcon pe-1"><img src="{{asset('assets/img/lunch-1.png')}}" /></span> Buffet
+                              </div>
+                  
+                            </div>
+
+                          </div>
+
+
+                        <!-- Item -->
+                            
+                        </div>
                     </div>
 
                     <div id="history" class="tabcontent">
                         <h2 class="titleTabContent">History</h2>
-                        <div class="wr_content"><p>History content goes here</P></div>
+                        <div class="wr_content">
+                            
+                            <!--History tabale -->
+
+
+                            <table class="table table-hover">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">First</th>
+                                    <th scope="col">Last</th>
+                                    <th scope="col">Handle</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th scope="row">1</th>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>@mdo</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">2</th>
+                                    <td>Jacob</td>
+                                    <td>Thornton</td>
+                                    <td>@fat</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">3</th>
+                                    <td colspan="2">Larry the Bird</td>
+                                    <td>@twitter</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+
+
+
+                            <!--History tabale -->
+
+                            
+                            
+                        </div>
                     </div>
 
                     <div id="personalInfo" class="tabcontent">
                         <h2 class="titleTabContent">Personal Information</h2>
-                        <div class="wr_content"><p>Personal Information content goes here</P></div>
+                        <div class="wr_content">
+                            
+                             <!--Passenger info form -->
+
+
+                             <form action="{{ route('register_user') }}" method="POST">
+
+                                @csrf
+                   
+                    <!---->   
+                            <div class="container wr-signUp py-5">
+                                     <!--  new use success  & fail message --> 
+                                     @if (Session::has('success'))
+                          
+                                     <div class="alert alert-success">{{Session::get('success')}} </div>
+                                     
+                                 @endif
+                         
+                                 @if (Session::has('fail'))
+                                 <div class="alert alert-danegr">{{Session::get('fail')}} </div>
+                                 @endif
+                         <!--  new use success  & fail message --> 
+
+                               <div class="row mt-4 mb-3">
+                                 <div class="col-12 col-sm mb-3 mb-sm-0">
+                                   <label for="firstName" class="form-label" >First name </label>
+                                   <input type="text" class="form-control" id="signUpFirst" placeholder="Enter your first name" name="firstName" value="{{old('firstName')}}">
+                                   <span class="text-danger">@error('firstName') {{ $message }} @enderror</span>
+                                 </div>
+                                 <div class="col-12 col-sm">
+                                   <label for="LastName" class="form-label" >Last Name </label>
+                                   <input type="text" class="form-control" id="signUpLast" placeholder="Enter your last name" name="LastName" value="{{old('LastName')}}">
+                                   <span class="text-danger">@error('LastName') {{$message }}@enderror</span>
+                                 </div>
+                               </div>
+                               <div class="row mb-3">
+                                 <div class="col-12 col-sm mb-3 mb-sm-0">
+                                   <label for="signUpEmail" class="form-label">Email </label>
+                                   <input type="email" class="form-control" id="signUpEmail" placeholder="Enter your email" name="exampleInputEmail1"  value="{{old('exampleInputEmail1')}}">
+                                   <span class="text-danger">@error('exampleInputEmail1') {{$message }}@enderror</span>
+                                 </div>
+                              <div class="col-12 col-sm">
+                                   <label for="signUpTel" class="form-label">Telephone</label>
+                                   <div class="input-group">
+                                       <span class="input-group-text" id="basic-addon1">+94</span>
+                                       <input type="text" id="signUpTel" class="form-control" placeholder="Enter your phone number" aria-label="Telephone" aria-describedby="basic-addon1">
+                                     </div>
+                                 </div>
+                               </div>
+                               <div class="row mb-3">
+                                   <div class="col">
+                                     <label for="signUpAddress" class="form-label">Address</label>
+                                     <input type="email" class="form-control w-100" id="signUpAddress" placeholder="Enter your first name">
+                                   </div>
+                               </div> 
+                               <div class="row">
+                                   <div class="col-12 col-sm mb-3 mb-sm-0">
+                                     <label for="signUpPass" class="form-label">Change Password </label>
+                                     <input type="password" class="form-control" id="signUpPass" placeholder="Change a Password" name="exampleInputPassword2">
+                                     <span class="text-danger">@error('exampleInputPassword2') {{$message }}@enderror</span>
+                                   </div>
+                                   <div class="col-12 col-sm">
+                                     <label for="signUpPass2" class="form-label" >Confirm Password </label>
+                                     <input type="password" class="form-control" id="signUpPass2" placeholder="Confirm the Password" name="confirmInputPassword2">
+                                     <span class="text-danger">@error('confirmInputPassword2') {{$message }}@enderror</span>
+                                   </div>
+                               </div>
+                               <div class="row mt-4">
+                                 <div class="col"><button type="submit" class="btn btn-primary w-100">Submit Changes</button></div>
+                               </div>
+                               
+                           </div>
+                         </form>
+
+
+
+                             <!--Passenger info form -->
+
+
+
+                        </div>
                     </div>
 
                 </div>
