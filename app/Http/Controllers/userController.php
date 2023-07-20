@@ -83,6 +83,7 @@ class userController extends Controller
 
                 //add user info to session
                 $req->session()->put('pName', $passenger->first_name);
+                $req->session()->put('passenger_id', $passenger->passenger_id);
 
 
                 return redirect('/');

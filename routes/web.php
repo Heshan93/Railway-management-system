@@ -6,6 +6,7 @@ use App\Http\Controllers\TrainController;
 use App\Http\Controllers\scheduleController;
 use App\Http\Controllers\stationController;
 use App\Http\Controllers\CommonController;
+use App\Http\Controllers\profileConroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,15 +54,6 @@ Route::get('login', function () {
     return view('user_login');
 })->name('login');
 
-//Load  profile page if session is false
-
-Route::get('profile', function () {
-    if (session()->has('pName')) {
-
-        return view('profile');
-    }
-    return view('user_login');
-})->name('profile');
 
 //Load login page if session is false
 
@@ -201,3 +193,19 @@ Route::post('update_admin',[userController::class,'updateAdminUser'])->name('upd
 
 // Delete Admin User
 Route::get('delete_admin/{id}',[userController::class,'adminDelete'])->name('delete_admin'); 
+
+
+/* 
+//Load  profile page if session is false
+
+Route::get('profile', function () {
+    if (session()->has('pName')) {
+
+        return view('profile');
+    }
+    return view('user_login');
+})->name('profile'); */
+
+
+//get the view active tickets
+Route::get('profile',[profileConroller::class,'getTrainData'])->name('profile');

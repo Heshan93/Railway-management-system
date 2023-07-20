@@ -15,14 +15,15 @@ class CreateTicketsTable extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->id('tc_number')->autoIncrement(); // Make passenger_id an auto-incrementing primary key
-            $table->bigInteger('passenger_id')->nullable();
-            $table->decimal('amount', 8, 2)->nullable();
-            $table->string('start_station')->nullable();
-            $table->string('end_station')->nullable();
-            $table->dateTime('start_time')->nullable();
-            $table->dateTime('end_time')->nullable();
-            $table->integer('train_id')->nullable();
-            $table->integer('seat_cat')->nullable();
+            $table->bigInteger('passenger_id');
+            $table->decimal('amount', 8, 2);
+            $table->string('start_station');
+            $table->string('end_station');
+            $table->dateTime('start_time');
+            $table->dateTime('end_time');
+            $table->integer('train_id');
+            $table->string('train_name');
+            $table->string('seat_cat');
             $table->timestamps();
         });
     }

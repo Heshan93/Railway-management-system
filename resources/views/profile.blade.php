@@ -48,8 +48,10 @@ $page_name = "Profile"
                         <div class="wr_content">
                             
                             
+                        @foreach ($item as $item)
                             
-                            <!-- Item -->
+                         
+                         <!-- Item -->
                         
 
                         <div class="card-searchResult">
@@ -59,11 +61,11 @@ $page_name = "Profile"
                               <div class="d-md-flex align-items-md-center mb-2">
                                 <div class="train-icon me-3 mt-1 my-md-0 mb-1"><img src="{{asset('assets/img/train-icon.png')}}" /></div>
                                 <div class="">
-                                  <!-- Train No. and Name -->
-                                  <div class="trainName text-primary-emphasis">#1143 <b>Udarata Menike</b></div>
+                                  <!-- Train No. and Name --> 
+                                  <div class="trainName text-primary-emphasis">Ticket ID #{{$item->tc_number}} <b>{{$item->train_name}}</b></div>
                                   <div class="d-md-flex align-items-center wr-trainClass text-secondary">
                                     <!-- Train Class -->
-                                    <div class="trainClass pe-2">2nd Class</div>
+                                    <div class="trainClass pe-2">{{$item->seat_cat}} Class</div>
                                     <div class="pe-2 d-none d-md-block">•</div>
                                    
 
@@ -73,22 +75,22 @@ $page_name = "Profile"
                               </div>
           
                               <!-- Ticket Price -->
-                              <div class="ticketPrice fw-bold mb-2 mb-md-0 d-inline-block">LKR 1500.00</div>
+                              <div class="ticketPrice fw-bold mb-2 mb-md-0 d-inline-block">LKR {{$item->amount}}</div>
                             </div>
                             
                   
                             <div class="destinationDeparture d-md-flex justify-content-between px-md-3">
                               <div class="wr-departure fw-semibold">
                                 <!-- Departure Station -->
-                                <div class="departureStation text-dark">Colombo Fort</div>
+                                <div class="departureStation text-dark">{{$item->start_station}}</div>
                                 <!-- Departure Time -->
-                                <div class="departureTime">8:30 PM</div>
+                                <div class="departureTime">{{$item->start_time}}</div>
                               </div>
                               <div class="wr-destination fw-semibold text-md-end mt-1 mt-md-0">
                                 <!-- Destination Station -->
-                                <div class="destinationStation text-dark">Bandarawela</div>
+                                <div class="destinationStation text-dark">{{$item->end_station}}</div>
                                 <!-- Destination Time -->
-                                <div class="destinationTime">5:30 AM</div>
+                                <div class="destinationTime">{{$item->end_time}}</div>
                               </div>
                             </div>
                   
@@ -109,6 +111,8 @@ $page_name = "Profile"
 
 
                         <!-- Item -->
+
+                        @endforeach
                             
                         </div>
                     </div>
