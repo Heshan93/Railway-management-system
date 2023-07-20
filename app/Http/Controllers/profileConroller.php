@@ -20,9 +20,24 @@ class profileConroller extends Controller
             ->where('tickets.passenger_id', Session('passenger_id'))
             ->get();
     
+                 // Get the current date and time
+                 $currentDateTime = date('Y-m-d H:i:s');
+
+                    // Get all the records for the passenger where the ticket has expired
+                    $history = DB::table('tickets')
+                    ->where('tickets.passenger_id', Session('passenger_id'))
+                    ->where('tickets.end_time', '<', $currentDateTime) // Check if the ticket end_time is less than current date and time
+                    ->get();
+                
+                   
             
     
-            return  view('profile',['item'=>$data]); 
+            return  view('profile',[
+                
+                'item'=>$data,
+                'history'=>$history,
+            
+            ]); 
             
         }
         return view('user_login');
@@ -31,24 +46,23 @@ class profileConroller extends Controller
 
     }
 
-    function getHistory(){
+   /*  function getHistory(){
+
+        
+
+         // Get the current date and time
+         $currentDateTime = date('Y-m-d H:i:s');
+
+         // Get all the records for the passenger where the ticket has expired
+         $history = DB::table('tickets')
+         ->where('tickets.passenger_id', Session('passenger_id'))
+         ->where('tickets.end_time', '<', $currentDateTime) // Check if the ticket end_time is less than current date and time
+         ->get();
+         
+            return $history; 
 
 
-        $currentDateTime = date('Y-m-d H:i:s');
-    
-        $data = DB::table('tickets')
-        ->where('tickets.passenger_id', Session('passenger_id'))
-        ->get();
-
-        $expireTime = $data[0]->end_time ;
-
-        if($expireTime < $currentDateTime){
-
-            return "sdfsdf";
-        }else{
-            return"1111111111";
-        }
 
    
-    }
+    } */
 }

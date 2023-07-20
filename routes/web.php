@@ -209,3 +209,6 @@ Route::get('profile', function () {
 
 //get the view active tickets
 Route::get('profile',[profileConroller::class,'getTrainData'])->name('profile');
+/* 
+//get the view tickets History
+Route::get('PassHistory',[profileConroller::class,'getHistory'])->name('PassHistory'); */

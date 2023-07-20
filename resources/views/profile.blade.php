@@ -19,7 +19,7 @@ $page_name = "Profile"
                         </svg>
                         <h5 class="mb-0 ms-3">Active Tickets</h5>
                     </button>
-                    <button class="tablinks d-flex align-items-center" onclick="openContent(event, 'history')">
+                    <button class="tablinks d-flex align-items-center" onclick="openContent(event, 'history')" >
                         <svg width="24" height="24" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_9_199412)">
                             <path d="M8.515 1.019C8.34363 1.00635 8.17185 1.00001 8 1V2.81458e-07C8.19654 9.6109e-05 8.39301 0.00743442 8.589 0.0220003L8.515 1.019ZM10.519 1.469C10.1985 1.3453 9.86923 1.24537 9.534 1.17L9.753 0.194C10.136 0.28 10.513 0.394 10.879 0.536L10.519 1.469ZM11.889 2.179C11.746 2.08365 11.5996 1.99359 11.45 1.909L11.943 1.039C12.2849 1.23274 12.6121 1.45132 12.922 1.693L12.307 2.482C12.1714 2.37623 12.032 2.2755 11.889 2.18V2.179ZM13.723 3.969C13.5252 3.68798 13.3069 3.42192 13.07 3.173L13.794 2.483C14.064 2.768 14.314 3.073 14.541 3.393L13.723 3.969ZM14.467 5.321C14.4014 5.16246 14.33 5.00636 14.253 4.853L15.146 4.403C15.3226 4.75409 15.473 5.11774 15.596 5.491L14.646 5.804C14.5923 5.64087 14.5326 5.47976 14.467 5.321ZM14.997 7.828C14.9889 7.48434 14.9555 7.14174 14.897 6.803L15.882 6.633C15.949 7.019 15.988 7.411 15.998 7.803L14.998 7.828H14.997ZM14.866 9.366C14.899 9.196 14.926 9.027 14.947 8.856L15.94 8.979C15.892 9.36915 15.8151 9.75521 15.71 10.134L14.746 9.867C14.792 9.702 14.832 9.535 14.866 9.366ZM13.914 11.745C14.098 11.455 14.26 11.151 14.4 10.837L15.314 11.242C15.154 11.602 14.969 11.948 14.759 12.28L13.914 11.745ZM12.95 12.95C13.072 12.828 13.189 12.702 13.3 12.572L14.058 13.225C13.9296 13.3738 13.7959 13.5179 13.657 13.657L12.95 12.95Z" />
@@ -123,37 +123,40 @@ $page_name = "Profile"
                             
                             <!--History tabale -->
 
-
-                            <table class="table table-hover">
-                                <thead>
-                                  <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">First</th>
-                                    <th scope="col">Last</th>
-                                    <th scope="col">Handle</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                  </tr>
-                                  <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                  </tr>
-                                  <tr>
-                                    <th scope="row">3</th>
-                                    <td colspan="2">Larry the Bird</td>
-                                    <td>@twitter</td>
-                                  </tr>
-                                </tbody>
-                              </table>
-
+                            <div class="container-fluid">
+                              <table class="table table-hover ">
+                                  <thead>
+                                    <tr>
+                                      <th>Ticket ID</th>
+                                      <th>Train Name</th>
+                                      <th>Departure</th>
+                                      <th>Departure Time</th>
+                                      <th>Destination</th>
+                                      <th>Destination Time</th>
+                                      <th>Seat Class</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    @foreach ($history as $history)
+                              
+                                    <tr>
+                              
+                                      <td>{{$history->tc_number}}</td>
+                                      <td>{{$history->train_name}}</td>
+                                      <td>{{$history->start_station}}</td>
+                                      <td>{{$history->start_time}}</td>
+                                      <td>{{$history->end_station}}</td>
+                                      <td>{{$history->end_time}}</td>
+                                      <td>{{$history->seat_cat}}</td>
+                                     {{--  <td><a href="{{ "edit_history_user/".$history['user_id'] }}" class="btn btn-primary">Edit</a></td>
+                                      <td><a href="{{ "delete_history/".$history['user_id'] }}" class="btn btn-danger">Delete</a></td>
+                                       --}}
+                                    </tr>
+                                    @endforeach
+                                  </tbody>
+                                </table>
+                              
+                              </div>
 
 
                             <!--History tabale -->
