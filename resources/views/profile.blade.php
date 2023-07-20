@@ -229,7 +229,7 @@ $page_name = "Profile"
                                    </div>
                                </div>
                                <div class="row mt-4">
-                                 <div class="col"><button type="submit" class="btn btn-primary w-100">Submit Changes</button></div>
+                                 <div class="col"><button type="submit" class="btn btn-primary w-100">Submit</button></div>
                                </div>
                                
                            </div>
