@@ -195,20 +195,10 @@ Route::post('update_admin',[userController::class,'updateAdminUser'])->name('upd
 Route::get('delete_admin/{id}',[userController::class,'adminDelete'])->name('delete_admin'); 
 
 
-/* 
-//Load  profile page if session is false
-
-Route::get('profile', function () {
-    if (session()->has('pName')) {
-
-        return view('profile');
-    }
-    return view('user_login');
-})->name('profile'); */
-
-
 //get the view active tickets
 Route::get('profile',[profileConroller::class,'getTrainData'])->name('profile');
-/* 
-//get the view tickets History
-Route::get('PassHistory',[profileConroller::class,'getHistory'])->name('PassHistory'); */
+
+
+// Update Admin User
+Route::post('Passenger_submit',[profileConroller::class,'updatePassenger'])->name('Passenger_submit'); 
+

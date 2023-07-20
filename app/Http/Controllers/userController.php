@@ -188,7 +188,9 @@ class userController extends Controller
         if (session()->has('AName')) {
 
             $data =  User::all();
+            
             return view('view_admin',['admin'=>$data]);
+
             }
         return view('admin_login');
        

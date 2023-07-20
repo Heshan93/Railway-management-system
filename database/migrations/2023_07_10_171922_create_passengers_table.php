@@ -21,11 +21,13 @@ class CreatePassengersTable extends Migration
             $table->string('email')->unique()->nullable();
             $table->string('password')->nullable();
             $table->integer('tp_number')->nullable();
-            $table->integer('dob')->nullable();
+            $table->text('address')->nullable();
             $table->timestamps();
         });
         
         
+
+
     }
 
     /**

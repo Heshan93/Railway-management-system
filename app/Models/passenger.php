@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class passenger extends Model
 {
 
-
+    protected $primaryKey = 'passenger_id';
 
     use HasFactory;
 }
