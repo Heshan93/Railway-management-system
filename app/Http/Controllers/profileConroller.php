@@ -14,16 +14,19 @@ class profileConroller extends Controller
 {
     function getTrainData()
     {
+       // Get the current date and time
+       $currentDateTime = date('Y-m-d H:i:s');
 
         if (session()->has('pName')) {
 
 
             $data = DB::table('tickets')
             ->where('tickets.passenger_id', Session('passenger_id'))
+            ->where('tickets.end_time', '>', $currentDateTime) // Check if the ticket end_time is greater than current date and time
+            
             ->get();
     
-                 // Get the current date and time
-                 $currentDateTime = date('Y-m-d H:i:s');
+                 
 
                     // Get all the records for the passenger where the ticket has expired
                     $history = DB::table('tickets')
