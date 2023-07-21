@@ -200,5 +200,9 @@ Route::get('profile',[profileConroller::class,'getTrainData'])->name('profile');
 
 
 // Update Admin User
-Route::post('Passenger_submit',[profileConroller::class,'updatePassenger'])->name('Passenger_submit'); 
+Route::post('Passenger_submit',[profileConroller::class,'updatePassenger'])->name('Passenger_submit');
+
+
+//view schedules
+Route::get('view_schedules',[scheduleController::class,'viewSchedules'])->name('view_schedules');
 

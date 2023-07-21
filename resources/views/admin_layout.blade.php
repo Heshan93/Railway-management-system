@@ -130,7 +130,7 @@
                                             <div class="bg-white py-2 collapse-inner rounded">
                                                 <h6 class="collapse-header">Manage Trains Schedule:</h6>
                                                 <a class="collapse-item" href="{{ route('create_schedule') }}">Create Train Schedule</a>
-                                            {{--  <a class="collapse-item" href="{{ route('') }}">View Trains Schedule</a> --}}
+                                                <a class="collapse-item" href="{{ route('view_schedules') }}">View Trains Schedules</a> 
                                                 
                                                 
                                             </div>
@@ -447,7 +447,33 @@
     <script src="{{asset('js/demo/chart-pie-demo.js')}}"></script>
 
     
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
             
+           
+    $('.multi-select').select2({
+        placeholder: "Select Stations",
+    allowClear: true,
+    });
+    jQuery("select").each(function(){
+		$this = jQuery(this);
+    if($this.attr('data-reorder')){
+    	$this.on('select2:select', function(e){
+        var elm = e.params.data.element;
+        $elm = jQuery(elm);
+        $t = jQuery(this);
+        $t.append($elm);
+        $t.trigger('change.select2');
+      });
+    }
+		$this.select2();
+	});
+});
+    </script>
+
+@yield('page-scripts')
         </div>
         <!-- End of Content Wrapper -->
        
