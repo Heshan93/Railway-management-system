@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\train_station;
 use Illuminate\Support\Facades\View;
+use App\Models\train;
+use App\Models\train_schedule;
 
 use Illuminate\Http\Request;
 

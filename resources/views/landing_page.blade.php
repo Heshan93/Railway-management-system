@@ -34,7 +34,8 @@
 
     <!-- ===========| Start: Search Area |================ -->
     <section class="wr-search py-0" data-aos="fade-up">
-      <div class="contentMaxWidth mx-auto search">
+        <form action="{{route('search_data')}}" method="post">
+          <div class="contentMaxWidth mx-auto search">
         <div class="container wr_searchBox">
           <div class="row searchArea mx-auto px-1 px-lg-4 py-lg-3 py-2">
             <div class="col-12 mb-2 mb-lg-0 col-lg-6">
@@ -42,7 +43,7 @@
                 <label for="inputDeparture" class="pe-3 col-form-label d-flex align-items-center w-25 w-lg-auto">
                   <div class="icon mb-1 me-2"><img src="{{asset('assets/img/location-marker.png')}}" /></div>From
                 </label>
-                <select class="form-select" aria-label="Default select example" id="inputDeparture">
+                  <select class="form-select" aria-label="Default select example" id="inputDeparture" name="st_start">
                   <option selected>Select a station</option>
                   @foreach($data['stations'] as $st)
                   <option value="{{$st->st_no}}">{{$st->st_name}}</option>
@@ -55,7 +56,8 @@
                 <label for="inputDestination" class="pe-3 col-form-label d-flex align-items-center w-25 w-lg-auto">
                   <div class="icon mb-1 me-2"><img src="{{asset('assets/img/location-marker.png')}}" /></div>To
                 </label>
-                <select class="form-select" aria-label="Default select example" id="inputDestination">
+        
+                  <select class="form-select" aria-label="Default select example" id="inputDestination" name="st_end">
                   <option selected>Select a station</option>
                   @foreach($data['stations'] as $st)
                   <option value="{{$st->st_no}}">{{$st->st_name}}</option>
@@ -66,7 +68,7 @@
           </div>
           <div class="row max-w-2 pt-2">
             <div class="col-12 col-lg mb-1 mb-sm-2 mb-lg-0">
-              <select class="form-select" aria-label="Default select example">
+                <select class="form-select" aria-label="Default select example" name="cls">
                 <option selected>All Classes</option>
                 <option value="1">1st</option>
                 <option value="2">2nd</option>
@@ -74,7 +76,7 @@
               </select>
             </div>
             <div class="col-12 col-lg mb-1 mb-sm-2 mb-lg-0">
-              <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="Enter date">        
+              <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="How many Passengers" name="pssngrs">         
             </div>
             <div class="col-12 col-lg">
               <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="How many Passengers">    
@@ -89,13 +91,14 @@
                 </label>
               </div>
               <div>
-                <button type="button" class="btn btn-primary px-5">Search</button>
+                <button type="submit" class="btn btn-primary px-5">Search</button>
                 <button type="button" class="btn btn-outline-primary px-5 ms-2">Reset</button>
               </div>
             </div>
           </div>
       </div>
       </div>
+    </form>
     </section>
     <!-- ===========|  End : Search Area |================= -->
 
@@ -126,6 +129,8 @@
                   <div class="text-body-secondary"><h6>Sat, 10 August 2023</h6></div>
                 </div>
       
+                @foreach($data['schedules'] as $key=>$sh)
+
                 <div class="card-searchResult">
       
                   <div class="d-md-flex justify-content-between px-md-3">
@@ -134,13 +139,13 @@
                       <div class="train-icon me-3 mt-1 my-md-0 mb-1"><img src="{{asset('assets/img/train-icon.png')}}" /></div>
                       <div class="">
                         <!-- Train No. and Name -->
-                        <div class="trainName text-primary-emphasis">#1143 <b>Udarata Menike</b></div>
+                        <div class="trainName text-primary-emphasis">#{{$sh->id}} <b>{{$sh->train_name}}</b></div>
                         <div class="d-md-flex align-items-center wr-trainClass text-secondary">
                           <!-- Train Class -->
                           <div class="trainClass pe-2">2nd Class</div>
                           <div class="pe-2 d-none d-md-block">•</div>
                           <!-- Available Seats -->
-                          <div class="trainClass">15 Seats Available</div>
+                          <div class="trainClass">{{$sh->class_2_seats - $sh->booked_class_2_seats}} Seats Available</div>
                         </div>
                       </div>
                     </div>
@@ -153,13 +158,18 @@
                   <div class="destinationDeparture d-md-flex justify-content-between px-md-3">
                     <div class="wr-departure fw-semibold">
                       <!-- Departure Station -->
-                      <div class="departureStation text-dark">Colombo Fort</div>
+                      @foreach($data['stations'] as $st)
+                      <div class="departureStation text-dark {{$st->st_no==$sh->start_station?'':'d-none'}}">{{$st->st_name}}</div>
+                      @endforeach
                       <!-- Departure Time -->
-                      <div class="departureTime">8:30 PM</div>
+                      <div class="departureTime">{{date("H:i:s", strtotime($sh->start_time))}}</div>
+                    </div>
                     </div>
                     <div class="wr-destination fw-semibold text-md-end mt-1 mt-md-0">
                       <!-- Destination Station -->
-                      <div class="destinationStation text-dark">Bandarawela</div>
+                      @foreach($data['stations'] as $st)
+                      <div class="departureStation text-dark {{$st->st_no==$sh->end_station?'':'d-none'}}">{{$st->st_name}}</div>
+                      @endforeach
                       <!-- Destination Time -->
                       <div class="destinationTime">5:30 AM</div>
                     </div>
@@ -179,60 +189,7 @@
                   </div>
         
                 </div>
-
-                <div class="card-searchResult">
-      
-                  <div class="d-md-flex justify-content-between px-md-3">
-        
-                    <div class="d-md-flex align-items-md-center mb-2">
-                      <div class="train-icon me-3 mt-1 my-md-0 mb-1"><img src="{{asset('assets/img/train-icon.png')}}" /></div>
-                      <div class="">
-                        <!-- Train No. and Name -->
-                        <div class="trainName text-primary-emphasis">#1143 <b>Udarata Menike</b></div>
-                        <div class="d-md-flex align-items-center wr-trainClass text-secondary">
-                          <!-- Train Class -->
-                          <div class="trainClass pe-2">2nd Class</div>
-                          <div class="pe-2 d-none d-md-block">•</div>
-                          <!-- Available Seats -->
-                          <div class="trainClass">15 Seats Available</div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Ticket Price -->
-                    <div class="ticketPrice fw-bold mb-2 mb-md-0 d-inline-block">LKR 1500.00</div>
-                  </div>
-                  
-        
-                  <div class="destinationDeparture d-md-flex justify-content-between px-md-3">
-                    <div class="wr-departure fw-semibold">
-                      <!-- Departure Station -->
-                      <div class="departureStation text-dark">Colombo Fort</div>
-                      <!-- Departure Time -->
-                      <div class="departureTime">8:30 PM</div>
-                    </div>
-                    <div class="wr-destination fw-semibold text-md-end mt-1 mt-md-0">
-                      <!-- Destination Station -->
-                      <div class="destinationStation text-dark">Bandarawela</div>
-                      <!-- Destination Time -->
-                      <div class="destinationTime">5:30 AM</div>
-                    </div>
-                  </div>
-        
-                  <div class="w-100 breakerLine my-2"></div>
-                  
-                  <!-- Train Tags -->
-                  <div class="wr-trainTags d-flex">
-                    
-                    <div class="tarainTag">Express</div>
-
-                    <div class="tarainTag d-flex align-items-center">
-                      <span class="trainTagIcon pe-1"><img src="{{asset('assets/img/lunch-1.png')}}" /></span> Buffet
-                    </div>
-        
-                  </div>
-        
-                </div>
+                @endforeach
                 
               </div>
               <!-- ================== One-way ========================= -->

@@ -20,9 +20,7 @@ use App\Http\Controllers\profileConroller;
 */
 //Load landing page
 
-Route::get('/', function () {
-    return view('landing_page');
-});
+
 
 Route::get('/', [CommonController::class, 'index'])->name('index');
 
@@ -195,8 +193,27 @@ Route::post('update_admin',[userController::class,'updateAdminUser'])->name('upd
 Route::get('delete_admin/{id}',[userController::class,'adminDelete'])->name('delete_admin'); 
 
 
-//get the view active tickets
 Route::get('profile',[profileConroller::class,'getTrainData'])->name('profile');
+
+// create Schedule
+Route::post('new_schedule',[scheduleController::class,'createSchedule'])->name('new_schedule');
+
+//view schedules
+Route::get('view_schedules',[scheduleController::class,'viewSchedules'])->name('view_schedules');
+
+//update schedule 
+Route::get('update_schedule/{id}',[scheduleController::class,'updateSchedule'])->name('update_schedule');
+Route::post('edit_schedule',[scheduleController::class,'editSchedule'])->name('edit_schedule');
+
+//re-schedule
+Route::get('reschedule/{id}',[scheduleController::class,'reschedule'])->name('reschedule');
+Route::post('create_reschedule',[scheduleController::class,'createReschedule'])->name('create_reschedule');
+//delete schedule
+Route::get('delete_schedule/{id}',[scheduleController::class,'deleteSchedule'])->name('delete_schedule');
+
+//seach data
+Route::post('search_data',[CommonController::class,'searchData'])->name('search_data');
+
 
 
 // Update Admin User
@@ -206,3 +223,9 @@ Route::post('Passenger_submit',[profileConroller::class,'updatePassenger'])->nam
 //view schedules
 Route::get('view_schedules',[scheduleController::class,'viewSchedules'])->name('view_schedules');
 
+
+// create Schedule
+Route::post('new_schedule',[scheduleController::class,'createSchedule'])->name('new_schedule');
+
+// Edit Schedule
+Route::post('edit_schedule',[scheduleController::class,'editSchedule'])->name('edit_schedule');
