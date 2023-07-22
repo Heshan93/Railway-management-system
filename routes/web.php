@@ -7,6 +7,7 @@ use App\Http\Controllers\scheduleController;
 use App\Http\Controllers\stationController;
 use App\Http\Controllers\CommonController;
 use App\Http\Controllers\profileConroller;
+use App\http\Controllers\paymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -103,7 +104,7 @@ Route::get('checkout', function () {
         return view('checkout');
     }
     return view('user_login');
-});
+})->name('checkout');
 
 //Load Train Info page if session is false
 
@@ -223,9 +224,11 @@ Route::post('Passenger_submit',[profileConroller::class,'updatePassenger'])->nam
 //view schedules
 Route::get('view_schedules',[scheduleController::class,'viewSchedules'])->name('view_schedules');
 
-
 // create Schedule
 Route::post('new_schedule',[scheduleController::class,'createSchedule'])->name('new_schedule');
 
 // Edit Schedule
 Route::post('edit_schedule',[scheduleController::class,'editSchedule'])->name('edit_schedule');
+
+// Card payment submit
+Route::post('cardpayment',[paymentController::class,'makePayment'])->name('cardpayment');

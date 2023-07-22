@@ -31,7 +31,7 @@ class scheduleController extends Controller
             );
             return view('create_schedule')->with(['data'=>$data]);
         } 
-        return view('admin_login');
+        return redirect('admin');
     }
     public function createSchedule(Request $req)
     {
@@ -73,7 +73,7 @@ class scheduleController extends Controller
             // return back()->with('fail', 'Something went wrong. Please try again.');
         }
     }
-    return view('admin_login');
+    return redirect('admin');
         
     }
 
@@ -89,7 +89,7 @@ class scheduleController extends Controller
             );
             return view('view_schedules')->with(['data'=>$data]);
         }
-        return view('admin_login');
+        return redirect('admin');
     }
 
     public function updateSchedule(Request $req)
@@ -105,7 +105,7 @@ class scheduleController extends Controller
             );
             return view('edit-schedule')->with(['data'=>$data]);
         }
-        return view('admin_login');
+        return redirect('admin');
     }
 
     public function reschedule(Request $req)
@@ -121,7 +121,7 @@ class scheduleController extends Controller
             );
             return view('reschedule')->with(['data'=>$data]);
         }
-        return view('admin_login');
+        return redirect('admin');
     }
     
     public function editSchedule(Request $req)
@@ -143,7 +143,7 @@ class scheduleController extends Controller
                 return back()->with('success', 'You have successfully updated the shcedule');
             }
         }
-        return view('admin_login');
+        return redirect('admin');
     }
 
     public function createReschedule(Request $req)
@@ -186,7 +186,7 @@ class scheduleController extends Controller
             // return back()->with('fail', 'Something went wrong. Please try again.');
         }
     }
-    return view('admin_login');
+    return redirect('admin');
         
     }
     public function deleteSchedule($id){
@@ -199,7 +199,7 @@ class scheduleController extends Controller
         return redirect('view_schedules');
 
         }
-        return view('admin_login');
+        return redirect('admin');
     
     }
 }
