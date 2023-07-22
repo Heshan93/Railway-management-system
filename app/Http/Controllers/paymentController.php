@@ -18,7 +18,7 @@ class paymentController extends Controller
             'name' => Session('AName'),
           ];
 
-        Mail::to('fake@emai.com')->send(new TickeReceipt($details));  
+        Mail::to( Session('passenger_email'))->send(new TickeReceipt($details));  
      
     }
 }
