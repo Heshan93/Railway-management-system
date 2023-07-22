@@ -453,22 +453,24 @@
         $(document).ready(function() {
             
            
-    $('.multi-select').select2({
-        placeholder: "Select Stations",
-    allowClear: true,
-    });
-    jQuery("select").each(function(){
-		$this = jQuery(this);
-    if($this.attr('data-reorder')){
-    	$this.on('select2:select', function(e){
-        var elm = e.params.data.element;
-        $elm = jQuery(elm);
-        $t = jQuery(this);
-        $t.append($elm);
-        $t.trigger('change.select2');
-      });
-    }
-		$this.select2();
+        $('.multi-select').select2({
+            placeholder: "Select Stations",
+            allowClear: true,
+        });
+            jQuery("select").each(function(){
+            $this = jQuery(this);
+
+        if($this.attr('data-reorder')){
+            
+            $this.on('select2:select', function(e){
+            var elm = e.params.data.element;
+            $elm = jQuery(elm);
+            $t = jQuery(this);
+            $t.append($elm);
+            $t.trigger('change.select2');
+        });
+        }
+            $this.select2();
 	});
 });
     </script>
