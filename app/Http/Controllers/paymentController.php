@@ -15,7 +15,6 @@ class paymentController extends Controller
 
          // $data for email template
          $details  = [
-            'title' => "WRITEOFF-PRO Email Confirmation",
             'name' => Session('AName'),
           ];
 
