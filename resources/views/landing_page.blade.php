@@ -477,27 +477,31 @@
           </div>
 
           <div class="col-lg-5 col-md-12" data-aos="fade-up" data-aos-delay="300">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-              <div class="form-group">
-                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+            <form action="{{ route('contact_us') }}" method="post" role="form">
+              @csrf
+              <div class="form-group">  
+                <label for="name">Your Name</label>
+                <input type="text" name="name" class="form-control" id="name" required>
               </div>
               <div class="form-group">
-                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                <label for="email">Your Email</label>
+                <input type="email" class="form-control" name="email" id="email" required>
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                <label for="subject">Subject</label>
+                <input type="text" class="form-control" name="subject" id="subject" required>
               </div>
               <div class="form-group">
-                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+                <label for="message">Message</label>
+                <textarea class="form-control" name="message" rows="5" required></textarea>
               </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
+          
+              <div class="text-center m-3">
+                <button type="submit" class="btn btn-primary ">Send Message</button>
               </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
             </form>
           </div>
+          
 
         </div>
 

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\train_station;
 use App\Models\train_schedule;
+use App\Mail\contactUs;
+use Illuminate\Support\Facades\Mail;
 
 use Illuminate\Http\Request;
 
@@ -31,4 +33,19 @@ class CommonController extends Controller
       dd($req);
 
     }
-}
+
+
+    function contactEmail(Request $req){
+
+   // $data for email template
+   $details  = [
+    'name'=>$req->name,
+    'email'=>$req->email,
+    'subject'=>$req->subject,
+    'message'=>$req->message,
+  
+   ];
+
+        Mail::to($req->email)->send(new contactUs($details));  
+    }
+} 

@@ -240,3 +240,7 @@ Route::get('delay_schedule/{id}',[scheduleController::class,'delaySchedule'])->n
 
 // cancel schedule 
 Route::get('cancel_schedule/{id}',[scheduleController::class,'cancelSchedule'])->name('cancel_schedule');
+
+
+// contact_us submit
+Route::post('contact_us',[CommonController::class,'contactEmail'])->name('contact_us');
