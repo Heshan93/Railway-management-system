@@ -14,7 +14,7 @@ class TrainSchedules extends Migration
     public function up()
     {
         Schema::create('train_schedules', function (Blueprint $table) {
-            $table->id();
+            $table->id('schedule_id');
             $table->dateTime('schedule_date');
             $table->text('stations');
             $table->integer('train_id');

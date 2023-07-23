@@ -232,3 +232,6 @@ Route::post('edit_schedule',[scheduleController::class,'editSchedule'])->name('e
 
 // Card payment submit
 Route::post('cardpayment',[paymentController::class,'makePayment'])->name('cardpayment');
+
+//delay schedule 
+Route::get('delay_schedule/{id}',[scheduleController::class,'delaySchedule'])->name('delay_schedule');

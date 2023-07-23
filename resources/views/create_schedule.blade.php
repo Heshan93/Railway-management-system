@@ -62,7 +62,7 @@
 
       <div class="mb-3">
         <label for="seatCat1" class="form-label"> Start Time</label>
-        <input type="text" required class="form-control" id="start_time" name="start_time" min="0" value="0">
+        <input type="time" required class="form-control" id="start_time" name="start_time" min="0" value="0">
       </div>
 
       <div class="mb-3">
@@ -77,7 +77,7 @@
 
       <div class="mb-3">
         <label for="seatCat1" class="form-label"> End Time</label>
-        <input type="text" required class="form-control" id="end_time" name="end_time" min="0" value="0">
+        <input type="time" required class="form-control" id="end_time" name="end_time" min="0" value="0">
       </div>
 
       <div class="mb-3">

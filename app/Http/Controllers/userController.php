@@ -18,6 +18,9 @@ class userController extends Controller
 
     public function registerUser(Request $req)
     {
+        if(!session()->has('pName')){
+
+       
         // Add validation 
         $req->validate([
             'firstName' => 'required',
@@ -57,6 +60,9 @@ class userController extends Controller
                 return back()->with('fail', 'Something went wrong. Please try again.');
             }
         }
+
+        }
+        return redirect('profile');
     }
 
     // Handle the passenger login process

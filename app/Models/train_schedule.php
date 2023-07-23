@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class train_schedule extends Model
 {
+    protected $primaryKey = 'schedule_id';
     use HasFactory;
     protected $fillable = [
         'schedule_date', 
