@@ -7,7 +7,8 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
   
-    <title>RailTrack :: Welcome to Online Ticket Booking Portal</title>
+    <title>Ticket Receipt - Payment Completed</title>
+
     <meta content="" name="description">
     <meta content="" name="keywords">
   
@@ -34,8 +35,9 @@
 
 <body marginheight="0" topmargin="0" marginwidth="0" style="margin: 0px; background-color: #f2f3f8;" leftmargin="0">
    
-
-  
+    <div class="card-header bg-primary text-white">
+        <h4 class="mb-0">Ticket Receipt - Payment Completed</h4>
+    </div>
             <div class="wr_content">
 
                             <!-- Item -->
@@ -100,13 +102,17 @@
 
                             </div>
 
+                            
                             <!-- Item -->
 
         
                         </div>
 
                         
-
+                        <div class="card-footer bg-light">
+                            <p>We have received your payment and confirmed your ticket booking.</p>
+                            <p>Thank you for choosing our railway service. Have a safe and pleasant journey!</p>
+                        </div>
                          <!-- Vendor JS Files -->
   <script src="{{asset('assets/vendor/purecounter/purecounter_vanilla.js')}}"></script>
   <script src="{{asset('assets/vendor/aos/aos.js')}}"></script>
