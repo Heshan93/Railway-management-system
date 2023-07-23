@@ -12,7 +12,7 @@ class CommonController extends Controller
     public function index()
     {
         $st_data = train_station::orderBy('st_name','ASC')->get();
-        $sched_data = train_schedule::select('train_schedules.*','trains.train_name')->join('trains','trains.train_id','train_schedules.train_id')->where('is_active',1)->orderBy('id','DESC')->get();
+        $sched_data = train_schedule::select('train_schedules.*','trains.train_name')->join('trains','trains.train_id','train_schedules.train_id')->where('is_active',1)->orderBy('schedule_id','DESC')->get();
         $data = array(
           'stations' => $st_data,
           'schedules' =>$sched_data 
