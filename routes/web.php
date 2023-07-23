@@ -204,6 +204,7 @@ Route::get('view_schedules',[scheduleController::class,'viewSchedules'])->name('
 
 //update schedule 
 Route::get('update_schedule/{id}',[scheduleController::class,'updateSchedule'])->name('update_schedule');
+
 Route::post('edit_schedule',[scheduleController::class,'editSchedule'])->name('edit_schedule');
 
 //re-schedule
@@ -235,3 +236,7 @@ Route::post('cardpayment',[paymentController::class,'makePayment'])->name('cardp
 
 //delay schedule 
 Route::get('delay_schedule/{id}',[scheduleController::class,'delaySchedule'])->name('delay_schedule');
+
+
+// cancel schedule 
+Route::get('cancel_schedule/{id}',[scheduleController::class,'cancelSchedule'])->name('cancel_schedule');

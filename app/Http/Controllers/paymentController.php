@@ -15,7 +15,7 @@ class paymentController extends Controller
 
          // $data for email template
          $details  = [
-            'name' => Session('AName'),
+           //
           ];
 
         Mail::to( Session('passenger_email'))->send(new TickeReceipt($details));  

@@ -75,9 +75,9 @@
               <a class="dropdown-item" href="{{ "update_schedule/".$schd->schedule_id }}">Update</a>
               <a class="dropdown-item" href="{{ "delay_schedule/".$schd->schedule_id }}">Add Delays</a>
               <a class="dropdown-item" href="{{ "reschedule/".$schd->schedule_id }}">Re-schedule</a>
-              <a class="dropdown-item" href="#{{-- {{ "update_schedule/".$schd->id }} --}}">cancelation</a>
+              <a class="dropdown-item" href="{{ "cancel_schedule/".$schd->schedule_id }}">cancelation</a>
               <!-- <a class="dropdown-item" href="#">Update Location</a> -->
-              <a class="dropdown-item" href="{{ "delete_schedule/".$schd->id }}">Delete</a>
+              <a class="dropdown-item" href="{{ "delete_schedule/".$schd->schedule_id }}">Delete</a>
             </div>
           </div>
         </td>

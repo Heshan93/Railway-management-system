@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\TickeReceipt;
 use App\Models\ticket;
+use App\Mail\cancelSchedule;
 
 class scheduleController extends Controller
 {
@@ -213,7 +214,7 @@ class scheduleController extends Controller
     function delaySchedule($id){
 
 
-        //Get all the tickets with the specified train_id
+        //Get all the tickets with the schedule_id 
         $tickets = Ticket::where('schedule_id',$id)->get();
         $schedule = train_schedule::where('schedule_id',$id)->first();
 
@@ -247,41 +248,62 @@ class scheduleController extends Controller
             }
         }
 
-
-
-
-
-
-
-
-
-/* //get all cancel tickets using train ids
-$trainId = ticket::where('train_id',$id)->get(); 
-
-//get passenger email from 
-
-   
-      //get all cancel ticket train ids
-
-
-        foreach($trainId as $tId){
-            
-            dd($tId->passenger_id);
-        $passenger = passenger::where('train_id',$tId->passenger_id)->get(); //get related data
-
-       
-        //send mails loop start
-        foreach($passenger as $passenger){
-
-             // $data for email template
-          $details  = [
-            'name' => Session('AName'),
-            'name' => Session('AName'),
-          ];
-
-        Mail::to($passenger->email)->send(new DelaySchedule($details));  
-        }
-    } */
     }
+
+
+    function cancelSchedule($id){
+            
+
+ 
+
+
+
+        //Get all the tickets with the schedule_id 
+        $tickets = Ticket::where('schedule_id',$id)->get();
+        $schedule = train_schedule::where('schedule_id',$id)->first();
+
+        // Loop through each ticket
+        foreach ($tickets as $ticket) {
+
+            
+   
+            $passengerId = $ticket->passenger_id;
+
+            //Get the passenger's email address using the passenger_id
+            $passenger = Passenger::where('passenger_id', $passengerId)->first();
+
+            if ($passenger) {
+
+                $passengerEmail = $passenger->email;
+
+                      // Pass ticket details to the email template
+            $details = [
+                'train_name' => $ticket->train_name,
+                'start_station' => $ticket->start_station,
+                'end_station' => $ticket->end_station,
+                'start_time' => $ticket->start_time,
+                'end_time' => $ticket->end_time,
+                'delay' => $schedule->delay,
+
+            ];
+
+                //send email
+                Mail::to($passengerEmail)->send(new cancelSchedule($details));   
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+        
+
+
+        }
 
 }
