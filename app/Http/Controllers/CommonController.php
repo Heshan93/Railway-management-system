@@ -57,6 +57,8 @@ class CommonController extends Controller
    ];
 
         Mail::to($req->email)->send(new contactUs($details));  
+
+        return redirect('/');
     }
 
 
