@@ -9,7 +9,7 @@ $page_name = "Profile"
     <div class="container">
         <div class="row">
                 <!-- Start : Vertical Tabber -->
-                <div class="tab col-3">
+                <div class="tab col-3" data-aos="fade-up" data-aos-delay="300">
                     <button class="tablinks d-flex align-items-center " onclick="openContent(event, 'activeTicket')" id="defaultOpen">
                         <svg width="24" height="24" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M4.14645 5.14645C4.05268 5.24021 4 5.36739 4 5.5C4 5.63261 4.05268 5.75979 4.14645 5.85355C4.24021 5.94732 4.36739 6 4.5 6H11.5C11.6326 6 11.7598 5.94732 11.8536 5.85355C11.9473 5.75979 12 5.63261 12 5.5C12 5.36739 11.9473 5.24021 11.8536 5.14645C11.7598 5.05268 11.6326 5 11.5 5H4.5C4.36739 5 4.24021 5.05268 4.14645 5.14645Z"/>
@@ -42,7 +42,7 @@ $page_name = "Profile"
                     </button>
                 </div>
 
-                <div class="col-9 wr_tabcontent">
+                <div class="col-9 wr_tabcontent" data-aos="fade-up" data-aos-delay="300">
                     <div id="activeTicket" class="tabcontent">
                         <h2 class="titleTabContent">Active Tickets</h2>
                         <div class="wr_content">
