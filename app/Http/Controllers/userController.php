@@ -316,6 +316,7 @@ class userController extends Controller
    
    
                    return redirect('dashboard');
+                   
                } else {
                    return back()->with('fail', 'This password is not correct');
                }

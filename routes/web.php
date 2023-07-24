@@ -30,7 +30,7 @@ Route::get('/', [CommonController::class, 'index'])->name('index');
 Route::get('admin', function () {
     if (session()->has('AName')) {
 
-        return view('dashboard');
+        return redirect('dashboard');
     }
 
     return view('admin_login');
@@ -77,13 +77,19 @@ Route::get('reports', function () {
 
     //Load dashboard page if session is false
 
+
+    
+//passenger dashboard function
+Route::get('dashboard', [CommonController::class, 'dashboardWidget'])->name('dashboard');
+
+/* 
     Route::get('dashboard', function () {
         if (session()->has('AName')) {
 
             return view('dashboard');
         }
         return view('admin_login');
-    })->name('dashboard');
+    })->name('dashboard'); */
 
 //Load payment page if session is false
 
