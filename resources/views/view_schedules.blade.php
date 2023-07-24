@@ -8,6 +8,16 @@
 
 <div class="container-fluid">
   <h1>View Train Schedules</h1>
+  @if (Session::has('success'))
+
+      <div class="alert alert-success">{{Session::get('success')}} </div>
+
+      @endif
+
+      @if (Session::has('fail'))
+      <div class="alert alert-danger">{{Session::get('fail')}} </div>
+      @endif
+      {{-- new use success & fail message --}}
   <table class="table table-hover " style="width:100%">
     <thead>
       <tr>
@@ -73,11 +83,10 @@
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <a class="dropdown-item" href="{{ "update_schedule/".$schd->schedule_id }}">Update</a>
-              <a class="dropdown-item" href="{{ "delay_schedule/".$schd->schedule_id }}">Add Delays</a>
+              <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#delay-modal">Add Delays</a>
               <a class="dropdown-item" href="{{ "reschedule/".$schd->schedule_id }}">Re-schedule</a>
-              <a class="dropdown-item" href="{{ "cancel_schedule/".$schd->schedule_id }}">cancelation</a>
               <!-- <a class="dropdown-item" href="#">Update Location</a> -->
-              <a class="dropdown-item" href="{{ "delete_schedule/".$schd->schedule_id }}">Delete</a>
+              <a class="dropdown-item" href="{{ "delete_schedule/".$schd->schedule_id }}">Cancelation</a>
             </div>
           </div>
         </td>
@@ -87,6 +96,27 @@
     </tbody>
   </table>
 
+  <div class="modal" tabindex="-1" id="delay-modal">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <form action="{{route('delay_schedule')}}" method="post">
+        @csrf
+      <div class="modal-header">
+        <h5 class="modal-title">Update Train Delay</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" name="id" value="{{$schd->schedule_id}}">
+        <input class="form-control" type="number" name="time" value="00.00">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
 
 
 </div>

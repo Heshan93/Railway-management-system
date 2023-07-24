@@ -10,6 +10,8 @@
                 <p class="h8 py-3">Payment Details</p>
                 <div class="row gx-3">
                     <div class="col-12">
+                        <input type="hidden" name="id" value="{{$data['ticket_id']}}">
+                        <input type="hidden" name="id" value="{{$data['total']}}">
                         <div class="d-flex flex-column">
                             <p class="text mb-1">Person Name</p>
                             <input class="form-control mb-3" type="text" placeholder="Name" {{-- value="Barry Allen" --}}>
@@ -36,7 +38,7 @@
                     <div class="col-12">
                         <div class="row">
                             <button type="submit" class="btn btn-primary mb-3 w-100">
-                                <span class="ps-3">Pay $243</span>
+                                <span class="ps-3">Pay Rs. {{number_format($data['total'],2)}}</span>
                                 <span class="fas fa-arrow-right"></span>
                             </button>
                             <div class="col-12 mb-3">

@@ -250,3 +250,29 @@ Route::get('cancel_schedule/{id}',[scheduleController::class,'cancelSchedule'])-
 
 // contact_us submit
 Route::post('contact_us',[CommonController::class,'contactEmail'])->name('contact_us');
+
+
+//seach data
+Route::get('search_result',[CommonController::class,'searchData'])->name('search_result');
+
+//checkout
+Route::get('book-tour/{data}',[paymentController::class,'loadCheckout'])->name('book_tour');
+
+//create ticket
+Route::post('create-ticket',[paymentController::class,'createTicket'])->name('create-ticket');
+
+//add promotion
+Route::get('add-promotion',[CommonController::class,'addPromotion'])->name('add-promotion');
+
+Route::post('create-promotion',[CommonController::class,'createPromotion'])->name('create-promotion');
+
+//edit promotion
+Route::get('edit-promotion/{id}',[CommonController::class,'editPromotion'])->name('edit-promotion');
+
+Route::post('update-promotion',[CommonController::class,'updatePromotion'])->name('update-promotion');
+
+//view=promotion
+Route::get('view-promotions',[CommonController::class,'viewPromotions'])->name('view-promotions');
+
+//remove=promotion
+Route::get('delete-promotion/{id}',[CommonController::class,'removePromotion'])->name('delete-promotions');

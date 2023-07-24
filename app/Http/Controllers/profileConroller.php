@@ -9,6 +9,7 @@ use App\Models\train_station;
 use App\Models\passenger;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use App\Models\promotion;
 
 class profileConroller extends Controller
 {
@@ -22,7 +23,7 @@ class profileConroller extends Controller
 
             $data = DB::table('tickets')
             ->where('tickets.passenger_id', Session('passenger_id'))
-            ->where('tickets.end_time', '>', $currentDateTime) // Check if the ticket end_time is greater than current date and time
+            ->where('tickets.created_at', '>', $currentDateTime) // Check if the ticket end_time is greater than current date and time
             
             ->get();
     
@@ -31,14 +32,16 @@ class profileConroller extends Controller
                     // Get all the records for the passenger where the ticket has expired
                     $history = DB::table('tickets')
                     ->where('tickets.passenger_id', Session('passenger_id'))
-                    ->where('tickets.end_time', '<', $currentDateTime) // Check if the ticket end_time is less than current date and time
+                    ->where('tickets.created_at', '<', $currentDateTime) // Check if the ticket end_time is less than current date and time
                     ->get();
-                
+
                     $Passenger = passenger::where('passenger_id', Session('passenger_id'))->first();
            
     
             return  view('profile',[
                 
+                'stations'=>train_station::orderBy('st_name','ASC')->get(),
+                'promos'=>promotion::where('is_active',1)->get(),
                 'item'=>$data,
                 'history'=>$history,
                 'Passenger'=>$Passenger,
