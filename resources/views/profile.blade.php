@@ -49,7 +49,7 @@ $page_name = "Profile"
           </svg>
           <h5 class="mb-0 ms-3">Personal Information</h5>
         </button>
-
+        
         @foreach($promos as $p)
         @if($p->promo_id==$Passenger->promo_id && $Passenger->promo_used==0)
         <div class="card text-center mt-3 border-primary">
@@ -90,13 +90,14 @@ $page_name = "Profile"
                   <div class="">
                     <!-- Train No. and Name -->
                     <div class="trainName text-primary-emphasis">Ticket ID #{{$item->tc_number}}
-                      <b>{{$item->train_name}}</b></div>
-                    <div class="d-md-flex align-items-center wr-trainClass text-secondary">
-                      <!-- Train Class -->
-                      <div class="trainClass pe-2">{{$item->seat_cat}} Class</div>
-                      <div class="pe-2 d-none d-md-block">•</div>
-                      <div class="trainClass pe-2">{{$item->seats}} Seat/s</div>
-
+                      <b>{{$item->train_name}}</b>&nbsp;&nbsp;&nbsp;
+                      <?php 
+                        $delay = $item->delay;
+                        $pieces = explode(":", $delay);
+                        $hrs = $pieces[0]==0?'':($pieces[0]==1?$pieces[0].' hr & ' :$pieces[0].' hrs & ' );
+                        $mns = $pieces[1]==0?'0 mins delay':($pieces[1]==1?$pieces[1].' min delay' :$pieces[1].' mins delay' );
+                      ?>
+                      <span class="badge bg-danger">{{$hrs.$mns}}</span>
                     </div>
 
                   </div>
@@ -140,6 +141,10 @@ $page_name = "Profile"
                 <div class="tarainTag d-flex align-items-center">
                   <span class="trainTagIcon pe-1"><img src="{{asset('assets/img/lunch-1.png')}}" /></span> Buffet
                 </div>
+
+                <div class="tarainTag text-right text-primary fw-bold">
+                  <i class="fa fa-subway" aria-hidden="true">  ...</i>
+   <i class="fa fa-map-marker" ></i> {{$item->track_station_text}}</div>
 
               </div>
 

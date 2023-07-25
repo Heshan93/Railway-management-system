@@ -63,7 +63,11 @@ class CommonController extends Controller
   }
 
 
-
+  public function addPromotion()
+  { if(session()->has('AName')){
+    return view('add-promotion');
+  }
+  }
 
 
   public function createPromotion(Request $req)

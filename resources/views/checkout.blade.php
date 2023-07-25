@@ -73,7 +73,7 @@ $page_name = "Checkout"
 
                                 <input id="form1" min="1" name="quantity" value="{{$data['nofp']}}" type="number"
                                   max='{{$data["cls"]=="1"?$c1:(($data["cls"]=="2")?$c2:$c3)}}' readonly
-                                  class="form-control form-control-sm" />
+                                  class="form-control form-control-sm " style="width: 42px"/>
 
                                 <button class="btn btn-link px-1 seat_adjust"
                                   onclick="this.parentNode.querySelector('input[type=number]').stepUp()">

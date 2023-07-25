@@ -20,7 +20,7 @@
       <div class="alert alert-danger">{{Session::get('fail')}} </div>
       @endif
       {{-- new use success & fail message --}}
-      <input type="hidden" name="id" id="" value="{{$schd->id}}">
+      <input type="hidden" name="id" id="" value="{{$schd->schedule_id}}">
       <div class="mb-3">
         <label for="schedule-date" class="form-label">Schedule Date</label>
         <input class="form-control" required type="date" id="schedule-date" name="schedule_date" value={{$schd->schedule_date}}>

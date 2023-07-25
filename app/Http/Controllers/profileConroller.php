@@ -21,7 +21,7 @@ class profileConroller extends Controller
         if (session()->has('pName')) {
 
 
-            $data = DB::table('tickets')
+            $data = ticket::select('tickets.*','train_schedules.delay','train_schedules.track_station_text')->join('train_schedules','train_schedules.schedule_id','tickets.schedule_id')
             ->where('tickets.passenger_id', Session('passenger_id'))
             ->where('tickets.created_at', '>', $currentDateTime) // Check if the ticket end_time is greater than current date and time
             
@@ -37,7 +37,7 @@ class profileConroller extends Controller
 
                     $Passenger = passenger::where('passenger_id', Session('passenger_id'))->first();
            
-    
+            
             return  view('profile',[
                 
                 'stations'=>train_station::orderBy('st_name','ASC')->get(),

@@ -18,7 +18,7 @@ class CreateTicketsTable extends Migration
             $table->bigInteger('passenger_id');
             $table->integer('schedule_id');
             $table->decimal('amount', 8, 2);
-            $table->decimal('paid_amount', 8, 2);
+            $table->decimal('paid_amount', 8, 2)->default(0);
             $table->integer('payment_status')->default(0);
             $table->decimal('discount', 8, 2)->default(0);
             $table->string('start_station');

@@ -16,9 +16,9 @@ class CreateTrainsTable extends Migration
         Schema::create('trains', function (Blueprint $table) {
             $table->id('train_id');
             $table->string('train_name');
-            $table->integer('seat_cat_1');
-            $table->integer('seat_cat_2');
-            $table->integer('seat_cat_3');
+            $table->integer('seat_cat_1')->nullable();
+            $table->integer('seat_cat_2')->nullable();
+            $table->integer('seat_cat_3')->nullable();
             $table->dateTime('start_time')->nullable();
             $table->string('start_station')->nullable();
             $table->dateTime('end_station')->nullable();

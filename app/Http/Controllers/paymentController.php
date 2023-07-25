@@ -26,7 +26,7 @@ class paymentController extends Controller
           $update_ticket = ticket::where('tc_number',$req->id)->update(['paid_amount'=>$req->total,'payment_status'=>1]);
 
         Mail::to( Session('passenger_email'))->send(new TickeReceipt($details));  
-     
+          return redirect('profile');
     }
 
     public function loadCheckout(Request $req)
@@ -59,6 +59,7 @@ class paymentController extends Controller
     public function createTicket(Request $req)
     {
        try {
+        
             $sche_data = train_schedule::select('train_schedules.*','trains.train_name')->join('trains','trains.train_id','train_schedules.train_id')->where('schedule_id',$req->id)->first();
             
             $create_ticket = array(
