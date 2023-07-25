@@ -16,7 +16,7 @@ class profileConroller extends Controller
     function getTrainData()
     {
        // Get the current date and time
-       $currentDateTime = date('Y-m-d H:i:s');
+       $currentDateTime = date('Y-m-d');
 
         if (session()->has('pName')) {
 

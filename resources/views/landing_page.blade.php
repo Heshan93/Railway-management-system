@@ -128,970 +128,200 @@
 
           <div class="tab-content" id="myTabContent">
 
-            <!-- ================== One-way ========================= -->
-            <div class="tab-pane fade show active" id="oneway-tab-pane" role="tabpanel" aria-labelledby="oneway-tab"
-              tabindex="0">
+              <!-- ================== One-way ========================= -->
+              <div class="tab-pane fade show active" id="oneway-tab-pane" role="tabpanel" aria-labelledby="oneway-tab" tabindex="0">
+      
+                <div class="d-sm-flex justify-content-between mb-3 align-items-center">
+                  <div class="text-body-emphasis"><h6>Colombo  <span class="text-body-tertiary"> > </span> Bandarawela</h6></div>
+                  <div class="text-body-secondary"><h6>Sat, 10 August 2023</h6></div>
+                </div>
+      
+                @foreach($data['schedules'] as $key=>$sh)
 
-              <div class="d-sm-flex justify-content-between mb-3 align-items-center">
-                <div
-                  class="text-body-emphasis {{$data['filter']['st_start']!=0 && $data['filter']['st_end']!=0 ? '':'d-none'}}">
-                  <h6>
+                <div class="card-searchResult">
+      
+                  <div class="d-md-flex justify-content-between px-md-3">
+        
+                    <div class="d-md-flex align-items-md-center mb-2">
+                      <div class="train-icon me-3 mt-1 my-md-0 mb-1"><img src="{{asset('assets/img/train-icon.png')}}" /></div>
+                      <div class="">
+                        <!-- Train No. and Name -->
+                        <div class="trainName text-primary-emphasis">#{{$sh->id}} <b>{{$sh->train_name}}</b></div>
+                        <div class="d-md-flex align-items-center wr-trainClass text-secondary">
+                          <!-- Train Class -->
+                          <div class="trainClass pe-2">2nd Class</div>
+                          <div class="pe-2 d-none d-md-block">•</div>
+                          <!-- Available Seats -->
+                          <div class="trainClass">{{$sh->class_2_seats - $sh->booked_class_2_seats}} Seats Available</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Ticket Price -->
+                    <div class="ticketPrice fw-bold mb-2 mb-md-0 d-inline-block">LKR 1500.00</div>
+                  </div>
+                  
+        
+                  <div class="destinationDeparture d-md-flex justify-content-between px-md-3">
+                    <div class="wr-departure fw-semibold">
+                      <!-- Departure Station -->
+                      @foreach($data['stations'] as $st)
+                      <div class="departureStation text-dark {{$st->st_no==$sh->start_station?'':'d-none'}}">{{$st->st_name}}</div>
+                      @endforeach
+                      <!-- Departure Time -->
+                      <div class="departureTime">{{date("H:i:s", strtotime($sh->start_time))}}</div>
+                    </div>
+                    </div>
+                    <div class="wr-destination fw-semibold text-md-end mt-1 mt-md-0">
+                      <!-- Destination Station -->
+                      @foreach($data['stations'] as $st)
+                      <div class="departureStation text-dark {{$st->st_no==$sh->end_station?'':'d-none'}}">{{$st->st_name}}</div>
+                      @endforeach
+                      <!-- Destination Time -->
+                      <div class="destinationTime">5:30 AM</div>
+                    </div>
+                  </div>
+        
+                  <div class="w-100 breakerLine my-2"></div>
+                  
+                  <!-- Train Tags -->
+                  <div class="wr-trainTags d-flex">
                     
-                    @foreach($data['stations'] as $st)
-                    {{$data['filter']['st_start']==$st->st_no?$st->st_name:''}}
-                   
-                    @endforeach
+                    <div class="tarainTag">Express</div>
 
-                    <span class="text-body-tertiary"> > </span>
-                    @foreach($data['stations'] as $st)
-                    {{$data['filter']['st_end']==$st->st_no?$st->st_name:''}}
-                    @endforeach
-                  </h6>
+                    <div class="tarainTag d-flex align-items-center">
+                      <span class="trainTagIcon pe-1"><img src="{{asset('assets/img/lunch-1.png')}}" /></span> Buffet
+                    </div>
+        
+                  </div>
+        
                 </div>
-                <div
-                  class="text-body-emphasis {{$data['filter']['st_start']==0 && $data['filter']['st_end']==0 ? '':'d-none'}}">
-                  <h6>All Stations</h6>
-                </div>
-                <div class="text-body-secondary">
-                  <h6>{{$data['filter']['sch_datef']}} to {{$data['filter']['sch_datet']}}</h6>
-                </div>
-              </div>
-
-              @foreach($data['schedules'] as $key=>$sh)
-              <?php
-                $c1 = $sh->class_1_seats - $sh->booked_class_1_seats;
-                $c2 = $sh->class_2_seats - $sh->booked_class_2_seats;
-                $c3 = $sh->class_3_seats - $sh->booked_class_3_seats;
+                @endforeach
                 
-                $c1_st_seat_price = 0;
-                $c2_st_seat_price = 0;
-                $c3_st_seat_price = 0;
-                $c1_end_seat_price = 0;
-                $c2_end_seat_price = 0;
-                $c3_end_seat_price = 0;
-                $c1_total = 0;
-                $c2_total = 0;
-                $c3_total = 0;
-
-                foreach ($data['stations'] as $st) {
-                  if($data['filter']['st_start']==$st->st_no){
-                    $c1_st_seat_price = $st->ft_class_seat;
-                    $c2_st_seat_price = $st->snd_class_seat;
-                    $c3_st_seat_price = $st->trd_class_seat;
-                  }
-                  if($data['filter']['st_end']==$st->st_no){
-                    $c1_end_seat_price = $st->ft_class_seat;
-                    $c2_end_seat_price = $st->snd_class_seat;
-                    $c3_end_seat_price = $st->trd_class_seat;
-                  }
-                  if($data['filter']['st_start']==0 && $st->st_no == $sh->start_station){
-                    $c1_st_seat_price = $st->ft_class_seat;
-                    $c2_st_seat_price = $st->snd_class_seat;
-                    $c3_st_seat_price = $st->trd_class_seat;
-                  }
-                  if($data['filter']['st_end']==0 && $st->st_no == $sh->end_station){
-                    $c1_end_seat_price = $st->ft_class_seat;
-                    $c2_end_seat_price = $st->snd_class_seat;
-                    $c3_end_seat_price = $st->trd_class_seat;
-                  }
-                }
+              </div>
+              <!-- ================== One-way ========================= -->
+      
+              <!-- ================== Return ========================= -->
+              <div class="tab-pane fade" id="return-tab-pane" role="tabpanel" aria-labelledby="return-tab" tabindex="0">
+      
+                <div class="d-sm-flex justify-content-between mb-3 align-items-center">
+                  <div class="text-body-emphasis"><h6>Bandarawela  <span class="text-body-tertiary"> > </span> Colombo</h6></div>
+                  <div class="text-body-secondary"><h6>Sat, 11 August 2023</h6></div>
+                </div>
+      
+      
                 
-                $c1_total = abs($c1_end_seat_price - $c1_st_seat_price);
-                $c2_total = abs($c2_end_seat_price - $c2_st_seat_price);
-                $c3_total = abs($c3_end_seat_price - $c3_st_seat_price);
-
-                $filter_dif = $data['filter']['st_start'] - $data['filter']['st_end'];
-                $data_dif = $sh->start_station - $sh->end_station;
-                $filter_state = $filter_dif>=0?'P':'N';
-                $data_state = $data_dif>=0?'P':'N';
-
-              ?>
-
-              @if($filter_state == $data_state && $data['filter']['search']==true)
-              @if($c1>=$data['filter']['pssngrs'] && $c1>0 && ( $data['filter']['cls']==0 || $data['filter']['cls']==1))
-              <a href="{{ "book-tour/".encrypt($sh->schedule_id.",".$data['filter']['pssngrs'].",1,".$c1_total.",".$data['filter']['st_start'].",".$data['filter']['st_end']) }}">
-              <div class="card-searchResult hover-card">
-
-                <div class="d-md-flex justify-content-between px-md-3">
-
-                  <div class="d-md-flex align-items-md-center mb-2">
-                    <div class="train-icon me-3 mt-1 my-md-0 mb-1"><img src="{{asset('assets/img/train-icon.png')}}" />
-                    </div>
-                    <div class="">
-                      <!-- Train No. and Name -->
-                      <div class="trainName text-primary-emphasis">#{{$sh->id}} <b>{{$sh->train_name}}</b></div>
-                      <div class="d-md-flex align-items-center wr-trainClass text-secondary">
-                        <!-- Train Class -->
-                        <div class="trainClass pe-2">1st Class</div>
-                        <div class="pe-2 d-none d-md-block">•</div>
-                        <!-- Available Seats -->
-                        <div class="trainClass">{{$c1}} Seats Available</div>
-
+                <div class="card-searchResult">
+      
+                  <div class="d-md-flex justify-content-between px-md-3">
+        
+                    <div class="d-md-flex align-items-md-center mb-2">
+                      <div class="train-icon me-3 mt-1 my-md-0 mb-1"><img src="{{asset('assets/img/train-icon.png')}}" /></div>
+                      <div class="">
+                        <!-- Train No. and Name -->
+                        <div class="trainName text-primary-emphasis">#1143 <b>Ella Oddyssy</b></div>
+                        <div class="d-md-flex align-items-center wr-trainClass text-secondary">
+                          <!-- Train Class -->
+                          <div class="trainClass pe-2">1st Class</div>
+                          <div class="pe-2 d-none d-md-block">•</div>
+                          <!-- Available Seats -->
+                          <div class="trainClass">20 Seats Available</div>
+                        </div>
                       </div>
                     </div>
+
+                    <!-- Ticket Price -->
+                    <div class="ticketPrice fw-bold mb-2 mb-md-0 d-inline-block">LKR 5000.00</div>
                   </div>
-
-                  <!-- Ticket Price -->
-                  <div class="ticketPrice fw-bold mb-2 mb-md-0 d-inline-block">LKR {{number_format($c1_total,2)}}</div>
-                </div>
-
-
-                <div class="destinationDeparture d-md-flex justify-content-between px-md-3">
-                  <div class="wr-departure fw-semibold">
-                    <!-- Departure Station -->
-                    @foreach($data['stations'] as $st)
-                    <div class="departureStation text-dark {{$st->st_no==$sh->start_station?'':'d-none'}}">
-                      {{$st->st_name}}</div>
-                    @endforeach
-                    <!-- Departure Time -->
-                    <div class="departureTime">{{date("H:i:s", strtotime($sh->start_time))}}</div>
-                  </div>
-                  <div class="wr-destination fw-semibold text-md-end mt-1 mt-md-0">
-                    <!-- Destination Station -->
-                    @foreach($data['stations'] as $st)
-                    <div class="departureStation text-dark {{$st->st_no==$sh->end_station?'':'d-none'}}">
-                      {{$st->st_name}}</div>
-                    @endforeach
-                    <!-- Destination Time -->
-                    <div class="destinationTime">{{date("H:i:s", strtotime($sh->end_time))}}</div>
-                  </div>
-                </div>
-
-                <div class="w-100 breakerLine my-2"></div>
-
-                <!-- Train Tags -->
-                <div class="wr-trainTags d-flex">
-
-                  <div class="tarainTag">Express</div>
-
-                  <div class="tarainTag d-flex align-items-center">
-                    <span class="trainTagIcon pe-1"><img src="{{asset('assets/img/lunch-1.png')}}" /></span> Buffet
-                  </div>
-
-                </div>
-
-              </div>
-              </a>
-              @endif
-
-              @if($c2>=$data['filter']['pssngrs'] && $c2>0 && ($data['filter']['cls']==0 || $data['filter']['cls']==2))
-              <a href="{{ "book-tour/".encrypt($sh->schedule_id.",".$data['filter']['pssngrs'].",2,".$c2_total.",".$data['filter']['st_start'].",".$data['filter']['st_end']) }}">
-              <div class="card-searchResult hover-card">
-
-                <div class="d-md-flex justify-content-between px-md-3">
-
-                  <div class="d-md-flex align-items-md-center mb-2">
-                    <div class="train-icon me-3 mt-1 my-md-0 mb-1"><img src="{{asset('assets/img/train-icon.png')}}" />
+                  
+        
+                  <div class="destinationDeparture d-md-flex justify-content-between px-md-3">
+                    <div class="wr-departure fw-semibold">
+                      <!-- Departure Station -->
+                      <div class="departureStation text-dark">Bandarawela</div>
+                      <!-- Departure Time -->
+                      <div class="departureTime">8:30 PM</div>
                     </div>
-                    <div class="">
-                      <!-- Train No. and Name -->
-                      <div class="trainName text-primary-emphasis">#{{$sh->id}} <b>{{$sh->train_name}}</b></div>
-                      <div class="d-md-flex align-items-center wr-trainClass text-secondary">
-                        <!-- Train Class -->
-                        <div class="trainClass pe-2">2nd Class</div>
-                        <div class="pe-2 d-none d-md-block">•</div>
-                        <!-- Available Seats -->
-                        <div class="trainClass">{{$c2}} Seats Available</div>
-
+                    <div class="wr-destination fw-semibold text-md-end mt-1 mt-md-0">
+                      <!-- Destination Station -->
+                      <div class="destinationStation text-dark">Colombo Fort</div>
+                      <!-- Destination Time -->
+                      <div class="destinationTime">5:30 AM</div>
+                    </div>
+                  </div>
+        
+                  <div class="w-100 breakerLine my-2"></div>
+                  
+                  <!-- Train Tags -->
+                  <div class="wr-trainTags d-flex">
+                    
+                    <div class="tarainTag">Express</div>
+                    
+                    <div class="tarainTag d-flex align-items-center">
+                      <span class="trainTagIcon pe-1"><img src="{{asset('assets/img/lunch-1.png')}}" /></span> Buffet
+                    </div>
+        
+                  </div>
+        
+                </div>
+      
+                <div class="card-searchResult">
+      
+                  <div class="d-md-flex justify-content-between px-md-3">
+        
+                    <div class="d-md-flex align-items-md-center mb-2">
+                      <div class="train-icon me-3 mt-1 my-md-0 mb-1"><img src="{{asset('assets/img/train-icon.png')}}" /></div>
+                      <div class="">
+                        <!-- Train No. and Name -->
+                        <div class="trainName text-primary-emphasis">#1143 <b>Podi Menike</b></div>
+                        <div class="d-md-flex align-items-center wr-trainClass text-secondary">
+                          <!-- Train Class -->
+                          <div class="trainClass pe-2">2nd Class</div>
+                          <div class="pe-2 d-none d-md-block">•</div>
+                          <!-- Available Seats -->
+                          <div class="trainClass">7 Seats Available</div>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  <!-- Ticket Price -->
-                  <div class="ticketPrice fw-bold mb-2 mb-md-0 d-inline-block">LKR {{number_format($c2_total,2)}}</div>
+                    <!-- Ticket Price -->
+                    <div class="ticketPrice fw-bold mb-2 mb-md-0 d-inline-block">LKR 1500.00</div>
+                  </div>
+                  
+        
+                  <div class="destinationDeparture d-md-flex justify-content-between px-md-3">
+                    <div class="wr-departure fw-semibold">
+                      <!-- Departure Station -->
+                      <div class="departureStation text-dark">Bandarawela</div>
+                      <!-- Departure Time -->
+                      <div class="departureTime">8:30 PM</div>
+                    </div>
+                    <div class="wr-destination fw-semibold text-md-end mt-1 mt-md-0">
+                      <!-- Destination Station -->
+                      <div class="destinationStation text-dark">Colombo Fort</div>
+                      <!-- Destination Time -->
+                      <div class="destinationTime">5:30 AM</div>
+                    </div>
+                  </div>
+        
+                  <div class="w-100 breakerLine my-2"></div>
+                  
+                  <!-- Train Tags -->
+                  <div class="wr-trainTags d-flex">
+                    
+                    <div class="tarainTag">Express</div>
+                    
+                    <div class="tarainTag d-flex align-items-center">
+                      <span class="trainTagIcon pe-1"><img src="{{asset('assets/img/lunch-1.png')}}" /></span> Buffet
+                    </div>
+        
+                  </div>
+        
                 </div>
-
-
-                <div class="destinationDeparture d-md-flex justify-content-between px-md-3">
-                  <div class="wr-departure fw-semibold">
-                    <!-- Departure Station -->
-                    @foreach($data['stations'] as $st)
-                    <div class="departureStation text-dark {{$st->st_no==$sh->start_station?'':'d-none'}}">
-                      {{$st->st_name}}</div>
-                    @endforeach
-                    <!-- Departure Time -->
-                    <div class="departureTime">{{date("H:i:s", strtotime($sh->start_time))}}</div>
-                  </div>
-                  <div class="wr-destination fw-semibold text-md-end mt-1 mt-md-0">
-                    <!-- Destination Station -->
-                    @foreach($data['stations'] as $st)
-                    <div class="departureStation text-dark {{$st->st_no==$sh->end_station?'':'d-none'}}">
-                      {{$st->st_name}}</div>
-                    @endforeach
-                    <!-- Destination Time -->
-                    <div class="destinationTime">{{date("H:i:s", strtotime($sh->end_time))}}</div>
-                  </div>
-                </div>
-
-                <div class="w-100 breakerLine my-2"></div>
-
-                <!-- Train Tags -->
-                <div class="wr-trainTags d-flex">
-
-                  <div class="tarainTag">Express</div>
-
-                  <div class="tarainTag d-flex align-items-center">
-                    <span class="trainTagIcon pe-1"><img src="{{asset('assets/img/lunch-1.png')}}" /></span> Buffet
-                  </div>
-
-                </div>
-
+      
               </div>
-              </a>
-              @endif
-
-              @if($c3>=$data['filter']['pssngrs'] && $c3>0 && ($data['filter']['cls']==0 || $data['filter']['cls']==3))
-              <a href="{{ "book-tour/".encrypt($sh->schedule_id.",".$data['filter']['pssngrs'].",3,".$c3_total.",".$data['filter']['st_start'].",".$data['filter']['st_end']) }}">
-              <div class="card-searchResult hover-card">
-
-                <div class="d-md-flex justify-content-between px-md-3">
-
-                  <div class="d-md-flex align-items-md-center mb-2">
-                    <div class="train-icon me-3 mt-1 my-md-0 mb-1"><img src="{{asset('assets/img/train-icon.png')}}" />
-                    </div>
-                    <div class="">
-                      <!-- Train No. and Name -->
-                      <div class="trainName text-primary-emphasis">#{{$sh->id}} <b>{{$sh->train_name}}</b></div>
-                      <div class="d-md-flex align-items-center wr-trainClass text-secondary">
-                        <!-- Train Class -->
-                        <div class="trainClass pe-2">3rd Class</div>
-                        <div class="pe-2 d-none d-md-block">•</div>
-                        <!-- Available Seats -->
-                        <div class="trainClass">{{$c3}} Seats Available</div>
-
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Ticket Price -->
-                  <div class="ticketPrice fw-bold mb-2 mb-md-0 d-inline-block">LKR {{number_format($c3_total,2)}}</div>
-                </div>
-
-
-                <div class="destinationDeparture d-md-flex justify-content-between px-md-3">
-                  <div class="wr-departure fw-semibold">
-                    <!-- Departure Station -->
-                    @foreach($data['stations'] as $st)
-                    <div class="departureStation text-dark {{$st->st_no==$sh->start_station?'':'d-none'}}">
-                      {{$st->st_name}}</div>
-                    @endforeach
-                    <!-- Departure Time -->
-                    <div class="departureTime">{{date("H:i:s", strtotime($sh->start_time))}}</div>
-                  </div>
-                  <div class="wr-destination fw-semibold text-md-end mt-1 mt-md-0">
-                    <!-- Destination Station -->
-                    @foreach($data['stations'] as $st)
-                    <div class="departureStation text-dark {{$st->st_no==$sh->end_station?'':'d-none'}}">
-                      {{$st->st_name}}</div>
-                    @endforeach
-                    <!-- Destination Time -->
-                    <div class="destinationTime">{{date("H:i:s", strtotime($sh->end_time))}}</div>
-                  </div>
-                </div>
-
-                <div class="w-100 breakerLine my-2"></div>
-
-                <!-- Train Tags -->
-                <div class="wr-trainTags d-flex">
-
-                  <div class="tarainTag">Express</div>
-
-                  <div class="tarainTag d-flex align-items-center">
-                    <span class="trainTagIcon pe-1"><img src="{{asset('assets/img/lunch-1.png')}}" /></span> Buffet
-                  </div>
-
-                </div>
-
-              </div>
-              </a>
-              @endif
-              @elseif( $data['filter']['search']==false)
-              @if($c1>=$data['filter']['pssngrs'] && $c1>0 && ( $data['filter']['cls']==0 || $data['filter']['cls']==1))
-              <a href="{{ "book-tour/".encrypt($sh->schedule_id.",".$data['filter']['pssngrs'].",1,".$c1_total.",".$data['filter']['st_start'].",".$data['filter']['st_end']) }}">
-              <div class="card-searchResult hover-card">
-
-                <div class="d-md-flex justify-content-between px-md-3">
-
-                  <div class="d-md-flex align-items-md-center mb-2">
-                    <div class="train-icon me-3 mt-1 my-md-0 mb-1"><img src="{{asset('assets/img/train-icon.png')}}" />
-                    </div>
-                    <div class="">
-                      <!-- Train No. and Name -->
-                      <div class="trainName text-primary-emphasis">#{{$sh->id}} <b>{{$sh->train_name}}</b></div>
-                      <div class="d-md-flex align-items-center wr-trainClass text-secondary">
-                        <!-- Train Class -->
-                        <div class="trainClass pe-2">1st Class</div>
-                        <div class="pe-2 d-none d-md-block">•</div>
-                        <!-- Available Seats -->
-                        <div class="trainClass">{{$c1}} Seats Available</div>
-
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Ticket Price -->
-                  <div class="ticketPrice fw-bold mb-2 mb-md-0 d-inline-block">LKR {{number_format($c1_total,2)}}</div>
-                </div>
-
-
-                <div class="destinationDeparture d-md-flex justify-content-between px-md-3">
-                  <div class="wr-departure fw-semibold">
-                    <!-- Departure Station -->
-                    @foreach($data['stations'] as $st)
-                    <div class="departureStation text-dark {{$st->st_no==$sh->start_station?'':'d-none'}}">
-                      {{$st->st_name}}</div>
-                    @endforeach
-                    <!-- Departure Time -->
-                    <div class="departureTime">{{date("H:i:s", strtotime($sh->start_time))}}</div>
-                  </div>
-                  <div class="wr-destination fw-semibold text-md-end mt-1 mt-md-0">
-                    <!-- Destination Station -->
-                    @foreach($data['stations'] as $st)
-                    <div class="departureStation text-dark {{$st->st_no==$sh->end_station?'':'d-none'}}">
-                      {{$st->st_name}}</div>
-                    @endforeach
-                    <!-- Destination Time -->
-                    <div class="destinationTime">{{date("H:i:s", strtotime($sh->end_time))}}</div>
-                  </div>
-                </div>
-
-                <div class="w-100 breakerLine my-2"></div>
-
-                <!-- Train Tags -->
-                <div class="wr-trainTags d-flex">
-
-                  <div class="tarainTag">Express</div>
-
-                  <div class="tarainTag d-flex align-items-center">
-                    <span class="trainTagIcon pe-1"><img src="{{asset('assets/img/lunch-1.png')}}" /></span> Buffet
-                  </div>
-
-                </div>
-
-              </div>
-              </a>
-              @endif
-
-              @if($c2>=$data['filter']['pssngrs'] && $c2>0 && ($data['filter']['cls']==0 || $data['filter']['cls']==2))
-              <a href="{{ "book-tour/".encrypt($sh->schedule_id.",".$data['filter']['pssngrs'].",2,".$c2_total.",".$data['filter']['st_start'].",".$data['filter']['st_end']) }}">
-              <div class="card-searchResult hover-card">
-
-                <div class="d-md-flex justify-content-between px-md-3">
-
-                  <div class="d-md-flex align-items-md-center mb-2">
-                    <div class="train-icon me-3 mt-1 my-md-0 mb-1"><img src="{{asset('assets/img/train-icon.png')}}" />
-                    </div>
-                    <div class="">
-                      <!-- Train No. and Name -->
-                      <div class="trainName text-primary-emphasis">#{{$sh->id}} <b>{{$sh->train_name}}</b></div>
-                      <div class="d-md-flex align-items-center wr-trainClass text-secondary">
-                        <!-- Train Class -->
-                        <div class="trainClass pe-2">2nd Class</div>
-                        <div class="pe-2 d-none d-md-block">•</div>
-                        <!-- Available Seats -->
-                        <div class="trainClass">{{$c2}} Seats Available</div>
-
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Ticket Price -->
-                  <div class="ticketPrice fw-bold mb-2 mb-md-0 d-inline-block">LKR {{number_format($c2_total,2)}}</div>
-                </div>
-
-
-                <div class="destinationDeparture d-md-flex justify-content-between px-md-3">
-                  <div class="wr-departure fw-semibold">
-                    <!-- Departure Station -->
-                    @foreach($data['stations'] as $st)
-                    <div class="departureStation text-dark {{$st->st_no==$sh->start_station?'':'d-none'}}">
-                      {{$st->st_name}}</div>
-                    @endforeach
-                    <!-- Departure Time -->
-                    <div class="departureTime">{{date("H:i:s", strtotime($sh->start_time))}}</div>
-                  </div>
-                  <div class="wr-destination fw-semibold text-md-end mt-1 mt-md-0">
-                    <!-- Destination Station -->
-                    @foreach($data['stations'] as $st)
-                    <div class="departureStation text-dark {{$st->st_no==$sh->end_station?'':'d-none'}}">
-                      {{$st->st_name}}</div>
-                    @endforeach
-                    <!-- Destination Time -->
-                    <div class="destinationTime">{{date("H:i:s", strtotime($sh->end_time))}}</div>
-                  </div>
-                </div>
-
-                <div class="w-100 breakerLine my-2"></div>
-
-                <!-- Train Tags -->
-                <div class="wr-trainTags d-flex">
-
-                  <div class="tarainTag">Express</div>
-
-                  <div class="tarainTag d-flex align-items-center">
-                    <span class="trainTagIcon pe-1"><img src="{{asset('assets/img/lunch-1.png')}}" /></span> Buffet
-                  </div>
-
-                </div>
-
-              </div>
-              </a>
-              @endif
-
-              @if($c3>=$data['filter']['pssngrs'] && $c3>0 && ($data['filter']['cls']==0 || $data['filter']['cls']==3))
-              <a href="{{ "book-tour/".encrypt($sh->schedule_id.",".$data['filter']['pssngrs'].",3,".$c3_total.",".$data['filter']['st_start'].",".$data['filter']['st_end']) }}">
-              <div class="card-searchResult hover-card">
-
-                <div class="d-md-flex justify-content-between px-md-3">
-
-                  <div class="d-md-flex align-items-md-center mb-2">
-                    <div class="train-icon me-3 mt-1 my-md-0 mb-1"><img src="{{asset('assets/img/train-icon.png')}}" />
-                    </div>
-                    <div class="">
-                      <!-- Train No. and Name -->
-                      <div class="trainName text-primary-emphasis">#{{$sh->id}} <b>{{$sh->train_name}}</b></div>
-                      <div class="d-md-flex align-items-center wr-trainClass text-secondary">
-                        <!-- Train Class -->
-                        <div class="trainClass pe-2">3rd Class</div>
-                        <div class="pe-2 d-none d-md-block">•</div>
-                        <!-- Available Seats -->
-                        <div class="trainClass">{{$c3}} Seats Available</div>
-
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Ticket Price -->
-                  <div class="ticketPrice fw-bold mb-2 mb-md-0 d-inline-block">LKR {{number_format($c3_total,2)}}</div>
-                </div>
-
-
-                <div class="destinationDeparture d-md-flex justify-content-between px-md-3">
-                  <div class="wr-departure fw-semibold">
-                    <!-- Departure Station -->
-                    @foreach($data['stations'] as $st)
-                    <div class="departureStation text-dark {{$st->st_no==$sh->start_station?'':'d-none'}}">
-                      {{$st->st_name}}</div>
-                    @endforeach
-                    <!-- Departure Time -->
-                    <div class="departureTime">{{date("H:i:s", strtotime($sh->start_time))}}</div>
-                  </div>
-                  <div class="wr-destination fw-semibold text-md-end mt-1 mt-md-0">
-                    <!-- Destination Station -->
-                    @foreach($data['stations'] as $st)
-                    <div class="departureStation text-dark {{$st->st_no==$sh->end_station?'':'d-none'}}">
-                      {{$st->st_name}}</div>
-                    @endforeach
-                    <!-- Destination Time -->
-                    <div class="destinationTime">{{date("H:i:s", strtotime($sh->end_time))}}</div>
-                  </div>
-                </div>
-
-                <div class="w-100 breakerLine my-2"></div>
-
-                <!-- Train Tags -->
-                <div class="wr-trainTags d-flex">
-
-                  <div class="tarainTag">Express</div>
-
-                  <div class="tarainTag d-flex align-items-center">
-                    <span class="trainTagIcon pe-1"><img src="{{asset('assets/img/lunch-1.png')}}" /></span> Buffet
-                  </div>
-
-                </div>
-
-              </div>
-              </a>
-              @endif
-              @endif
-              @endforeach
-
-
+              <!-- ================== Return  ========================= -->
             </div>
-            <!-- ================== One-way ========================= -->
-
-            <!-- ================== Return ========================= -->
-            <div class="tab-pane fade" id="return-tab-pane" role="tabpanel" aria-labelledby="return-tab" tabindex="0">
-
-              <div class="d-sm-flex justify-content-between mb-3 align-items-center">
-                <div
-                  class="text-body-emphasis {{$data['filter']['st_start']!=0 && $data['filter']['st_end']!=0 ? '':'d-none'}}">
-                  <h6>
-                    @foreach($data['stations'] as $st)
-                    {{$data['filter']['st_end']==$st->st_no?$st->st_name:''}}
-                    @endforeach
-
-                    <span class="text-body-tertiary"> > </span>
-                    @foreach($data['stations'] as $st)
-                    {{$data['filter']['st_start']==$st->st_no?$st->st_name:''}}
-                    @endforeach
-                  </h6>
-                </div>
-                <div
-                  class="text-body-emphasis {{$data['filter']['st_start']==0 && $data['filter']['st_end']==0 ? '':'d-none'}}">
-                  <h6>All Stations</h6>
-                </div>
-                <div class="text-body-secondary">
-                  <h6>{{$data['filter']['sch_datef']}} to {{$data['filter']['sch_datet']}}</h6>
-                </div>
-              </div>
-
-              @foreach($data['schedules'] as $key=>$sh)
-              <?php
-                $c1 = $sh->class_1_seats - $sh->booked_class_1_seats;
-                $c2 = $sh->class_2_seats - $sh->booked_class_2_seats;
-                $c3 = $sh->class_3_seats - $sh->booked_class_3_seats;
-                
-                $c1_st_seat_price = 0;
-                $c2_st_seat_price = 0;
-                $c3_st_seat_price = 0;
-                $c1_end_seat_price = 0;
-                $c2_end_seat_price = 0;
-                $c3_end_seat_price = 0;
-                $c1_total = 0;
-                $c2_total = 0;
-                $c3_total = 0;
-
-                foreach ($data['stations'] as $st) {
-                  if($data['filter']['st_start']==$st->st_no){
-                    $c1_st_seat_price = $st->ft_class_seat;
-                    $c2_st_seat_price = $st->snd_class_seat;
-                    $c3_st_seat_price = $st->trd_class_seat;
-                  }
-                  if($data['filter']['st_end']==$st->st_no){
-                    $c1_end_seat_price = $st->ft_class_seat;
-                    $c2_end_seat_price = $st->snd_class_seat;
-                    $c3_end_seat_price = $st->trd_class_seat;
-                  }
-                  if($data['filter']['st_start']==0 && $st->st_no == $sh->start_station){
-                    $c1_st_seat_price = $st->ft_class_seat;
-                    $c2_st_seat_price = $st->snd_class_seat;
-                    $c3_st_seat_price = $st->trd_class_seat;
-                  }
-                  if($data['filter']['st_end']==0 && $st->st_no == $sh->end_station){
-                    $c1_end_seat_price = $st->ft_class_seat;
-                    $c2_end_seat_price = $st->snd_class_seat;
-                    $c3_end_seat_price = $st->trd_class_seat;
-                  }
-                }
-                
-                $c1_total = abs($c1_end_seat_price - $c1_st_seat_price);
-                $c2_total = abs($c2_end_seat_price - $c2_st_seat_price);
-                $c3_total = abs($c3_end_seat_price - $c3_st_seat_price);
-
-                $filter_dif = $data['filter']['st_start'] - $data['filter']['st_end'];
-                $data_dif = $sh->start_station - $sh->end_station;
-                $filter_state = $filter_dif>=0?'P':'N';
-                $data_state = $data_dif>=0?'P':'N';
-
-              ?>
-
-              @if($filter_state!=$data_state && $data['filter']['search']==true)
-              @if($c1>=$data['filter']['pssngrs'] && $c1>0 && ( $data['filter']['cls']==0 || $data['filter']['cls']==1))
-              <a href="{{ "book-tour/".encrypt($sh->schedule_id.",".$data['filter']['pssngrs'].",1,".$c1_total.",".$data['filter']['st_start'].",".$data['filter']['st_end']) }}">
-              <div class="card-searchResult hover-card">
-
-                <div class="d-md-flex justify-content-between px-md-3">
-
-                  <div class="d-md-flex align-items-md-center mb-2">
-                    <div class="train-icon me-3 mt-1 my-md-0 mb-1"><img src="{{asset('assets/img/train-icon.png')}}" />
-                    </div>
-                    <div class="">
-                      <!-- Train No. and Name -->
-                      <div class="trainName text-primary-emphasis">#{{$sh->id}} <b>{{$sh->train_name}}</b></div>
-                      <div class="d-md-flex align-items-center wr-trainClass text-secondary">
-                        <!-- Train Class -->
-                        <div class="trainClass pe-2">1st Class</div>
-                        <div class="pe-2 d-none d-md-block">•</div>
-                        <!-- Available Seats -->
-                        <div class="trainClass">{{$c1}} Seats Available</div>
-
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Ticket Price -->
-                  <div class="ticketPrice fw-bold mb-2 mb-md-0 d-inline-block">LKR {{number_format($c1_total,2)}}</div>
-                </div>
-
-
-                <div class="destinationDeparture d-md-flex justify-content-between px-md-3">
-                  <div class="wr-departure fw-semibold">
-                    <!-- Departure Station -->
-                    @foreach($data['stations'] as $st)
-                    <div class="departureStation text-dark {{$st->st_no==$sh->start_station?'':'d-none'}}">
-                      {{$st->st_name}}</div>
-                    @endforeach
-                    <!-- Departure Time -->
-                    <div class="departureTime">{{date("H:i:s", strtotime($sh->start_time))}}</div>
-                  </div>
-                  <div class="wr-destination fw-semibold text-md-end mt-1 mt-md-0">
-                    <!-- Destination Station -->
-                    @foreach($data['stations'] as $st)
-                    <div class="departureStation text-dark {{$st->st_no==$sh->end_station?'':'d-none'}}">
-                      {{$st->st_name}}</div>
-                    @endforeach
-                    <!-- Destination Time -->
-                    <div class="destinationTime">{{date("H:i:s", strtotime($sh->end_time))}}</div>
-                  </div>
-                </div>
-
-                <div class="w-100 breakerLine my-2"></div>
-
-                <!-- Train Tags -->
-                <div class="wr-trainTags d-flex">
-
-                  <div class="tarainTag">Express</div>
-
-                  <div class="tarainTag d-flex align-items-center">
-                    <span class="trainTagIcon pe-1"><img src="{{asset('assets/img/lunch-1.png')}}" /></span> Buffet
-                  </div>
-
-                </div>
-
-              </div>
-              </a>
-              @endif
-
-              @if($c2>=$data['filter']['pssngrs'] && $c2>0 && ($data['filter']['cls']==0 || $data['filter']['cls']==2))
-              <a href="{{ "book-tour/".encrypt($sh->schedule_id.",".$data['filter']['pssngrs'].",2,".$c2_total.",".$data['filter']['st_start'].",".$data['filter']['st_end']) }}">
-              <div class="card-searchResult hover-card">
-
-                <div class="d-md-flex justify-content-between px-md-3">
-
-                  <div class="d-md-flex align-items-md-center mb-2">
-                    <div class="train-icon me-3 mt-1 my-md-0 mb-1"><img src="{{asset('assets/img/train-icon.png')}}" />
-                    </div>
-                    <div class="">
-                      <!-- Train No. and Name -->
-                      <div class="trainName text-primary-emphasis">#{{$sh->id}} <b>{{$sh->train_name}}</b></div>
-                      <div class="d-md-flex align-items-center wr-trainClass text-secondary">
-                        <!-- Train Class -->
-                        <div class="trainClass pe-2">2nd Class</div>
-                        <div class="pe-2 d-none d-md-block">•</div>
-                        <!-- Available Seats -->
-                        <div class="trainClass">{{$c2}} Seats Available</div>
-
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Ticket Price -->
-                  <div class="ticketPrice fw-bold mb-2 mb-md-0 d-inline-block">LKR {{number_format($c2_total,2)}}</div>
-                </div>
-
-
-                <div class="destinationDeparture d-md-flex justify-content-between px-md-3">
-                  <div class="wr-departure fw-semibold">
-                    <!-- Departure Station -->
-                    @foreach($data['stations'] as $st)
-                    <div class="departureStation text-dark {{$st->st_no==$sh->start_station?'':'d-none'}}">
-                      {{$st->st_name}}</div>
-                    @endforeach
-                    <!-- Departure Time -->
-                    <div class="departureTime">{{date("H:i:s", strtotime($sh->start_time))}}</div>
-                  </div>
-                  <div class="wr-destination fw-semibold text-md-end mt-1 mt-md-0">
-                    <!-- Destination Station -->
-                    @foreach($data['stations'] as $st)
-                    <div class="departureStation text-dark {{$st->st_no==$sh->end_station?'':'d-none'}}">
-                      {{$st->st_name}}</div>
-                    @endforeach
-                    <!-- Destination Time -->
-                    <div class="destinationTime">{{date("H:i:s", strtotime($sh->end_time))}}</div>
-                  </div>
-                </div>
-
-                <div class="w-100 breakerLine my-2"></div>
-
-                <!-- Train Tags -->
-                <div class="wr-trainTags d-flex">
-
-                  <div class="tarainTag">Express</div>
-
-                  <div class="tarainTag d-flex align-items-center">
-                    <span class="trainTagIcon pe-1"><img src="{{asset('assets/img/lunch-1.png')}}" /></span> Buffet
-                  </div>
-
-                </div>
-
-              </div>
-              </a>
-              @endif
-
-              @if($c3>=$data['filter']['pssngrs'] && $c3>0 && ($data['filter']['cls']==0 || $data['filter']['cls']==3))
-              <a href="{{ "book-tour/".encrypt($sh->schedule_id.",".$data['filter']['pssngrs'].",3,".$c3_total.",".$data['filter']['st_start'].",".$data['filter']['st_end']) }}">
-              <div class="card-searchResult hover-card">
-
-                <div class="d-md-flex justify-content-between px-md-3">
-
-                  <div class="d-md-flex align-items-md-center mb-2">
-                    <div class="train-icon me-3 mt-1 my-md-0 mb-1"><img src="{{asset('assets/img/train-icon.png')}}" />
-                    </div>
-                    <div class="">
-                      <!-- Train No. and Name -->
-                      <div class="trainName text-primary-emphasis">#{{$sh->id}} <b>{{$sh->train_name}}</b></div>
-                      <div class="d-md-flex align-items-center wr-trainClass text-secondary">
-                        <!-- Train Class -->
-                        <div class="trainClass pe-2">3rd Class</div>
-                        <div class="pe-2 d-none d-md-block">•</div>
-                        <!-- Available Seats -->
-                        <div class="trainClass">{{$c3}} Seats Available</div>
-
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Ticket Price -->
-                  <div class="ticketPrice fw-bold mb-2 mb-md-0 d-inline-block">LKR {{number_format($c3_total,2)}}</div>
-                </div>
-
-
-                <div class="destinationDeparture d-md-flex justify-content-between px-md-3">
-                  <div class="wr-departure fw-semibold">
-                    <!-- Departure Station -->
-                    @foreach($data['stations'] as $st)
-                    <div class="departureStation text-dark {{$st->st_no==$sh->start_station?'':'d-none'}}">
-                      {{$st->st_name}}</div>
-                    @endforeach
-                    <!-- Departure Time -->
-                    <div class="departureTime">{{date("H:i:s", strtotime($sh->start_time))}}</div>
-                  </div>
-                  <div class="wr-destination fw-semibold text-md-end mt-1 mt-md-0">
-                    <!-- Destination Station -->
-                    @foreach($data['stations'] as $st)
-                    <div class="departureStation text-dark {{$st->st_no==$sh->end_station?'':'d-none'}}">
-                      {{$st->st_name}}</div>
-                    @endforeach
-                    <!-- Destination Time -->
-                    <div class="destinationTime">{{date("H:i:s", strtotime($sh->end_time))}}</div>
-                  </div>
-                </div>
-
-                <div class="w-100 breakerLine my-2"></div>
-
-                <!-- Train Tags -->
-                <div class="wr-trainTags d-flex">
-
-                  <div class="tarainTag">Express</div>
-
-                  <div class="tarainTag d-flex align-items-center">
-                    <span class="trainTagIcon pe-1"><img src="{{asset('assets/img/lunch-1.png')}}" /></span> Buffet
-                  </div>
-
-                </div>
-
-              </div>
-              </a>
-              @endif
-              @elseif( $data['filter']['search']==false)
-              @if($c1>=$data['filter']['pssngrs'] && $c1>0 && ( $data['filter']['cls']==0 || $data['filter']['cls']==1))
-              <a href="{{ "book-tour/".encrypt($sh->schedule_id.",".$data['filter']['pssngrs'].",1,".$c1_total.",".$data['filter']['st_start'].",".$data['filter']['st_end']) }}">
-              <div class="card-searchResult hover-card">
-
-                <div class="d-md-flex justify-content-between px-md-3">
-
-                  <div class="d-md-flex align-items-md-center mb-2">
-                    <div class="train-icon me-3 mt-1 my-md-0 mb-1"><img src="{{asset('assets/img/train-icon.png')}}" />
-                    </div>
-                    <div class="">
-                      <!-- Train No. and Name -->
-                      <div class="trainName text-primary-emphasis">#{{$sh->id}} <b>{{$sh->train_name}}</b></div>
-                      <div class="d-md-flex align-items-center wr-trainClass text-secondary">
-                        <!-- Train Class -->
-                        <div class="trainClass pe-2">1st Class</div>
-                        <div class="pe-2 d-none d-md-block">•</div>
-                        <!-- Available Seats -->
-                        <div class="trainClass">{{$c1}} Seats Available</div>
-
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Ticket Price -->
-                  <div class="ticketPrice fw-bold mb-2 mb-md-0 d-inline-block">LKR {{number_format($c1_total,2)}}</div>
-                </div>
-
-
-                <div class="destinationDeparture d-md-flex justify-content-between px-md-3">
-                  <div class="wr-departure fw-semibold">
-                    <!-- Departure Station -->
-                    @foreach($data['stations'] as $st)
-                    <div class="departureStation text-dark {{$st->st_no==$sh->start_station?'':'d-none'}}">
-                      {{$st->st_name}}</div>
-                    @endforeach
-                    <!-- Departure Time -->
-                    <div class="departureTime">{{date("H:i:s", strtotime($sh->start_time))}}</div>
-                  </div>
-                  <div class="wr-destination fw-semibold text-md-end mt-1 mt-md-0">
-                    <!-- Destination Station -->
-                    @foreach($data['stations'] as $st)
-                    <div class="departureStation text-dark {{$st->st_no==$sh->end_station?'':'d-none'}}">
-                      {{$st->st_name}}</div>
-                    @endforeach
-                    <!-- Destination Time -->
-                    <div class="destinationTime">{{date("H:i:s", strtotime($sh->end_time))}}</div>
-                  </div>
-                </div>
-
-                <div class="w-100 breakerLine my-2"></div>
-
-                <!-- Train Tags -->
-                <div class="wr-trainTags d-flex">
-
-                  <div class="tarainTag">Express</div>
-
-                  <div class="tarainTag d-flex align-items-center">
-                    <span class="trainTagIcon pe-1"><img src="{{asset('assets/img/lunch-1.png')}}" /></span> Buffet
-                  </div>
-
-                </div>
-
-              </div>
-              </a>
-              @endif
-
-              @if($c2>=$data['filter']['pssngrs'] && $c2>0 && ($data['filter']['cls']==0 || $data['filter']['cls']==2))
-              <a href="{{ "book-tour/".encrypt($sh->schedule_id.",".$data['filter']['pssngrs'].",2,".$c2_total.",".$data['filter']['st_start'].",".$data['filter']['st_end']) }}">
-              <div class="card-searchResult hover-card">
-
-                <div class="d-md-flex justify-content-between px-md-3">
-
-                  <div class="d-md-flex align-items-md-center mb-2">
-                    <div class="train-icon me-3 mt-1 my-md-0 mb-1"><img src="{{asset('assets/img/train-icon.png')}}" />
-                    </div>
-                    <div class="">
-                      <!-- Train No. and Name -->
-                      <div class="trainName text-primary-emphasis">#{{$sh->id}} <b>{{$sh->train_name}}</b></div>
-                      <div class="d-md-flex align-items-center wr-trainClass text-secondary">
-                        <!-- Train Class -->
-                        <div class="trainClass pe-2">2nd Class</div>
-                        <div class="pe-2 d-none d-md-block">•</div>
-                        <!-- Available Seats -->
-                        <div class="trainClass">{{$c2}} Seats Available</div>
-
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Ticket Price -->
-                  <div class="ticketPrice fw-bold mb-2 mb-md-0 d-inline-block">LKR {{number_format($c2_total,2)}}</div>
-                </div>
-
-
-                <div class="destinationDeparture d-md-flex justify-content-between px-md-3">
-                  <div class="wr-departure fw-semibold">
-                    <!-- Departure Station -->
-                    @foreach($data['stations'] as $st)
-                    <div class="departureStation text-dark {{$st->st_no==$sh->start_station?'':'d-none'}}">
-                      {{$st->st_name}}</div>
-                    @endforeach
-                    <!-- Departure Time -->
-                    <div class="departureTime">{{date("H:i:s", strtotime($sh->start_time))}}</div>
-                  </div>
-                  <div class="wr-destination fw-semibold text-md-end mt-1 mt-md-0">
-                    <!-- Destination Station -->
-                    @foreach($data['stations'] as $st)
-                    <div class="departureStation text-dark {{$st->st_no==$sh->end_station?'':'d-none'}}">
-                      {{$st->st_name}}</div>
-                    @endforeach
-                    <!-- Destination Time -->
-                    <div class="destinationTime">{{date("H:i:s", strtotime($sh->end_time))}}</div>
-                  </div>
-                </div>
-
-                <div class="w-100 breakerLine my-2"></div>
-
-                <!-- Train Tags -->
-                <div class="wr-trainTags d-flex">
-
-                  <div class="tarainTag">Express</div>
-
-                  <div class="tarainTag d-flex align-items-center">
-                    <span class="trainTagIcon pe-1"><img src="{{asset('assets/img/lunch-1.png')}}" /></span> Buffet
-                  </div>
-
-                </div>
-
-              
-              </div>
-              @endif
-
-              @if($c3>=$data['filter']['pssngrs'] && $c3>0 && ($data['filter']['cls']==0 || $data['filter']['cls']==3))
-              <a href="{{ "book-tour/".encrypt($sh->schedule_id.",".$data['filter']['pssngrs'].",1,".$c1_total.",".$data['filter']['st_start'].",".$data['filter']['st_end']) }}">
-              <div class="card-searchResult hover-card">
-
-                <div class="d-md-flex justify-content-between px-md-3">
-
-                  <div class="d-md-flex align-items-md-center mb-2">
-                    <div class="train-icon me-3 mt-1 my-md-0 mb-1"><img src="{{asset('assets/img/train-icon.png')}}" />
-                    </div>
-                    <div class="">
-                      <!-- Train No. and Name -->
-                      <div class="trainName text-primary-emphasis">#{{$sh->id}} <b>{{$sh->train_name}}</b></div>
-                      <div class="d-md-flex align-items-center wr-trainClass text-secondary">
-                        <!-- Train Class -->
-                        <div class="trainClass pe-2">3rd Class</div>
-                        <div class="pe-2 d-none d-md-block">•</div>
-                        <!-- Available Seats -->
-                        <div class="trainClass">{{$c3}} Seats Available</div>
-
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Ticket Price -->
-                  <div class="ticketPrice fw-bold mb-2 mb-md-0 d-inline-block">LKR {{number_format($c3_total,2)}}</div>
-                </div>
-
-
-                <div class="destinationDeparture d-md-flex justify-content-between px-md-3">
-                  <div class="wr-departure fw-semibold">
-                    <!-- Departure Station -->
-                    @foreach($data['stations'] as $st)
-                    <div class="departureStation text-dark {{$st->st_no==$sh->start_station?'':'d-none'}}">
-                      {{$st->st_name}}</div>
-                    @endforeach
-                    <!-- Departure Time -->
-                    <div class="departureTime">{{date("H:i:s", strtotime($sh->start_time))}}</div>
-                  </div>
-                  <div class="wr-destination fw-semibold text-md-end mt-1 mt-md-0">
-                    <!-- Destination Station -->
-                    @foreach($data['stations'] as $st)
-                    <div class="departureStation text-dark {{$st->st_no==$sh->end_station?'':'d-none'}}">
-                      {{$st->st_name}}</div>
-                    @endforeach
-                    <!-- Destination Time -->
-                    <div class="destinationTime">{{date("H:i:s", strtotime($sh->end_time))}}</div>
-                  </div>
-                </div>
-
-                <div class="w-100 breakerLine my-2"></div>
-
-                <!-- Train Tags -->
-                <div class="wr-trainTags d-flex">
-
-                  <div class="tarainTag">Express</div>
-
-                  <div class="tarainTag d-flex align-items-center">
-                    <span class="trainTagIcon pe-1"><img src="{{asset('assets/img/lunch-1.png')}}" /></span> Buffet
-                  </div>
-
-                </div>
-
-              
-              </div>
-              </a>
-              @endif
-              @endif
-
-
-              @endforeach
-
-
-            </div>
-            <!-- ================== Return  ========================= -->
-          </div>
 
         </div>
       </div>
