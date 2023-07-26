@@ -91,12 +91,25 @@ $page_name = "Profile"
                     <!-- Train No. and Name -->
                     <div class="trainName text-primary-emphasis">Ticket ID #{{$item->tc_number}}
                       <b>{{$item->train_name}}</b>&nbsp;&nbsp;&nbsp;
-                      <?php 
-                        $delay = $item->delay;
-                        $pieces = explode(":", $delay);
-                        $hrs = $pieces[0]==0?'':($pieces[0]==1?$pieces[0].' hr & ' :$pieces[0].' hrs & ' );
-                        $mns = $pieces[1]==0?'0 mins delay':($pieces[1]==1?$pieces[1].' min delay' :$pieces[1].' mins delay' );
-                      ?>
+                     
+                        <?php 
+                                            
+                          if(is_null($item->delay)){
+                            $delay = $item->delay;
+                                  $hrs='';
+                                  $mns='';
+
+                          }else{
+                            $delay = $item->delay;
+
+                              $pieces = explode(":", $delay);
+                              $hrs = $pieces[0]==0?'':($pieces[0]==1?$pieces[0].' hr & ' :$pieces[0].' hrs & ' );
+                              $mns = $pieces[1]==0?'0 mins delay':($pieces[1]==1?$pieces[1].' min delay' :$pieces[1].' mins delay' );
+                          }
+
+                               
+
+                        ?>
                       <span class="badge bg-danger">{{$hrs.$mns}}</span>
                     </div>
 
