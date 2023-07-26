@@ -76,8 +76,7 @@ class scheduleController extends Controller
             }
 
         } catch (\Throwable $th) {
-            dd($th->getMessage());
-            // return back()->with('fail', 'Something went wrong. Please try again.');
+            return back()->with('fail', 'Something went wrong. Please try again.');
         }
     }
     return redirect('admin');
@@ -102,14 +101,17 @@ class scheduleController extends Controller
     public function updateSchedule(Request $req)
     {
         if(session()->has('AName')){
+
             $sched_data = train_schedule::where('schedule_id',$req->id)->get();
             $st_data = train_station::orderBy('st_name','ASC')->get();
             $tr_data = train::orderBy('train_name','ASC')->get();
+
             $data = array(
              'schedule' => $sched_data,
              'stations' => $st_data,
              'trains' =>$tr_data 
             );
+            
             return view('edit-schedule')->with(['data'=>$data]);
         }
         return redirect('admin');
@@ -134,7 +136,13 @@ class scheduleController extends Controller
     public function editSchedule(Request $req)
     {
         if(session()->has('AName')){
-            $update_schedule= train_schedule::where('id',$req->id)->update([
+
+
+
+            try{
+
+           
+            $update_schedule= train_schedule::where('schedule_id',$req->id)->update([
                 'schedule_date'=>$req->schedule_date, 
                 'stations'=>implode(",",$req->stations), 
                 'train_id'=>$req->train_id, 
@@ -146,9 +154,19 @@ class scheduleController extends Controller
                 'class_2_seats'=>$req->class_2,
                 'class_3_seats'=>$req->class_3,
             ]) ;
+
+
             if($update_schedule){
-                return back()->with('success', 'You have successfully updated the shcedule');
+                 return redirect('view_schedules')->with('success', 'You have successfully updated the shcedule');
             }
+        }
+        catch (\Throwable $th) {
+            return back()->with('fail', 'Something went wrong. Please try again.');
+        }
+
+
+
+
         }
         return redirect('admin');
     }
@@ -200,24 +218,48 @@ class scheduleController extends Controller
 
         if(session()->has('AName')){
 
-        $data = train_schedule::find($id);
-        $data->update(['is_active'=>0]);
-
-        return redirect('view_schedules');
-
-        }
-        return redirect('admin');
+            $trainId = ticket::where('train_id',$id)->get(); 
+            
+            
+                    foreach($trainId as $tId){
+                        
+                    $passenger = passenger::where('train_id',$tId->passenger_id)->get(); //get related data
+            
+                   
+                    //send mails loop start
+                    foreach($passenger as $passenger){
+            
+                         // $data for email template
+                      $details  = [
     
+                      ];
+            
+                    Mail::to($passenger->email)->send(new DelaySchedule($details));  
+                    }
+                } 
+
+            
+
+                        $data = train_schedule::find($id);
+                        $data->update(['is_active'=>0]);
+
+                        return redirect('view_schedules');
+
+                 }
+                 return redirect('admin');
+                    
     }
 
 
-    function delaySchedule($id){
+    function delaySchedule(Request $req){
 
-
-        //Get all the tickets with the schedule_id 
-        $tickets = Ticket::where('schedule_id',$id)->get();
-        $schedule = train_schedule::where('schedule_id',$id)->first();
-
+        
+        $hrs = $req->hours==''?00:$req->hours;
+        $mins = $req->mins==''?00:$req->mins;
+        //Get all the tickets with the specified train_id
+        $tickets = Ticket::where('schedule_id',$req->id)->get();
+        $schedule = train_schedule::where('schedule_id',$req->id)->first();
+        $update_schedule = train_schedule::where('schedule_id',$req->id)->update(['delay'=>$hrs.":".$mins]);
         // Loop through each ticket
         foreach ($tickets as $ticket) {
 
@@ -246,8 +288,10 @@ class scheduleController extends Controller
                 //send email
                 Mail::to($passengerEmail)->send(new DelaySchedule($details));  
             }
+           
         }
 
+    return redirect()->back()->with('success', 'Delay Updated Successfully');;
     }
 
 
@@ -292,18 +336,14 @@ class scheduleController extends Controller
             }
         }
 
-
-
-
-
-
-
-
-
-
-        
-
-
         }
+        
+    public function updateLocation(Request $req)
+    {   
+       
+        $data = explode(",", $req->location);
+        $update_schedule = train_schedule::where('schedule_id',$req->id)->update(['track_station'=>$data[0],'track_station_text'=>$data[1]]);
+        return redirect()->back()->with('success', 'Tracking Location Updated Successfully');;
+    }
 
 }

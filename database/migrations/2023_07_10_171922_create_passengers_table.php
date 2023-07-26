@@ -21,6 +21,10 @@ class CreatePassengersTable extends Migration
             $table->string('email')->unique()->nullable();
             $table->string('password')->nullable();
             $table->integer('tp_number')->nullable();
+            $table->integer('booking_count')->default(0);
+            $table->integer('promo_id')->default(0);
+            $table->string('promo_code')->default(0);
+            $table->integer('promo_used')->default(0);
             $table->text('address')->nullable();
             $table->timestamps();
         });

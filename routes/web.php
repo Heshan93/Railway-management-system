@@ -211,7 +211,6 @@ Route::get('view_schedules',[scheduleController::class,'viewSchedules'])->name('
 //update schedule 
 Route::get('update_schedule/{id}',[scheduleController::class,'updateSchedule'])->name('update_schedule');
 
-Route::post('edit_schedule',[scheduleController::class,'editSchedule'])->name('edit_schedule');
 
 //re-schedule
 Route::get('reschedule/{id}',[scheduleController::class,'reschedule'])->name('reschedule');
@@ -241,7 +240,7 @@ Route::post('edit_schedule',[scheduleController::class,'editSchedule'])->name('e
 Route::post('cardpayment',[paymentController::class,'makePayment'])->name('cardpayment');
 
 //delay schedule 
-Route::get('delay_schedule/{id}',[scheduleController::class,'delaySchedule'])->name('delay_schedule');
+Route::post('delay_schedule',[scheduleController::class,'delaySchedule'])->name('delay_schedule');
 
 
 // cancel schedule 
@@ -250,3 +249,32 @@ Route::get('cancel_schedule/{id}',[scheduleController::class,'cancelSchedule'])-
 
 // contact_us submit
 Route::post('contact_us',[CommonController::class,'contactEmail'])->name('contact_us');
+
+
+//seach data
+Route::get('search_result',[CommonController::class,'searchData'])->name('search_result');
+
+//checkout
+Route::get('book-tour/{data}',[paymentController::class,'loadCheckout'])->name('book_tour');
+
+//create ticket
+Route::post('create-ticket',[paymentController::class,'createTicket'])->name('create-ticket');
+
+//add promotion
+Route::get('add-promotion',[CommonController::class,'addPromotion'])->name('add-promotion');
+
+Route::post('create-promotion',[CommonController::class,'createPromotion'])->name('create-promotion');
+
+//edit promotion
+Route::get('edit-promotion/{id}',[CommonController::class,'editPromotion'])->name('edit-promotion');
+
+Route::post('update-promotion',[CommonController::class,'updatePromotion'])->name('update-promotion');
+
+//view=promotion
+Route::get('view-promotions',[CommonController::class,'viewPromotions'])->name('view-promotions');
+
+//remove=promotion
+Route::get('delete-promotion/{id}',[CommonController::class,'removePromotion'])->name('delete-promotions');
+
+//update_location
+Route::post('tracking_update',[scheduleController::class,'updateLocation'])->name('tracking_update');

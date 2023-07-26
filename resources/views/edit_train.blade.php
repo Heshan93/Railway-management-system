@@ -32,20 +32,7 @@
             <span class="text-danger">@error('train_name') {{$message }}@enderror</span>
           </div>
     
-          <div class="mb-3">
-            <label for="seatCat1" class="form-label"> No Of first class Seat</label>
-            <input type="number" class="form-control" id="seatCat1" name="seat_cat_1" min="0"  value="{{$data->seat_cat_1}}">
-          </div>
-    
-          <div class="mb-3">
-            <label for="seatCat2" class="form-label">No Of econd class Seat</label>
-            <input type="number" class="form-control" id="seatCat2" name="seat_cat_2"  min="0"  value="{{$data->seat_cat_2}}">
-          </div>
-    
-          <div class="mb-3">
-            <label for="seatCat3" class="form-label">No Of third class Seat</label>
-            <input type="number" class="form-control" id="seatCat3" name="seat_cat_3"  min="0"  value="{{$data->seat_cat_3}}">
-          </div>
+
     
           
           </div>

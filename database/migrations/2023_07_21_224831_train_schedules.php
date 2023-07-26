@@ -31,6 +31,7 @@ class TrainSchedules extends Migration
             $table->string('delay')->nullable();
             $table->integer('status')->nullable();
             $table->integer('track_station')->nullable();
+            $table->integer('track_station_text')->nullable();
             $table->integer('is_active')->default(1);
             $table->timestamps();
         });

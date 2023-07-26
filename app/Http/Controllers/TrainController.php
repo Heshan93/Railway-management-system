@@ -102,9 +102,7 @@ class TrainController extends Controller
 
             $NewTrain->train_id = $req->train_id;
             $NewTrain->train_name = $req->train_name;
-            $NewTrain->seat_cat_1 = $req->seat_cat_1;
-            $NewTrain->seat_cat_2 = $req->seat_cat_2;
-            $NewTrain->seat_cat_3 = $req->seat_cat_3;
+           
             $rec  = $NewTrain->save();
 
             if ($rec) {
@@ -164,9 +162,7 @@ class TrainController extends Controller
 
         $NewTrain->train_id = $req->train_id;
         $NewTrain->train_name = $req->train_name;
-        $NewTrain->seat_cat_1 = $req->seat_cat_1;
-        $NewTrain->seat_cat_2 = $req->seat_cat_2;
-        $NewTrain->seat_cat_3 = $req->seat_cat_3;
+        
         $rec  = $NewTrain->save();
 
         if ($rec) {
