@@ -6,7 +6,8 @@ $page_name = "Profile"
 
 
 <div class="inner-page">
-  <div class="container">
+
+    <div class="container">
     <div class="row">
       <!-- Start : Vertical Tabber -->
       <div class="tab col-3">
@@ -66,6 +67,7 @@ $page_name = "Profile"
         @endif
       @endforeach
       </div>
+
       
 
       <div class="col-9 wr_tabcontent">
