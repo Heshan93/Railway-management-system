@@ -11,7 +11,7 @@
                 <div class="row gx-3">
                     <div class="col-12">
                         <input type="hidden" name="id" value="{{$data['ticket_id']}}">
-                        <input type="hidden" name="id" value="{{$data['total']}}">
+                        <input type="hidden" name="total" value="{{$data['total']}}">
                         <div class="d-flex flex-column">
                             <p class="text mb-1">Person Name</p>
                             <input class="form-control mb-3" type="text" placeholder="Name" {{-- value="Barry Allen" --}}>

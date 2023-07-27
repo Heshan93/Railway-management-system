@@ -1,9 +1,9 @@
 .bg-gradient-primary {
-    background-color: #60636c;
-    background-image: linear-gradient(180deg,#3e414e 10%,#321d1d 100%);
+    background-color: #4e73df;
+    background-image: linear-gradient(180deg,#556287 10%,#232426 100%);
     background-size: cover;
 }
-
+/* 
 
 .bg-white {
     background-color: #3e414e!important;
@@ -33,3 +33,4 @@ section {
     overflow: hidden;
     background-color:  #b8cddd;
 }
+ */
