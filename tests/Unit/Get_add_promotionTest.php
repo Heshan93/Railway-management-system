@@ -8,19 +8,20 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 
-class LoadLandingPageTest extends TestCase
+
+class Get_add_promotionTest extends TestCase
 {
     /**
      * A basic unit test example.
      *
      * @return void
      */
-     public function test_example()
+    public function test_get_add_promotions_page()
     {
-        for ($i = 0; $i < 5; $i++) {
-            $response = $this->get('/');
+        
+            $response = $this->get('add-promotion');
         
             $response->assertStatus(200);
-        }
-    } 
+        
+    }
 }
