@@ -17,12 +17,6 @@ class paymentController extends Controller
     // make the payment
 
     function makePayment(Request $req){
-
-         
-         $details  = [
-            'name' => Session('AName'),
-          ];
-
           $update_ticket = ticket::where('tc_number',$req->id)->update(['paid_amount'=>$req->total,'payment_status'=>1]);
           if($update_ticket){
             $psnger = passenger::where('passenger_id',Session('passenger_id'))->first();
@@ -50,11 +44,17 @@ class paymentController extends Controller
                     }
                   } 
                 }
-                Mail::to( Session('passenger_email'))->send(new TickeReceipt($details));  
-          return redirect('profile');
+
+                $details  = [
+                 
+                ];
+                    Mail::to( Session('passenger_email'))->send(new TickeReceipt($details));  
+                    return redirect('profile');
           }else{
-            $update_passenger = passenger::where('passenger_id',Session('passenger_id'))->decrement('booking_count');
-            return redirect('/');
+           
+           
+            /*  $update_passenger = passenger::where('passenger_id',Session('passenger_id'))->decrement('booking_count');
+            return redirect('/'); */
           }
         
     }
@@ -107,7 +107,6 @@ class paymentController extends Controller
            
             $savedata = ticket::create($create_ticket);
             $savedata->save();
-
             if($savedata){
                 $update_passenger = passenger::where('passenger_id',Session('passenger_id'))->increment('booking_count');
                 $cls_type = $req->cls==1?'booked_class_1_seats':(($req->cls==2)?'booked_class_2_seats':'booked_class_3_seats');
@@ -119,8 +118,9 @@ class paymentController extends Controller
 
                 $data = array(
                   'total'=>$req->total,
-                  'ticket_id'=>$savedata->ticket_no
+                  'ticket_id'=>$savedata->tc_number
                 );
+                
                  return view('payment')->with(['data'=>$data]);
             }
 

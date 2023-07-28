@@ -7,7 +7,7 @@
     <div>
         <div class="container p-0">
             <div class="card px-4">
-                <p class="h8 py-3">Payment Details</p>
+                <p class="h8 py-3">Payment Details </p>
                 <div class="row gx-3">
                     <div class="col-12">
                         <input type="hidden" name="id" value="{{$data['ticket_id']}}">
