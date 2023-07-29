@@ -84,7 +84,7 @@ class CommonController extends Controller
         return back()->with('success', 'Promotion Created Successfully');
       }
     } catch (\Throwable $th) {
-      dd($th);
+  
       return back()->with('fail', 'Something went wrong. Please try again.');
     }
   }

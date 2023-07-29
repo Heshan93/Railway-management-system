@@ -77,14 +77,14 @@
     <div class="row mt-4">
       <div class="col mx-auto">
         <div class="mb-3">
-          <label for="exampleInputEmail" class="form-label">Email address</label>
-          <input type="email" class="form-control" name="exampleInputEmail1"  value="{{old('exampleInputEmail1')}}">
-          <span class="text-danger">@error('exampleInputEmail1') {{$message }}@enderror</span>
+          <label for="Email" class="form-label">Email address</label>
+          <input type="email" class="form-control" name="Email"  value="{{old('Email')}}">
+          <span class="text-danger">@error('Email') {{$message }}@enderror</span>
         </div>
         <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" name="exampleInputPassword2" class="form-control" >
-            <span class="text-danger">@error('exampleInputPassword2') {{$message }}@enderror</span>
+          <label for="Password" class="form-label">Password</label>
+            <input type="password" name="Password" class="form-control" >
+            <span class="text-danger">@error('Password') {{$message }}@enderror</span>
           </div>
         </div>
       </div>
@@ -97,9 +97,9 @@
             </label>
           </div>
         </div>
-        <div class="col text-end"><a
+        {{-- <div class="col text-end"><a
             class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
-            href="#">Forgot password</a></div>
+            href="#">Forgot password</a></div> --}}
       </div>
       <div class="row mt-4">
         <div class="col">

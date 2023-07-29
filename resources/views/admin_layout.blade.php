@@ -70,13 +70,13 @@
                                             aria-expanded="true" aria-controls="collapseTwo">
                                             <i class="fa fa-users"></i>
                                             
-                                            <span>Employee</span>
+                                            <span>Admins</span>
                                         </a>
                                         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                                             <div class="bg-white py-2 collapse-inner rounded">
-                                                <h6 class="collapse-header">Manage Employee:</h6>
-                                                <a class="collapse-item" href="{{ route('add_admin_user') }}">Add Employee</a>
-                                                <a class="collapse-item" href="{{ route('view_admin_user') }}">View Employee</a> 
+                                                <h6 class="collapse-header">Manage Admins:</h6>
+                                                <a class="collapse-item" href="{{ route('add_admin_user') }}">Add  Admins</a>
+                                                <a class="collapse-item" href="{{ route('view_admin_user') }}">View  Admins</a> 
                                             </div>
                                         </div>
                                     </li>

@@ -78,9 +78,9 @@
             </div>
             <div class="row mb-3">
               <div class="col-12 col-sm mb-3 mb-sm-0">
-                <label for="signUpEmail" class="form-label">Email </label>
-                <input type="email" class="form-control" id="signUpEmail" placeholder="Enter your email" name="exampleInputEmail1"  value="{{old('exampleInputEmail1')}}">
-                <span class="text-danger">@error('exampleInputEmail1') {{$message }}@enderror</span>
+                <label for="email" class="form-label">Email </label>
+                <input type="email" class="form-control" id="signUpEmail" placeholder="Enter your email" name="email"  value="{{old('email')}}">
+                <span class="text-danger">@error('email') {{$message }}@enderror</span>
               </div>
 {{--               <div class="col-12 col-sm">
                 <label for="signUpTel" class="form-label">Telephone</label>
@@ -98,14 +98,14 @@
             </div> --}}
             <div class="row">
                 <div class="col-12 col-sm mb-3 mb-sm-0">
-                  <label for="signUpPass" class="form-label">Create Password </label>
-                  <input type="password" class="form-control" id="signUpPass" placeholder="Create a Password" name="exampleInputPassword2">
-                  <span class="text-danger">@error('exampleInputPassword2') {{$message }}@enderror</span>
+                  <label for="Password" class="form-label">Create Password </label>
+                  <input type="password" class="form-control" id="signUpPass" placeholder="Create a Password" name="Password">
+                  <span class="text-danger">@error('Password') {{$message }}@enderror</span>
                 </div>
                 <div class="col-12 col-sm">
-                  <label for="signUpPass2" class="form-label" >Confirm Password </label>
-                  <input type="password" class="form-control" id="signUpPass2" placeholder="Confirm the Password" name="confirmInputPassword2">
-                  <span class="text-danger">@error('confirmInputPassword2') {{$message }}@enderror</span>
+                  <label for="confirmPassword" class="form-label" >Confirm Password </label>
+                  <input type="password" class="form-control" id="signUpPass2" placeholder="Confirm the Password" name="confirmPassword">
+                  <span class="text-danger">@error('confirmPassword') {{$message }}@enderror</span>
                 </div>
             </div>
             <div class="row mt-4">

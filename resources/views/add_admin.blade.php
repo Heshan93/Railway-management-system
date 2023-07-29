@@ -4,7 +4,7 @@
 
 
 <div class="container-fluid">
-    <h1>Add Employee</h1>
+    <h1>Add Admin</h1>
 
     <form action="{{route('submit_admin_user') }}" method="POST">
         @csrf
@@ -81,18 +81,18 @@
         </div>
         <div class="row">
           <div class="col-12 col-sm mb-3 mb-sm-0">
-            <label for="InputPassword1" class="form-label">Create Password </label>
-            <input type="password" class="form-control" id="signUpPass" placeholder="Create a Password" name="InputPassword1">
-            <span class="text-danger">@error('InputPassword1') {{$message }}@enderror</span>
+            <label for="Password" class="form-label">Create Password </label>
+            <input type="password" class="form-control" id="signUpPass" placeholder="Create a Password" name="Password">
+            <span class="text-danger">@error('Password') {{$message }}@enderror</span>
           </div>
           <div class="col-12 col-sm">
-            <label for="confirmInputPassword2" class="form-label" >Confirm Password </label>
-            <input type="password" class="form-control" id="signUpPass2" placeholder="Confirm the Password" name="confirmInputPassword2">
-            <span class="text-danger">@error('confirmInputPassword2') {{$message }}@enderror</span>
+            <label for="confirmPassword" class="form-label" >Confirm Password </label>
+            <input type="password" class="form-control" id="signUpPass2" placeholder="Confirm the Password" name="confirmPassword">
+            <span class="text-danger">@error('confirmPassword') {{$message }}@enderror</span>
           </div>
         </div>
         <div class="row mt-4">
-        <div class="col"><button type="submit" class="btn btn-primary w-100">Get started</button></div>
+        <div class="col"><button type="submit" class="btn btn-primary w-100">Add Admin</button></div>
         </div>
       
       </div>
