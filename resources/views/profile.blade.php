@@ -128,7 +128,6 @@ $page_name = "Profile"
                   <!-- Departure Station -->
                   <div class="departureStation text-dark">
                     @foreach($stations as $st)
-        
                     {{$item->start_station==$st->st_no?$st->st_name:''}}
                     @endforeach
                   </div>

@@ -17,46 +17,16 @@ class paymentController extends Controller
     // make the payment
 
     function makePayment(Request $req){
+
+         
+         $details  = [
+            'name' => Session('AName'),
+          ];
+
           $update_ticket = ticket::where('tc_number',$req->id)->update(['paid_amount'=>$req->total,'payment_status'=>1]);
-          if($update_ticket){
-            $psnger = passenger::where('passenger_id',Session('passenger_id'))->first();
-                $promos = promotion::where('is_active',1)->get();
 
-                $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-                $randomString = '';
-              
-                  for ($i = 0; $i < 7; $i++) {
-                      $index = rand(0, strlen($characters) - 1);
-                      $randomString .= $characters[$index];
-                  }
-              
-                $randomString;
-                foreach ($promos as $key => $p) {
-                  if($key==0){
-                    if($psnger->booking_count >= $p->booking_limit && $psnger->promo_used==0){
-                      $update_passenger = passenger::where('passenger_id',Session('passenger_id'))->update(['promo_id'=>$p->promo_id,'promo_code'=>$randomString,'promo_used'=>0]);
-                      break;
-                    }
-                  }else{
-                    if($psnger->booking_count >= $p->booking_limit && $psnger->promo_id==$promos[$key-1]['promo_id']){
-                      $update_passenger = passenger::where('passenger_id',Session('passenger_id'))->update(['promo_id'=>$p->promo_id,'promo_code'=>$randomString,'promo_used'=>0]);
-                      break;
-                    }
-                  } 
-                }
-
-                $details  = [
-                 
-                ];
-                    Mail::to( Session('passenger_email'))->send(new TickeReceipt($details));  
-                    return redirect('profile');
-          }else{
-           
-           
-            /*  $update_passenger = passenger::where('passenger_id',Session('passenger_id'))->decrement('booking_count');
-            return redirect('/'); */
-          }
-        
+        Mail::to( Session('passenger_email'))->send(new TickeReceipt($details));  
+          return redirect('profile');
     }
 
     public function loadCheckout(Request $req)
@@ -107,6 +77,7 @@ class paymentController extends Controller
            
             $savedata = ticket::create($create_ticket);
             $savedata->save();
+
             if($savedata){
                 $update_passenger = passenger::where('passenger_id',Session('passenger_id'))->increment('booking_count');
                 $cls_type = $req->cls==1?'booked_class_1_seats':(($req->cls==2)?'booked_class_2_seats':'booked_class_3_seats');
@@ -114,13 +85,36 @@ class paymentController extends Controller
                 if((float)$req->discount>0){
                   $update_passenger = passenger::where('passenger_id',Session('passenger_id'))->update(['promo_used'=>1]);
                 }
-                
+                $psnger = passenger::where('passenger_id',Session('passenger_id'))->first();
+                $promos = promotion::where('is_active',1)->get();
+
+                $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                $randomString = '';
+              
+                  for ($i = 0; $i < 7; $i++) {
+                      $index = rand(0, strlen($characters) - 1);
+                      $randomString .= $characters[$index];
+                  }
+              
+                $randomString;
+                foreach ($promos as $key => $p) {
+                  if($key==0){
+                    if($psnger->booking_count >= $p->booking_limit && $psnger->promo_used==0){
+                      $update_passenger = passenger::where('passenger_id',Session('passenger_id'))->update(['promo_id'=>$p->promo_id,'promo_code'=>$randomString,'promo_used'=>0]);
+                      break;
+                    }
+                  }else{
+                    if($psnger->booking_count >= $p->booking_limit && $psnger->promo_id==$promos[$key-1]['promo_id']){
+                      $update_passenger = passenger::where('passenger_id',Session('passenger_id'))->update(['promo_id'=>$p->promo_id,'promo_code'=>$randomString,'promo_used'=>0]);
+                      break;
+                    }
+                  } 
+                }
 
                 $data = array(
                   'total'=>$req->total,
-                  'ticket_id'=>$savedata->tc_number
+                  'ticket_id'=>$savedata->id
                 );
-                
                  return view('payment')->with(['data'=>$data]);
             }
 
