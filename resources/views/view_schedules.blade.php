@@ -110,8 +110,8 @@
           </div>
           <div class="d-flex modal-body">
             <input type="hidden" name="id" id="sch_id1">
-            <input class="col-lg-5 mx-1 form-control" type="number" name="hours" placeholder="Hours">
-            <input class="col-lg-5 mx-1 form-control" type="number" name="mins" placeholder="Minutes">
+            <input class="col-lg-5 mx-1 form-control" type="number" name="hours" placeholder="Hours" required>
+            <input class="col-lg-5 mx-1 form-control" type="number" name="mins" placeholder="Minutes" required>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

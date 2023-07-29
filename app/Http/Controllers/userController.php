@@ -23,12 +23,14 @@ class userController extends Controller
        
         // Add validation 
         $req->validate([
-            'firstName' => 'required',
-            'LastName' => 'required',
-            'exampleInputEmail1' => 'required|email',
-            'exampleInputPassword2' => 'required|min:6',
-            'confirmInputPassword2' => 'required|same:exampleInputPassword2',
+            'firstName' => 'required|string|max:255',
+            'LastName' => 'required|string|max:255',
+            'email' => 'required|email|string|max:255|unique:passengers,email',
+            'Password' => 'required|string|min:6|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',
+            'confirmPassword' => 'required|same:Password',
 
+        ],[
+            'Password.regex' => 'The password must contain at least one lowercase letter, one uppercase letter, and one digit.',
         ]);
 
         // Handle the registration process
@@ -40,8 +42,8 @@ class userController extends Controller
 
             $newUser->first_name = $req->firstName;
             $newUser->last_name = $req->LastName;
-            $newUser->email = $req->exampleInputEmail1;
-            $newUser->password = Hash::make($req->exampleInputPassword2); // encrypt the password 
+            $newUser->email = $req->email;
+            $newUser->password = Hash::make($req->Password); // encrypt the password 
             $newUser->tp_number = 13456879;
             //$newUser->dob = 13456879;
             $newUser->nic = '132456';
@@ -74,18 +76,18 @@ class userController extends Controller
 
         $req->validate([
 
-            'exampleInputEmail1' => 'required|email',
-            'exampleInputPassword2'  => 'required|min:6',
+            'Email' => 'required|email|max:255',
+            'Password'  => 'required|min:6', 
 
 
         ]);
 
         // Login the passenger
 
-        $passenger = passenger::where('email', '=', $req->exampleInputEmail1)->first(); //check & get the Passenger email
+        $passenger = passenger::where('email', '=', $req->Email)->first(); //check & get the Passenger email
 
         if ($passenger) {
-            if (Hash::check($req->exampleInputPassword2, $passenger->password)) { //check the password
+            if (Hash::check($req->Password, $passenger->password)) { //check the password
 
                 //add user info to session
                 $req->session()->put('pName', $passenger->first_name);
@@ -141,18 +143,20 @@ class userController extends Controller
     function addAdminUser(Request $req){
 
 
-        $req->validate([
-            'first_name' => 'required', 
-            'last_name' => 'required', 
-            'email' => 'required|email', 
-            'tp_number' => 'required', 
-            'nic' => 'required', 
-            'department' => 'required', 
-            'address' => 'required', 
-            'InputPassword1' => 'required|min:6', 
-            'confirmInputPassword2' => 'required|min:6',
-        ]);
-
+       // Add validation 
+       $req->validate([
+        'first_name' => 'required|string|max:255',
+        'last_name' => 'required|string|max:255',
+        'email' => 'required|email|string|max:255|unique:passengers,email',
+        'tp_number' => 'required|string|max:15', 
+        'nic' => 'required|string|max:15', 
+        'department' => 'required|string|max:255',
+        'address' => 'required|string|max:255',
+        'Password' => 'required|string|min:6',
+        'confirmPassword' => 'required|min:6|same:Password',
+    ], [
+        'Password.confirmed' => 'The password confirmation does not match.',
+    ]);
         
           try {
             // Insert the new Train user record to db
@@ -172,7 +176,7 @@ class userController extends Controller
         $rec  = $adminUser->save();
 
         if ($rec) {
-            return back()->with('success', 'You have successfully Add a Employee');
+            return back()->with('success', 'You have successfully Add a Admin');
         }
             
         } catch (\Illuminate\Database\QueryException $e) {
@@ -256,7 +260,7 @@ class userController extends Controller
         $rec  = $adminUser->save();
 
         if ($rec) {
-            return back()->with('success', 'You have successfully Updated the Employee');
+            return back()->with('success', 'You have successfully Updated the Admin');
         }
             
         } catch (\Illuminate\Database\QueryException $e) {
@@ -276,14 +280,14 @@ class userController extends Controller
              ///// Delete Admin User  ///////
 
 
-    function adminDelete($id){
+        function adminDelete($id){
 
         $data = User::where('user_id', $id)->first();
         $data->delete();
 
         return redirect('view_admin_user');
     
-    }
+        }
 
 
 
@@ -298,8 +302,8 @@ class userController extends Controller
    
            $req->validate([
    
-               'email' => 'required|email',
-               'password'  => 'required|min:6',
+               'email' => 'required|email|string|max:255',
+               'password'  => 'required',
    
    
            ]);
@@ -328,7 +332,7 @@ class userController extends Controller
 
 
        function logoutAdmin()
-    {
+        {
 
         if (session()->has('AName')) {
 
