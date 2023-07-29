@@ -2,12 +2,13 @@
 
 @section('admincontent')
 
-<h1>View Admin Users</h1>
+
 
 
 
 
 <div class="container-fluid">
+<h1>View Admin Users</h1>
 <table class="table table-hover ">
     <thead>
       <tr>
