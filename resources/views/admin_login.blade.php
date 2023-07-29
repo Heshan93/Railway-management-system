@@ -99,9 +99,9 @@
             </label>
           </div>
         </div>
-        <div class="col text-end"><a
+        {{-- <div class="col text-end"><a
             class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
-            href="#">Forgot password</a></div>
+            href="#">Forgot password</a></div> --}}
       </div>
       <div class="row mt-4">
         <div class="col">

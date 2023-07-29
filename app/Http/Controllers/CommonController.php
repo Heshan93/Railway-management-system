@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\train_station;
+use App\Models\train;
 use App\Models\train_schedule;
 use App\Mail\contactUs;
 use App\Models\passenger;
 use Illuminate\Support\Facades\Mail;
 use App\Models\ticket;
 use App\Models\promotion;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 
@@ -84,7 +86,7 @@ class CommonController extends Controller
         return back()->with('success', 'Promotion Created Successfully');
       }
     } catch (\Throwable $th) {
-      dd($th);
+  
       return back()->with('fail', 'Something went wrong. Please try again.');
     }
   }
@@ -158,16 +160,34 @@ class CommonController extends Controller
     public function dashboardWidget(){
 
       if (session()->has('AName')) {
-
+        $date = today()->format('Y-m-d');
         $passengerCount = Passenger::count();
-        $ticketCount = ticket::count();
+        $ticketCount = ticket::join('train_schedules','train_schedules.schedule_id','tickets.schedule_id')->where('train_schedules.schedule_date','>=',$date)->count();
+        $earnings=ticket::where('created_at','>=',now()->subdays(30)->endOfDay())->sum('paid_amount');
+        $bookings=ticket::where('created_at','>=',now()->subdays(30)->endOfDay())->count(); 
+        $seatsc1 = ticket::select(DB::raw("SUM(seats) as c1"))->where('seat_cat',1)->where('created_at','>=',now()->subdays(30)->endOfDay())->value('c1'); 
+        $seatsc2 = ticket::select(DB::raw("SUM(seats) as c2"))->where('seat_cat',2)->where('created_at','>=',now()->subdays(30)->endOfDay())->value('c2'); 
+        $seatsc3 = ticket::select(DB::raw("SUM(seats) as c3"))->where('seat_cat',3)->where('created_at','>=',now()->subdays(30)->endOfDay())->value('c3'); 
+        
+        $earningsbymonth=ticket::select(DB::raw("SUM(paid_amount) as amount"),DB::raw("MONTH(created_at) as month_number"))->whereYear('created_at', date('Y'))->groupBy('month_number')->orderBy('month_number')->get();
+
         
 
+        $seats = [$seatsc1,$seatsc2,$seatsc3];
+        $chart_months = [];
+        $chart_prices = [];
+        foreach ($earningsbymonth as $key => $em) {
+          array_push($chart_months,$monthName = date('F', mktime(0, 0, 0, $em->month_number, 10)));
+          array_push($chart_prices,$em->amount);
+        }
         $data = array(
-
           'passengerCount' =>$passengerCount,
           'ticketCount' =>$ticketCount,
-
+          'earnings'=>$earnings,
+          'bookings'=>$bookings,
+          'seats'=>$seats,
+          'chart_months'=>$chart_months,
+          'chart_prices'=>$chart_prices
         );
 
         
@@ -176,5 +196,52 @@ class CommonController extends Controller
       }
         return view('admin_login');
 
+    }
+    public function salesReport(Request $req)
+    {
+      $srch_data = array(
+        'search'=>false,
+        'cls' => 0,
+        'sch_datef' => date('Y-m-01'),
+        'sch_datet' => date('Y-m-d'),
+        'train' =>0,
+      );
+      $qry = ticket::whereBetween('created_at',[$srch_data['sch_datef'],$srch_data['sch_datet']])->orderBy('tickets.created_at','DESC')->get();
+      $trains= train::get();
+      
+      $data = array(
+        'filter' => $srch_data,
+        'trains' => $trains,
+        'result' =>$qry, 
+      );
+      return view('sales_report')->with(['data'=>$data]);
+    }
+    public function salesReportSearch(Request $req)
+    {
+      $srch_data = array(
+        'search'=>true,
+        'cls' => $req->cls,
+        'sch_datef' => $req->sch_datef,
+        'sch_datet' => $req->sch_datet,
+        'train' =>$req->train,
+      );
+      $qry = ticket::whereBetween('created_at',[$req->sch_datef,$req->sch_datet]);
+      if((int)$req->train>0){
+        $qry = $qry->where('train_id',$req->train);
+      }
+      if((int)$req->cls>0){
+        $qry = $qry->where('seat_cat',$req->cls);
+      }
+
+      $trains= train::get();
+      $qry = $qry->orderBy('tickets.created_at','DESC')->get();
+      $data = array(
+        'filter' => $srch_data,
+        'trains' => $trains,
+        'result' =>$qry, 
+      );
+      
+      
+      return view('sales_report')->with(['data'=>$data]);
     }
 } 

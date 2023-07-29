@@ -30,7 +30,7 @@
     </div>
     <div class="mb-3">
             <label for="" class="form-label">Promotion Text</label>
-            <input type="text" class="form-control"  name="promo_text">
+            <input type="text" class="form-control"  name="promo_text" required>
     </div>
 
 

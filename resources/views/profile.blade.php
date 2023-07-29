@@ -6,7 +6,8 @@ $page_name = "Profile"
 
 
 <div class="inner-page">
-  <div class="container">
+
+    <div class="container">
     <div class="row">
       <!-- Start : Vertical Tabber -->
       <div class="tab col-3">
@@ -66,6 +67,7 @@ $page_name = "Profile"
         @endif
       @endforeach
       </div>
+
       
 
       <div class="col-9 wr_tabcontent">
@@ -91,12 +93,25 @@ $page_name = "Profile"
                     <!-- Train No. and Name -->
                     <div class="trainName text-primary-emphasis">Ticket ID #{{$item->tc_number}}
                       <b>{{$item->train_name}}</b>&nbsp;&nbsp;&nbsp;
-                      <?php 
-                        $delay = $item->delay;
-                        $pieces = explode(":", $delay);
-                        $hrs = $pieces[0]==0?'':($pieces[0]==1?$pieces[0].' hr & ' :$pieces[0].' hrs & ' );
-                        $mns = $pieces[1]==0?'0 mins delay':($pieces[1]==1?$pieces[1].' min delay' :$pieces[1].' mins delay' );
-                      ?>
+                     
+                        <?php 
+                                            
+                          if(is_null($item->delay)){
+                            $delay = $item->delay;
+                                  $hrs='';
+                                  $mns='';
+
+                          }else{
+                            $delay = $item->delay;
+
+                              $pieces = explode(":", $delay);
+                              $hrs = $pieces[0]==0?'':($pieces[0]==1?$pieces[0].' hr & ' :$pieces[0].' hrs & ' );
+                              $mns = $pieces[1]==0?'0 mins delay':($pieces[1]==1?$pieces[1].' min delay' :$pieces[1].' mins delay' );
+                          }
+
+                               
+
+                        ?>
                       <span class="badge bg-danger">{{$hrs.$mns}}</span>
                     </div>
 
@@ -113,11 +128,22 @@ $page_name = "Profile"
                   <!-- Departure Station -->
                   <div class="departureStation text-dark">
                     @foreach($stations as $st)
+        
                     {{$item->start_station==$st->st_no?$st->st_name:''}}
                     @endforeach
                   </div>
                   <!-- Departure Time -->
-                  <!-- <div class="departureTime">{{$item->start_time}}</div> -->
+                  <div class="departureTime">
+                    <?php
+                      foreach(explode(",",$item->stations) as $key=>$st){
+                        if($item->start_station==$st){
+                          $time = 20.00 * $key*60;
+                          $cal_time = strtotime($item->start_time)+$time;
+                          print(date("h:i a",$cal_time));
+                        }
+                      }
+                    ?>
+                  </div>
                 </div>
                 <div class="wr-destination fw-semibold text-md-end mt-1 mt-md-0">
                   <!-- Destination Station -->
@@ -127,7 +153,20 @@ $page_name = "Profile"
                     @endforeach
                   </div>
                   <!-- Destination Time -->
-                  <!-- <div class="destinationTime">{{$item->end_time}}</div> -->
+                  <div class="destinationTime">
+                  <?php
+                      foreach(explode(",",$item->stations) as $key=>$st){
+                        if($item->end_station==$st && count(explode(",",$item->stations))-1!=$key){
+                          $time = 20.00 * $key*60;
+                          $cal_time = strtotime($item->end_time)+$time;
+                          print(date("h:i a",$cal_time));
+                        }
+                        if($item->end_station==$st && count(explode(",",$item->stations))-1==$key){
+                          print(date("h:i a",strtotime($item->end_time)));
+                        }
+                      }
+                    ?>
+                  </div>
                 </div>
               </div>
 

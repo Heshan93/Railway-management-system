@@ -30,7 +30,7 @@
       <div class="mb-3">
         <label for="selectTrain" class="form-label">Select Train Station</label>
         <select class="multi-select" data-reorder="1" required name="stations[]" multiple="multiple" style="width: 100%"
-          placeholder="Select Stations">
+          placeholder="Select Stations" required>
           @foreach($data['stations'] as $st)
           <option value="{{$st->st_no}}">{{$st->st_name}}</option>
           @endforeach
@@ -41,7 +41,7 @@
       <div class="mb-3">
         <label for="train-name" class="form-label">Train Name</label>
         <select class="form-select" required aria-label="Default select example" id="train-name" name="train_id"
-          placeholder="Select Train">
+          placeholder="Select Train" required>
           <option hidden>Select Train</option>
           @foreach($data['trains'] as $tr)
           <option value="{{$tr->train_id}}" {{$tr->train_id==$schd->train_id?"selected":''}}>{{$tr->train_name}}</option>
@@ -52,7 +52,7 @@
 
       <div class="mb-3">
         <label for="start_station" class="form-label">Start Station</label>
-        <select class="form-select" required aria-label="Default select example" id="start-station" name="start_station">
+        <select class="form-select" required aria-label="Default select example" id="start-station" name="start_station" required>
           <option hidden>Select Start Station</option>
           @foreach($data['stations'] as $st)
           <option value="{{$st->st_no}}" {{$st->st_no==$schd->start_station?"selected":''}}>{{$st->st_name}}</option>
@@ -62,12 +62,12 @@
 
       <div class="mb-3">
         <label for="seatCat1" class="form-label"> Start Time</label>
-        <input type="time" required class="form-control" id="start_time" name="start_time" min="0" value="{{$schd->start_time}}">
+        <input type="time" required class="form-control" id="start_time" name="start_time" min="0" value="{{$schd->start_time}}" required>
       </div>
 
       <div class="mb-3">
         <label for="end_station" class="form-label"> End Station</label>
-        <select class="form-select" required aria-label="Default select example" name="end_station" id="end_station">
+        <select class="form-select" required aria-label="Default select example" name="end_station" id="end_station" required>
           <option hidden>Select End Station</option>
           @foreach($data['stations'] as $st)
           <option value="{{$st->st_no}}" {{$st->st_no==$schd->end_station?"selected":''}}>{{$st->st_name}}</option>
@@ -77,7 +77,7 @@
 
       <div class="mb-3">
         <label for="seatCat1" class="form-label"> End Time</label>
-        <input type="time" required class="form-control" id="end_time" name="end_time" min="0" value="{{$schd->end_time}}">
+        <input type="time" required class="form-control" id="end_time" name="end_time" min="0" value="{{$schd->end_time}}" required>
       </div>
 
       <div class="mb-3">
@@ -88,12 +88,12 @@
 
       <div class="mb-3">
         <label for="seatCat1" class="form-label">No. of Second Class Seats</label>
-        <input type="number" required class="form-control" id="class_2" name="class_2" min="0"  placeholder="Class 02 seats" value="{{$schd->class_2_seats}}">
+        <input type="number" required class="form-control" id="class_2" name="class_2" min="0"  placeholder="Class 02 seats" value="{{$schd->class_2_seats}}" required>
       </div>
       
       <div class="mb-3">
         <label for="seatCat1" class="form-label">No. of Third Class Seats</label>
-        <input type="number" required class="form-control" id="class_3" name="class_3" min="0"  placeholder="Class 03 seats" value="{{$schd->class_3_seats}}">
+        <input type="number" required class="form-control" id="class_3" name="class_3" min="0"  placeholder="Class 03 seats" value="{{$schd->class_3_seats}}" required>
       </div>
 
       <button type="submit" class="btn btn-primary">Submit</button>

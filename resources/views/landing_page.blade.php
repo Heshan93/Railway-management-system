@@ -1262,31 +1262,32 @@
           </div>
         </div>
 
- <div class="col-lg-5 col-md-12" data-aos="fade-up" data-aos-delay="300">
-            <form action="{{ route('contact_us') }}" method="post" role="form">
-              @csrf
-              <div class="form-group">  
-                <label for="name">Your Name</label>
-                <input type="text" name="name" class="form-control" id="name" required>
-              </div>
-              <div class="form-group">
-                <label for="email">Your Email</label>
-                <input type="email" class="form-control" name="email" id="email" required>
-              </div>
-              <div class="form-group">
-                <label for="subject">Subject</label>
-                <input type="text" class="form-control" name="subject" id="subject" required>
-              </div>
-              <div class="form-group">
-                <label for="message">Message</label>
-                <textarea class="form-control" name="message" rows="5" required></textarea>
-              </div>
-          
-              <div class="text-center m-3">
-                <button type="submit" class="btn btn-primary ">Send Message</button>
-              </div>
-            </form>
-          </div>
+
+        <div class="col-lg-5 col-md-12" data-aos="fade-up" data-aos-delay="300">
+          <form action="{{ route('contact_us') }}" method="post" role="form">
+            @csrf
+            <div class="form-group">  
+              <label for="name">Your Name</label>
+              <input type="text" name="name" class="form-control" id="name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Your Email</label>
+              <input type="email" class="form-control" name="email" id="email" required>
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" class="form-control" name="subject" id="subject" required>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea class="form-control" name="message" rows="5" required></textarea>
+            </div>
+        
+            <div class="text-center m-3">
+              <button type="submit" class="btn btn-primary ">Send Message</button>
+            </div>
+          </form>
+        </div>
 
       </div>
 

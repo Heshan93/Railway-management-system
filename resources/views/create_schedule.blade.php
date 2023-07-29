@@ -25,6 +25,7 @@
         <input class="form-control" required type="date" id="schedule-date" name="schedule_date">
         <span class="text-danger"></span>
       </div>
+      
 
       <div class="mb-3">
         <label for="selectTrain" class="form-label">Select Train Station</label>
