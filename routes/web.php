@@ -125,6 +125,7 @@ Route::get('train_info', function () {
 
 
 
+
 //passenger login function
 Route::post('login_user', [userController::class, 'loginUser'])->name('login_user');
 
@@ -278,3 +279,8 @@ Route::get('delete-promotion/{id}',[CommonController::class,'removePromotion'])-
 
 //update_location
 Route::post('tracking_update',[scheduleController::class,'updateLocation'])->name('tracking_update');
+
+//sales report
+Route::get('sales-report', [CommonController::class, 'salesReport'])->name('sales-report');
+
+Route::get('sales-report-data',[CommonController::class,'salesReportSearch'])->name('sales-report-data');
