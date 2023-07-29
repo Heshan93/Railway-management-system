@@ -20,10 +20,10 @@
         @endif
       {{--  new use success  & fail message --}}
 
-    <div class="mb-3">
+      <div class="mb-3">
             <label for="trainId" class="form-label">Train Station ID</label>
             <input type="number" class="form-control" id="trainId" name="st_no" value="{{$data}}" min="0">
-    </div>
+      </div>
 
       <div class="mb-3">
         <label for="st_name" class="form-label">Train Station Name</label>
@@ -47,8 +47,6 @@
         <label for="trd_class_seat" class="form-label">Third class Seat Seat Price(Colombo to Station)</label>
         <input type="number" class="form-control" id="trd_class_seat" name="trd_class_seat"  min="0" >
         <span class="text-danger">@error('trd_class_seat') {{$message }}@enderror</span>
-      </div>
-   
       </div>
 
       <button type="submit" class="btn btn-primary">Submit</button>

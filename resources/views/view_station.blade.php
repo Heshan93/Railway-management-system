@@ -2,11 +2,12 @@
 
 @section('admincontent')
 
-<h1>View Train Stations</h1>
+
 
 
 
 <div class="container-fluid">
+<h1>View Train Stations</h1>
 <table class="table table-hover ">
     <thead>
       <tr>

@@ -4,7 +4,7 @@
 
 
 <div class="container-fluid">
-    <h1>Add Employee</h1>
+    <h1>Add Admin Users</h1>
 
     <form action="{{route('submit_admin_user') }}" method="POST">
         @csrf
@@ -51,8 +51,9 @@
           <div class="input-group">
               <span class="input-group-text" id="basic-addon1">+94</span>
               <input type="text" id="tp_number" class="form-control"  aria-label="Telephone" aria-describedby="basic-addon1" name="tp_number"  value="{{old('tp_number')}}">
-              <span class="text-danger">@error('tp_number') {{$message }}@enderror</span>
+              
             </div>
+            <span class="text-danger">@error('tp_number') {{$message }}@enderror</span>
         </div> 
         </div>
 
@@ -92,7 +93,7 @@
           </div>
         </div>
         <div class="row mt-4">
-        <div class="col"><button type="submit" class="btn btn-primary w-100">Get started</button></div>
+        <div class="col"><button type="submit" class="btn btn-primary w-100">Add</button></div>
         </div>
       
       </div>
