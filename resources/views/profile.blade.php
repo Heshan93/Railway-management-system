@@ -127,10 +127,9 @@ $page_name = "Profile"
                 <div class="wr-departure fw-semibold">
                   <!-- Departure Station -->
                   <div class="departureStation text-dark">
-                    @foreach($stations as $st)
-        
-                    {{$item->start_station==$st->st_no?$st->st_name:''}}
-                    @endforeach
+               
+                    {{$item->start_station}}
+                    
                   </div>
                   <!-- Departure Time -->
                   <div class="departureTime">
@@ -148,9 +147,9 @@ $page_name = "Profile"
                 <div class="wr-destination fw-semibold text-md-end mt-1 mt-md-0">
                   <!-- Destination Station -->
                   <div class="destinationStation text-dark">
-                    @foreach($stations as $st)
-                    {{$item->end_station==$st->st_no?$st->st_name:''}}
-                    @endforeach
+              
+                    {{$item->end_station}}
+            
                   </div>
                   <!-- Destination Time -->
                   <div class="destinationTime">

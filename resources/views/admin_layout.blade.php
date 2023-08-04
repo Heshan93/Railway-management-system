@@ -78,6 +78,7 @@
 
                                                 <h6 class="collapse-header">Manage Employee:</h6>
                                                 <a class="collapse-item" href="{{ route('add_admin_user') }}">Add Admins</a>
+                                                <a class="collapse-item" href="{{ route('view_admin_user') }}">View Admins</a>
 
                                             </div>
                                         </div>

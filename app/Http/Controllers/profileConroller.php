@@ -29,6 +29,21 @@ class profileConroller extends Controller
     
                  
 
+            foreach ($data as $ticket) {
+
+                // Get the start station name
+                $startStation = train_station::where('st_no', $ticket->start_station)->value('st_name');
+        
+                // Get the end station name
+                $endStation = train_station::where('st_no', $ticket->end_station)->value('st_name');
+
+                $ticket->start_station = $startStation;
+                $ticket->end_station = $endStation;
+            }
+    
+
+
+
                     // Get all the records for the passenger where the ticket has expired
                     $history =ticket::select('tickets.*','train_schedules.delay','train_schedules.track_station_text','train_schedules.stations','train_schedules.stations','train_schedules.start_time','train_schedules.end_time')->join('train_schedules','train_schedules.schedule_id','tickets.schedule_id')
                     ->where('tickets.passenger_id', Session('passenger_id'))
@@ -36,17 +51,16 @@ class profileConroller extends Controller
                     ->get();
 
                     $Passenger = passenger::where('passenger_id', Session('passenger_id'))->first();
-           
-            
-            return  view('profile',[
-                
-                'stations'=>train_station::orderBy('st_name','ASC')->get(),
-                'promos'=>promotion::where('is_active',1)->get(),
-                'item'=>$data,
-                'history'=>$history,
-                'Passenger'=>$Passenger,
-            
-            ]); 
+         
+                    return  view('profile',[
+                        
+                        'stations'=>train_station::orderBy('st_name','ASC')->get(),
+                        'promos'=>promotion::where('is_active',1)->get(),
+                        'item'=>$data,
+                        'history'=>$history,
+                        'Passenger'=>$Passenger,
+                    
+                    ]); 
             
         }
         return view('user_login');
