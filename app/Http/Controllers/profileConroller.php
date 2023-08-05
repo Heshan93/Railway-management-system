@@ -21,10 +21,10 @@ class profileConroller extends Controller
         if (session()->has('pName')) {
 
 
-            $data = ticket::select('tickets.*','train_schedules.delay','train_schedules.track_station_text','train_schedules.stations','train_schedules.stations','train_schedules.start_time','train_schedules.end_time')->join('train_schedules','train_schedules.schedule_id','tickets.schedule_id')
+            $data = ticket::select('tickets.*','train_schedules.status','train_schedules.delay','train_schedules.track_station_text','train_schedules.stations','train_schedules.start_time','train_schedules.end_time')->join('train_schedules','train_schedules.schedule_id','tickets.schedule_id')
             ->where('tickets.passenger_id', Session('passenger_id'))
             ->where('tickets.created_at', '>', $currentDateTime) // Check if the ticket end_time is greater than current date and time
-            
+            ->where('train_schedules.status',0)
             ->get();
     
                  
@@ -37,17 +37,18 @@ class profileConroller extends Controller
                 // Get the end station name
                 $endStation = train_station::where('st_no', $ticket->end_station)->value('st_name');
 
-                $ticket->start_station = $startStation;
-                $ticket->end_station = $endStation;
+                $ticket->start_station_name = $startStation;
+                $ticket->end_station_name = $endStation;
             }
     
 
 
 
                     // Get all the records for the passenger where the ticket has expired
-                    $history =ticket::select('tickets.*','train_schedules.delay','train_schedules.track_station_text','train_schedules.stations','train_schedules.stations','train_schedules.start_time','train_schedules.end_time')->join('train_schedules','train_schedules.schedule_id','tickets.schedule_id')
+                    $history =ticket::select('tickets.*','train_schedules.status','train_schedules.delay','train_schedules.track_station_text','train_schedules.stations','train_schedules.start_time','train_schedules.end_time')->join('train_schedules','train_schedules.schedule_id','tickets.schedule_id')
                     ->where('tickets.passenger_id', Session('passenger_id'))
-                    ->where('tickets.created_at', '<', $currentDateTime) // Check if the ticket end_time is less than current date and time
+                    /*   */ // Check if the ticket end_time is less than current date and time
+                    ->where('train_schedules.status',1)
                     ->get();
 
                     $Passenger = passenger::where('passenger_id', Session('passenger_id'))->first();

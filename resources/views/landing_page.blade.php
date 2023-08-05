@@ -203,7 +203,7 @@
                 $filter_dif = $data['filter']['st_start'] - $data['filter']['st_end'];
                 $data_dif = $sh->start_station - $sh->end_station;
                 $filter_state = $filter_dif>=0?'P':'N';
-                $data_state = $data_dif>=0?'P':'N';
+                $data_state = $data_dif>=0?'N':'P';
 
               ?>
 
@@ -682,7 +682,7 @@
                 $filter_dif = $data['filter']['st_start'] - $data['filter']['st_end'];
                 $data_dif = $sh->start_station - $sh->end_station;
                 $filter_state = $filter_dif>=0?'P':'N';
-                $data_state = $data_dif>=0?'P':'N';
+                $data_state = $data_dif>=0?'N':'P';
 
               ?>
 

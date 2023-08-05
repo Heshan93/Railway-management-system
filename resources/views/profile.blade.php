@@ -75,7 +75,7 @@ $page_name = "Profile"
           <h2 class="titleTabContent">Active Tickets</h2>
           <div class="wr_content">
 
-
+            
             @foreach ($item as $item)
 
 
@@ -128,7 +128,7 @@ $page_name = "Profile"
                   <!-- Departure Station -->
                   <div class="departureStation text-dark">
                
-                    {{$item->start_station}}
+                    {{$item->start_station_name}}
                     
                   </div>
                   <!-- Departure Time -->
@@ -140,6 +140,7 @@ $page_name = "Profile"
                           $cal_time = strtotime($item->start_time)+$time;
                           print(date("h:i a",$cal_time));
                         }
+                        
                       }
                     ?>
                   </div>
@@ -148,7 +149,7 @@ $page_name = "Profile"
                   <!-- Destination Station -->
                   <div class="destinationStation text-dark">
               
-                    {{$item->end_station}}
+                    {{$item->end_station_name}}
             
                   </div>
                   <!-- Destination Time -->

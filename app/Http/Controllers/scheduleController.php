@@ -214,41 +214,68 @@ class scheduleController extends Controller
     return redirect('admin');
         
     }
-    public function deleteSchedule($id){
 
-        if(session()->has('AName')){
 
-            $trainId = ticket::where('train_id',$id)->get(); 
-            
-            
-                    foreach($trainId as $tId){
-                        
-                    $passenger = passenger::where('train_id',$tId->passenger_id)->get(); //get related data
-            
-                   
-                    //send mails loop start
-                    foreach($passenger as $passenger){
-            
-                         // $data for email template
-                      $details  = [
-    
-                      ];
-            
-                    Mail::to($passenger->email)->send(new DelaySchedule($details));  
-                    }
-                } 
 
-            
+    public function deleteSchedule($id)
+{
+    if (session()->has('AName')) {
+        $trainIds = ticket::where('schedule_id', $id)->get();
 
-                        $data = train_schedule::find($id);
-                        $data->update(['is_active'=>0]);
+        foreach ($trainIds as $tId) {
 
-                        return redirect('view_schedules');
 
-                 }
-                 return redirect('admin');
-                    
+/* 
+
+                        foreach ($data as $ticket) {
+
+                // Get the start station name
+                $startStation = train_station::where('st_no', $ticket->start_station)->value('st_name');
+        
+                // Get the end station name
+                $endStation = train_station::where('st_no', $ticket->end_station)->value('st_name');
+
+                $ticket->start_station_name = $startStation;
+                $ticket->end_station_name = $endStation;
+            }
+ */
+
+
+
+
+            $passenger = passenger::where('passenger_id', $tId->passenger_id)->get();
+
+            //send mails loop start
+            foreach ($passenger as $pass) {
+
+
+
+
+
+
+
+
+                $details = [
+                    'train_name' => $tId->train_name,
+                    'start_station' => $tId->start_station,
+                    'end_station' => $tId->end_station,
+                    'start_time' => $tId->start_time,
+                    'end_time' => $tId->end_time,
+                ];
+
+                Mail::to($pass->email)->send(new cancelSchedule($details));
+            }
+        }
+
+        $data = train_schedule::find($id);
+        $data->update(['is_active' => 0]);
+
+        return redirect('view_schedules');
     }
+
+    return redirect('admin');
+}
+
 
 
     function delaySchedule(Request $req){
@@ -342,7 +369,11 @@ class scheduleController extends Controller
     {   
        
         $data = explode(",", $req->location);
+        $schedule = train_schedule::where('schedule_id',$req->id)->first();
         $update_schedule = train_schedule::where('schedule_id',$req->id)->update(['track_station'=>$data[0],'track_station_text'=>$data[1]]);
+        if($data[0]==$schedule->end_station){
+            $update_schedule = train_schedule::where('schedule_id',$req->id)->update(['status'=>1]);
+        }
         return redirect()->back()->with('success', 'Tracking Location Updated Successfully');;
     }
 

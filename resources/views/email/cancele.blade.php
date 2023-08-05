@@ -32,10 +32,10 @@
             <td style="border: 1px solid #ccc; padding: 5px;"><strong>Arrival Time:</strong></td>
             <td style="border: 1px solid #ccc; padding: 5px;">{{ $details['end_time'] }}</td>
         </tr>  
-        <tr>
+       {{--  <tr>
             <td style="border: 1px solid #ccc; padding: 5px;"><strong>Delay Time:</strong></td>
             <td style="border: 1px solid #ccc; padding: 5px;">{{$details['delay']}}</td>
-        </tr>
+        </tr> --}}
       
     </table>
     </table>

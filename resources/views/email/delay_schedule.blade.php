@@ -28,7 +28,7 @@
                             <li><strong>End Station:</strong>{{ $details['end_station'] }}</li>
                             <li><strong>Delayed Departure Time:</strong> {{ $details['start_time'] }}</li>
                             <li><strong>Delayed Arrival Time:</strong> {{ $details['end_time'] }}</li>
-                            <li><strong>Delay Time:</strong> {{$details['delay']}} H:M</li>
+{{--                             <li><strong>Delay Time:</strong> {{$details['delay']}} H:M</li> --}}
                          
                         </ul>
                         <p>We apologize for any inconvenience caused. Thank you for your understanding.</p>
